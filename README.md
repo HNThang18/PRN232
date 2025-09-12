@@ -1,12 +1,8 @@
 # PRN231
-:toc:
-:toclevels: 3
+# 🖥️ Frontend (React + TypeScript)
 
-== 🖥️ Frontend (React + TypeScript)
-
-=== 1. Cấu trúc dự án
-[source,txt]
-----
+## 1. Cấu trúc dự án
+```txt
 src/
  ├── components/        # UI components
  │    └── Button.tsx
@@ -35,73 +31,63 @@ src/
  │
  ├── App.tsx
  └── main.tsx
-----
+2. Quy tắc đặt tên
+Component: PascalCase
 
-=== 2. Quy tắc đặt tên
-* **Component:** PascalCase  
-+
-[source,typescript]
-----
+typescript
+Copy code
 function UserProfile() { ... }
-----
-* **File:** trùng tên component, PascalCase  
-+
-`UserProfile.tsx`
-* **Hooks:** bắt đầu bằng `use`  
-+
-`useAuth.ts, useFetch.ts`
-* **Biến và hàm:** camelCase  
-+
-[source,typescript]
-----
+File: trùng tên component, PascalCase → UserProfile.tsx
+
+Hooks: bắt đầu bằng use → useAuth.ts, useFetch.ts
+
+Biến và hàm: camelCase
+
+typescript
+Copy code
 const userName: string = "Doc";
 function getUserProfile(): Promise<User> {}
-----
-* **Interface & Type:** PascalCase, prefix `I` với interface  
-+
-[source,typescript]
-----
+Interface & Type: PascalCase, prefix I với interface
+
+typescript
+Copy code
 interface IUser {
    id: number;
    name: string;
 }
-----
+3. Code Style
+Sử dụng ES6+ + TypeScript features (arrow function, async/await, destructuring, generics).
 
-=== 3. Code Style
-* Sử dụng **ES6+** + **TypeScript features** (arrow function, async/await, destructuring, generics).
-* Luôn dùng **functional component + React Hooks** thay cho class.
-* State đặt ngắn gọn, rõ nghĩa  
-+
-[source,typescript]
-----
+Luôn dùng functional component + React Hooks thay cho class.
+
+State đặt ngắn gọn, rõ nghĩa:
+
+typescript
+Copy code
 const [user, setUser] = useState<IUser | null>(null);
-----
-* Destructuring props kèm type:  
-+
-[source,typescript]
-----
+Destructuring props kèm type:
+
+typescript
+Copy code
 type UserCardProps = { name: string; age: number };
 
 function UserCard({ name, age }: UserCardProps) {
   return <div>{name} - {age}</div>;
 }
-----
+4. UI & Logic
+Tách biệt logic và UI: logic đặt trong hooks/services, UI trong component.
 
-=== 4. UI & Logic
-* Tách biệt logic và UI: logic đặt trong hooks/services, UI trong component.
-* Tránh viết quá nhiều logic trong JSX.
-* Luôn kiểm tra null/undefined trước khi render.  
-+
-[source,tsx]
-----
+Tránh viết quá nhiều logic trong JSX.
+
+Luôn kiểm tra null/undefined trước khi render:
+
+tsx
+Copy code
 {user && <UserCard name={user.name} age={20} />}
-----
-
-== 📌 Chuẩn viết code RESTful API cho C#
-
-=== 1. Cấu trúc dự án
-[source,txt]
-----
+📌 Chuẩn viết code RESTful API cho C#
+1. Cấu trúc dự án
+txt
+Copy code
 src/
  ├── controllers/       # Xử lý request, response
  ├── services/          # Xử lý logic, gọi DB
@@ -113,81 +99,66 @@ src/
  │     └── auth/
  │     └── …
  └── app.js
-----
+2. Quy tắc đặt tên endpoint
+Dùng danh từ số nhiều (plural nouns).
 
-=== 1. Quy tắc đặt tên endpoint
+Không nhúng hành động trong URL (/api/users/create ❌).
 
-* Dùng *danh từ số nhiều* (plural nouns).
-* *Không* nhúng hành động trong URL (`/api/users/create` ❌).
-* Action được quyết định bằng *HTTP verb*.
+Action được quyết định bằng HTTP verb.
 
-Ví dụ cho resource `User`:
+Ví dụ cho resource User:
 
-[cols="1,2,3", options="header"]
-|===
-| HTTP Verb | Endpoint | Mô tả
-| GET       | /api/users       | Lấy danh sách user
-| GET       | /api/users/{id}  | Lấy chi tiết user theo id
-| POST      | /api/users       | Tạo user mới
-| PUT       | /api/users/{id}  | Cập nhật toàn bộ user
-| PATCH     | /api/users/{id}  | Cập nhật một phần user
-| DELETE    | /api/users/{id}  | Xóa user
-|===
+HTTP Verb	Endpoint	Mô tả
+GET	/api/users	Lấy danh sách user
+GET	/api/users/{id}	Lấy chi tiết user theo id
+POST	/api/users	Tạo user mới
+PUT	/api/users/{id}	Cập nhật toàn bộ user
+PATCH	/api/users/{id}	Cập nhật một phần user
+DELETE	/api/users/{id}	Xóa user
 
-👉 Nếu có sub-resource:
+👉 Sub-resource:
 
-[source,bash]
-----
+bash
+Copy code
 GET /api/users/1/posts        # Lấy tất cả bài post của user 1
 GET /api/users/1/posts/99     # Lấy chi tiết post 99 của user 1
-----
+3. Quy tắc đặt tên Controller
+PascalCase + suffix Controller.
 
-=== 3. Quy tắc đặt tên Controller
+Tên controller khớp với resource.
 
-* PascalCase + suffix `Controller`.
-* Tên controller khớp với resource.
-* ASP.NET Core mặc định map: `UsersController` → `/api/users`.
+ASP.NET Core mặc định map: UsersController → /api/users.
 
-Ví dụ:
-
-[source,csharp]
-----
+csharp
+Copy code
 [ApiController]
 [Route("api/[controller]")]
 public class UsersController : ControllerBase
 {
-    // GET /api/users
     [HttpGet]
     public async Task<IActionResult> GetAllUsers() { ... }
 
-    // GET /api/users/{id}
     [HttpGet("{id:int}")]
     public async Task<IActionResult> GetUserById(int id) { ... }
 
-    // POST /api/users
     [HttpPost]
     public async Task<IActionResult> CreateUser([FromBody] CreateUserDto dto) { ... }
 
-    // PUT /api/users/{id}
     [HttpPut("{id:int}")]
     public async Task<IActionResult> UpdateUser(int id, [FromBody] UpdateUserDto dto) { ... }
 
-    // DELETE /api/users/{id}
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> DeleteUser(int id) { ... }
 }
-----
+4. Quy tắc DTO & Model
+Entity (DB model): PascalCase, số ít → User.
 
-=== 4. Quy tắc DTO & Model
+DTO: PascalCase + suffix Dto → CreateUserDto, UpdateUserDto.
 
-* *Entity (DB model):* PascalCase, số ít → `User`.
-* *DTO:* PascalCase + suffix `Dto` → `CreateUserDto`, `UpdateUserDto`.
-* *Interface:* PascalCase, prefix `I` → `IUserService`.
+Interface: PascalCase, prefix I → IUserService.
 
-Ví dụ:
-
-[source,csharp]
-----
+csharp
+Copy code
 public class CreateUserDto
 {
     public string Name { get; set; } = string.Empty;
@@ -199,18 +170,15 @@ public class UpdateUserDto
     public string? Name { get; set; }
     public string? Email { get; set; }
 }
-----
+5. Error Handling & Validation
+Dùng ModelState để validate input.
 
-=== 5. Error Handling & Validation
+Trả về mã lỗi chuẩn: 400, 401, 404, 500.
 
-* Dùng *ModelState* để validate input.
-* Trả về mã lỗi chuẩn: `400 BadRequest`, `401 Unauthorized`, `404 NotFound`, `500 InternalServerError`.
-* Middleware global để handle exception.
+Middleware global để handle exception.
 
-Ví dụ Validation:
-
-[source,csharp]
-----
+csharp
+Copy code
 [HttpPost]
 public async Task<IActionResult> CreateUser([FromBody] CreateUserDto dto)
 {
@@ -225,17 +193,17 @@ public async Task<IActionResult> CreateUser([FromBody] CreateUserDto dto)
     var user = await _userService.CreateUserAsync(dto);
     return Ok(new { success = true, data = user });
 }
-----
+6. Code Style
+Dùng async/await cho tất cả API call tới DB.
 
-=== 6. Code Style
+Controller chỉ xử lý request/response, logic chính đặt trong Service.
 
-* Dùng `async/await` cho tất cả API call tới DB
-* Controller chỉ xử lý request/response, logic chính đặt trong Service
-* Request validation bằng **FluentValidation** hoặc **DataAnnotation**
-* Error handling qua **Middleware chung**
-+
-[source,csharp]
-----
+Request validation bằng FluentValidation hoặc DataAnnotation.
+
+Error handling qua Middleware chung.
+
+csharp
+Copy code
 [ApiController]
 [Route("api/[controller]")]
 public class UsersController : ControllerBase
@@ -261,20 +229,19 @@ public class UsersController : ControllerBase
         return Ok(new { success = true, data = user });
     }
 }
-----
+7. Quy tắc khác
+Tên phương thức trong Controller: PascalCase (GetUserById).
 
-=== 7. Quy tắc khác
+Không viết logic trong Controller → tách sang Service.
 
-* Tên phương thức trong Controller: PascalCase (`GetUserById`).
-* Không viết logic trong Controller → tách sang `Service`.
-* Sử dụng *async/await* cho tất cả thao tác DB/IO.
-* Swagger/OpenAPI để mô tả API.
+Sử dụng async/await cho tất cả thao tác DB/IO.
 
-== 📦 Chuẩn JSON trả về (API Response)
+Swagger/OpenAPI để mô tả API.
 
-=== 1. Thành công
-[source,json]
-----
+📦 Chuẩn JSON trả về (API Response)
+1. Thành công
+json
+Copy code
 {
   "success": true,
   "data": {
@@ -282,11 +249,9 @@ public class UsersController : ControllerBase
     "name": "Nguyen Van A"
   }
 }
-----
-
-=== 2. Lỗi
-[source,json]
-----
+2. Lỗi
+json
+Copy code
 {
   "success": false,
   "error": {
@@ -294,11 +259,9 @@ public class UsersController : ControllerBase
     "message": "User not found"
   }
 }
-----
-
-=== 3. Danh sách (có phân trang)
-[source,json]
-----
+3. Danh sách (có phân trang)
+json
+Copy code
 {
   "success": true,
   "data": [
@@ -311,4 +274,3 @@ public class UsersController : ControllerBase
     "total": 52
   }
 }
-----
