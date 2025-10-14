@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace repositories.Models
 {
-    public enum AIRequestStatus
+    public enum AiRequestStatus
     {
         Pending,
         Success,
@@ -19,7 +19,7 @@ namespace repositories.Models
         GenerateLessonPlan,
         GenerateQuiz
     }
-    public class AIRequest
+    public class AiRequest
     {
         [Key]
         public int AIRequestId { get; set; }
@@ -42,7 +42,7 @@ namespace repositories.Models
         public string? Response { get; set; }
 
         [MaxLength(50)]
-        public AIRequestStatus Status { get; set; }
+        public AiRequestStatus Status { get; set; }
 
         public decimal Cost { get; set; }
 
