@@ -22,7 +22,7 @@ namespace repositories.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("repositories.Models.AIRequest", b =>
+            modelBuilder.Entity("repositories.Models.AiRequest", b =>
                 {
                     b.Property<int>("AIRequestId")
                         .ValueGeneratedOnAdd()
@@ -63,7 +63,21 @@ namespace repositories.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("aIRequests");
+                    b.ToTable("AiRequest");
+
+                    b.HasData(
+                        new
+                        {
+                            AIRequestId = 1,
+                            Cost = 1.5m,
+                            CreatedAt = new DateTime(2024, 6, 14, 8, 51, 0, 0, DateTimeKind.Utc),
+                            LevelId = 2,
+                            Prompt = "Generate a lesson plan for algebra.",
+                            RequestType = 0,
+                            Response = "Lesson plan generated.",
+                            Status = 1,
+                            UserId = 2
+                        });
                 });
 
             modelBuilder.Entity("repositories.Models.Answer", b =>
@@ -89,6 +103,22 @@ namespace repositories.Migrations
                     b.HasIndex("QuestionId");
 
                     b.ToTable("answers");
+
+                    b.HasData(
+                        new
+                        {
+                            AnswerId = 1,
+                            AnswerText = "2",
+                            IsCorrect = true,
+                            QuestionId = 1
+                        },
+                        new
+                        {
+                            AnswerId = 2,
+                            AnswerText = "4",
+                            IsCorrect = false,
+                            QuestionId = 1
+                        });
                 });
 
             modelBuilder.Entity("repositories.Models.Attachment", b =>
@@ -126,7 +156,19 @@ namespace repositories.Migrations
 
                     b.HasIndex("LessonDetailId");
 
-                    b.ToTable("Attachment");
+                    b.ToTable("attachments");
+
+                    b.HasData(
+                        new
+                        {
+                            AttachmentId = 1,
+                            FileName = "intro.pdf",
+                            FilePath = "/files/intro.pdf",
+                            FileSize = 102400L,
+                            FileType = "pdf",
+                            LessonDetailId = 1,
+                            UploadTimestamp = new DateTime(2024, 6, 14, 8, 51, 0, 0, DateTimeKind.Utc)
+                        });
                 });
 
             modelBuilder.Entity("repositories.Models.AuditLog", b =>
@@ -162,6 +204,18 @@ namespace repositories.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("auditLogs");
+
+                    b.HasData(
+                        new
+                        {
+                            LogId = 1,
+                            Action = 0,
+                            Details = "Created lesson plan.",
+                            EntityId = 1,
+                            EntityName = "LessonPlan",
+                            Timestamp = new DateTime(2024, 6, 14, 8, 51, 0, 0, DateTimeKind.Utc),
+                            UserId = 2
+                        });
                 });
 
             modelBuilder.Entity("repositories.Models.Difficulty", b =>
@@ -186,6 +240,29 @@ namespace repositories.Migrations
                     b.HasKey("DifficultyId");
 
                     b.ToTable("difficulties");
+
+                    b.HasData(
+                        new
+                        {
+                            DifficultyId = 1,
+                            Description = "Basic level",
+                            Name = "Easy",
+                            Value = 1
+                        },
+                        new
+                        {
+                            DifficultyId = 2,
+                            Description = "Intermediate level",
+                            Name = "Medium",
+                            Value = 2
+                        },
+                        new
+                        {
+                            DifficultyId = 3,
+                            Description = "Advanced level",
+                            Name = "Hard",
+                            Value = 3
+                        });
                 });
 
             modelBuilder.Entity("repositories.Models.Lesson", b =>
@@ -218,6 +295,17 @@ namespace repositories.Migrations
                     b.HasIndex("LessonPlanId");
 
                     b.ToTable("lessons");
+
+                    b.HasData(
+                        new
+                        {
+                            LessonId = 1,
+                            Content = "Algebra is ...",
+                            IsShared = true,
+                            LessonPlanId = 1,
+                            PublishedDate = new DateTime(2024, 6, 14, 8, 51, 0, 0, DateTimeKind.Utc),
+                            Title = "What is Algebra?"
+                        });
                 });
 
             modelBuilder.Entity("repositories.Models.LessonDetail", b =>
@@ -256,6 +344,17 @@ namespace repositories.Migrations
                     b.HasIndex("LessonId");
 
                     b.ToTable("lessonDetails");
+
+                    b.HasData(
+                        new
+                        {
+                            LessonDetailId = 1,
+                            Content = "Algebra is a branch of mathematics ...",
+                            ContentType = 0,
+                            CreatedAt = new DateTime(2024, 6, 14, 8, 51, 0, 0, DateTimeKind.Utc),
+                            LessonId = 1,
+                            Order = 1
+                        });
                 });
 
             modelBuilder.Entity("repositories.Models.LessonPlan", b =>
@@ -266,7 +365,7 @@ namespace repositories.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LessonPlanId"));
 
-                    b.Property<int?>("AIRequestId")
+                    b.Property<int?>("AiRequestId")
                         .HasColumnType("int");
 
                     b.Property<string>("Content")
@@ -306,13 +405,28 @@ namespace repositories.Migrations
 
                     b.HasKey("LessonPlanId");
 
-                    b.HasIndex("AIRequestId");
+                    b.HasIndex("AiRequestId");
 
                     b.HasIndex("LevelId");
 
                     b.HasIndex("TeacherId");
 
                     b.ToTable("lessonPlans");
+
+                    b.HasData(
+                        new
+                        {
+                            LessonPlanId = 1,
+                            AiRequestId = 1,
+                            Content = "Introduction to Algebra",
+                            CreatedAt = new DateTime(2024, 6, 14, 8, 51, 0, 0, DateTimeKind.Utc),
+                            Duration = 60,
+                            LevelId = 2,
+                            Status = 1,
+                            TeacherId = 2,
+                            Title = "Algebra Basics",
+                            Version = 1
+                        });
                 });
 
             modelBuilder.Entity("repositories.Models.Level", b =>
@@ -337,6 +451,29 @@ namespace repositories.Migrations
                     b.HasKey("LevelId");
 
                     b.ToTable("levels");
+
+                    b.HasData(
+                        new
+                        {
+                            LevelId = 1,
+                            EducationLevel = 0,
+                            LevelName = "Primary School",
+                            Order = 1
+                        },
+                        new
+                        {
+                            LevelId = 2,
+                            EducationLevel = 1,
+                            LevelName = "Secondary School",
+                            Order = 2
+                        },
+                        new
+                        {
+                            LevelId = 3,
+                            EducationLevel = 2,
+                            LevelName = "High School",
+                            Order = 3
+                        });
                 });
 
             modelBuilder.Entity("repositories.Models.Progress", b =>
@@ -370,6 +507,17 @@ namespace repositories.Migrations
                     b.HasIndex("StudentId");
 
                     b.ToTable("progresses");
+
+                    b.HasData(
+                        new
+                        {
+                            ProgressId = 1,
+                            AttemptDate = new DateTime(2024, 6, 14, 8, 51, 0, 0, DateTimeKind.Utc),
+                            CompletionStatus = 2,
+                            IsActive = true,
+                            LessonId = 1,
+                            StudentId = 1
+                        });
                 });
 
             modelBuilder.Entity("repositories.Models.Question", b =>
@@ -380,7 +528,7 @@ namespace repositories.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("QuestionId"));
 
-                    b.Property<int?>("AIRequestId")
+                    b.Property<int?>("AiRequestId")
                         .HasColumnType("int");
 
                     b.Property<string>("CorrectAnswer")
@@ -425,7 +573,7 @@ namespace repositories.Migrations
 
                     b.HasKey("QuestionId");
 
-                    b.HasIndex("AIRequestId");
+                    b.HasIndex("AiRequestId");
 
                     b.HasIndex("DifficultyId");
 
@@ -434,6 +582,25 @@ namespace repositories.Migrations
                     b.HasIndex("QuizId");
 
                     b.ToTable("questions");
+
+                    b.HasData(
+                        new
+                        {
+                            QuestionId = 1,
+                            AiRequestId = 1,
+                            CorrectAnswer = "2",
+                            CreatedAt = new DateTime(2024, 6, 14, 8, 51, 0, 0, DateTimeKind.Utc),
+                            DifficultyId = 1,
+                            Explanation = "Divide both sides by 2.",
+                            IsAIGenerated = false,
+                            QuestionBankId = 1,
+                            QuestionText = "What is x in 2x=4?",
+                            QuestionType = 0,
+                            QuizId = 1,
+                            Status = 1,
+                            Tags = "algebra,equation",
+                            Topic = 3
+                        });
                 });
 
             modelBuilder.Entity("repositories.Models.QuestionBank", b =>
@@ -468,6 +635,17 @@ namespace repositories.Migrations
                     b.HasIndex("TeacherId");
 
                     b.ToTable("questionBanks");
+
+                    b.HasData(
+                        new
+                        {
+                            QuestionBankId = 1,
+                            Description = "Basic algebra questions",
+                            IsPublic = true,
+                            LevelId = 2,
+                            Name = "Algebra Questions",
+                            TeacherId = 2
+                        });
                 });
 
             modelBuilder.Entity("repositories.Models.Quiz", b =>
@@ -517,6 +695,21 @@ namespace repositories.Migrations
                     b.HasIndex("TeacherId");
 
                     b.ToTable("quizzes");
+
+                    b.HasData(
+                        new
+                        {
+                            QuizId = 1,
+                            AttemptLimit = 3,
+                            CreatedAt = new DateTime(2024, 6, 14, 8, 51, 0, 0, DateTimeKind.Utc),
+                            IsAIGenerated = false,
+                            LevelId = 2,
+                            Status = 1,
+                            TeacherId = 2,
+                            TimeLimit = 30,
+                            Title = "Algebra Quiz",
+                            TotalScore = 100
+                        });
                 });
 
             modelBuilder.Entity("repositories.Models.Submission", b =>
@@ -559,6 +752,20 @@ namespace repositories.Migrations
                     b.HasIndex("StudentId");
 
                     b.ToTable("submissions");
+
+                    b.HasData(
+                        new
+                        {
+                            SubmissionId = 1,
+                            AttemptNumber = 1,
+                            DurationTaken = 1200,
+                            Feedback = "Great job!",
+                            QuizId = 1,
+                            Score = 100m,
+                            Status = 0,
+                            StudentId = 1,
+                            SubmittedAt = new DateTime(2024, 6, 14, 8, 51, 0, 0, DateTimeKind.Utc)
+                        });
                 });
 
             modelBuilder.Entity("repositories.Models.SubmissionDetail", b =>
@@ -595,6 +802,18 @@ namespace repositories.Migrations
                     b.HasIndex("SubmissionId");
 
                     b.ToTable("submissionDetails");
+
+                    b.HasData(
+                        new
+                        {
+                            SubmissionDetailId = 1,
+                            Explanation = "Correct answer.",
+                            IsCorrect = true,
+                            QuestionId = 1,
+                            ScoreEarned = 100m,
+                            StudentAnswer = "2",
+                            SubmissionId = 1
+                        });
                 });
 
             modelBuilder.Entity("repositories.Models.User", b =>
@@ -643,18 +862,44 @@ namespace repositories.Migrations
                     b.HasIndex("LevelId");
 
                     b.ToTable("users");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = 1,
+                            CreatedAt = new DateTime(2024, 6, 14, 8, 51, 0, 0, DateTimeKind.Utc),
+                            Credit = 0m,
+                            Email = "student1@example.com",
+                            IsActive = true,
+                            LevelId = 1,
+                            Password = "hashedpassword",
+                            Role = 0,
+                            Username = "student1"
+                        },
+                        new
+                        {
+                            UserId = 2,
+                            CreatedAt = new DateTime(2024, 6, 14, 8, 51, 0, 0, DateTimeKind.Utc),
+                            Credit = 100m,
+                            Email = "teacher1@example.com",
+                            IsActive = true,
+                            LevelId = 2,
+                            Password = "hashedpassword",
+                            Role = 1,
+                            Username = "teacher1"
+                        });
                 });
 
-            modelBuilder.Entity("repositories.Models.AIRequest", b =>
+            modelBuilder.Entity("repositories.Models.AiRequest", b =>
                 {
                     b.HasOne("repositories.Models.Level", "Level")
-                        .WithMany("AIRequests")
+                        .WithMany("AiRequests")
                         .HasForeignKey("LevelId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("repositories.Models.User", "User")
-                        .WithMany("AIRequests")
+                        .WithMany("AiRequests")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -719,9 +964,9 @@ namespace repositories.Migrations
 
             modelBuilder.Entity("repositories.Models.LessonPlan", b =>
                 {
-                    b.HasOne("repositories.Models.AIRequest", "AIRequest")
+                    b.HasOne("repositories.Models.AiRequest", "AiRequest")
                         .WithMany("LessonPlans")
-                        .HasForeignKey("AIRequestId")
+                        .HasForeignKey("AiRequestId")
                         .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("repositories.Models.Level", "Level")
@@ -736,7 +981,7 @@ namespace repositories.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("AIRequest");
+                    b.Navigation("AiRequest");
 
                     b.Navigation("Level");
 
@@ -764,9 +1009,9 @@ namespace repositories.Migrations
 
             modelBuilder.Entity("repositories.Models.Question", b =>
                 {
-                    b.HasOne("repositories.Models.AIRequest", "AIRequest")
+                    b.HasOne("repositories.Models.AiRequest", "AiRequest")
                         .WithMany("Questions")
-                        .HasForeignKey("AIRequestId")
+                        .HasForeignKey("AiRequestId")
                         .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("repositories.Models.Difficulty", "Difficulty")
@@ -781,7 +1026,7 @@ namespace repositories.Migrations
                         .WithMany("Questions")
                         .HasForeignKey("QuizId");
 
-                    b.Navigation("AIRequest");
+                    b.Navigation("AiRequest");
 
                     b.Navigation("Difficulty");
 
@@ -877,7 +1122,7 @@ namespace repositories.Migrations
                     b.Navigation("Level");
                 });
 
-            modelBuilder.Entity("repositories.Models.AIRequest", b =>
+            modelBuilder.Entity("repositories.Models.AiRequest", b =>
                 {
                     b.Navigation("LessonPlans");
 
@@ -908,7 +1153,7 @@ namespace repositories.Migrations
 
             modelBuilder.Entity("repositories.Models.Level", b =>
                 {
-                    b.Navigation("AIRequests");
+                    b.Navigation("AiRequests");
 
                     b.Navigation("LessonPlans");
 
@@ -945,7 +1190,7 @@ namespace repositories.Migrations
 
             modelBuilder.Entity("repositories.Models.User", b =>
                 {
-                    b.Navigation("AIRequests");
+                    b.Navigation("AiRequests");
 
                     b.Navigation("AuditLogs");
 

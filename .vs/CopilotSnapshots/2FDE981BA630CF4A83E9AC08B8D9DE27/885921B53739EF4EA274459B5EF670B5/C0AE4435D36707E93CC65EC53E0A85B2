@@ -1,0 +1,60 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using repositories.Models;
+using services.Interfaces;
+
+namespace controllers.Controllers
+{
+    [ApiController]
+    [Route("api/[controller]")]
+    public class DifficultyController : ControllerBase
+    {
+        private readonly IDifficultyService _difficultyService;
+
+        public DifficultyController(IDifficultyService difficultyService)
+        {
+            _difficultyService = difficultyService;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var items = await _difficultyService.GetAllDifficultiesAsync();
+            return Ok(items);
+        }
+
+        [HttpGet("{id:int}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var item = await _difficultyService.GetDifficultyByIdAsync(id);
+            if (item == null) return NotFound();
+            return Ok(item);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([FromBody] Difficulty difficulty)
+        {
+            if (difficulty == null) return BadRequest();
+            await _difficultyService.AddDifficultyAsync(difficulty);
+            return CreatedAtAction(nameof(GetById), new { id = difficulty.DifficultyId }, difficulty);
+        }
+
+        [HttpPut("{id:int}")]
+        public async Task<IActionResult> Update(int id, [FromBody] Difficulty difficulty)
+        {
+            if (difficulty == null || id != difficulty.DifficultyId) return BadRequest();
+            var existing = await _difficultyService.GetDifficultyByIdAsync(id);
+            if (existing == null) return NotFound();
+            await _difficultyService.UpdateDifficultyAsync(difficulty);
+            return NoContent();
+        }
+
+        [HttpDelete("{id:int}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var existing = await _difficultyService.GetDifficultyByIdAsync(id);
+            if (existing == null) return NotFound();
+            await _difficultyService.DeleteDifficultyAsync(id);
+            return NoContent();
+        }
+    }
+}

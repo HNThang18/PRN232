@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\services\services.csproj" />
+    <ProjectReference Include="..\applications\applications.csproj" />
   </ItemGroup>
 
   <ItemGroup>

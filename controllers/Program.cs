@@ -1,5 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using repositories.Dbcontext;
+using repositories.Interfaces;
+using repositories.Repositories;
+using services.Interfaces;
+using services.Services;
+using repositories.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +16,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<MathLpContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Register repositories and services
+builder.Services.AddScoped<IDifficultyRepository, DifficultyRepository>();
+builder.Services.AddScoped<IDifficultyService, DifficultyService>();
 
 var app = builder.Build();
 

@@ -3,12 +3,48 @@
   "WorkspaceRootPath": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|c:\\users\\admin\\documents\\github\\prn232\\controllers\\controllers\\difficultycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|solutionrelative:controllers\\controllers\\difficultycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{40789404-2095-4717-A622-68DF9F9E6615}|applications\\applications.csproj|c:\\users\\admin\\documents\\github\\prn232\\applications\\dtos\\difficultyupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{40789404-2095-4717-A622-68DF9F9E6615}|applications\\applications.csproj|solutionrelative:applications\\dtos\\difficultyupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|c:\\users\\admin\\documents\\github\\prn232\\controllers\\controllers.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|solutionrelative:controllers\\controllers.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|c:\\users\\admin\\documents\\github\\prn232\\controllers\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|solutionrelative:controllers\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|c:\\users\\admin\\documents\\github\\prn232\\repositories\\dbcontext\\mathlpcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|solutionrelative:repositories\\dbcontext\\mathlpcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|c:\\users\\admin\\documents\\github\\prn232\\controllers\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|solutionrelative:controllers\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBBF46FE-1B6E-46C1-92EB-64B648F8CF0A}|services\\services.csproj|c:\\users\\admin\\documents\\github\\prn232\\services\\services\\difficultyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBBF46FE-1B6E-46C1-92EB-64B648F8CF0A}|services\\services.csproj|solutionrelative:services\\services\\difficultyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|c:\\users\\admin\\documents\\github\\prn232\\repositories\\interfaces\\idifficultyrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|solutionrelative:repositories\\interfaces\\idifficultyrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|c:\\users\\admin\\documents\\github\\prn232\\repositories\\models\\difficulty.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|solutionrelative:repositories\\models\\difficulty.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|c:\\users\\admin\\documents\\github\\prn232\\repositories\\repositories\\difficultyrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|solutionrelative:repositories\\repositories\\difficultyrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBBF46FE-1B6E-46C1-92EB-64B648F8CF0A}|services\\services.csproj|c:\\users\\admin\\documents\\github\\prn232\\services\\interfaces\\idifficultyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBBF46FE-1B6E-46C1-92EB-64B648F8CF0A}|services\\services.csproj|solutionrelative:services\\interfaces\\idifficultyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{40789404-2095-4717-A622-68DF9F9E6615}|applications\\applications.csproj|c:\\users\\admin\\documents\\github\\prn232\\applications\\dtos\\difficultycreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{40789404-2095-4717-A622-68DF9F9E6615}|applications\\applications.csproj|solutionrelative:applications\\dtos\\difficultycreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,19 +54,149 @@
       "DocumentGroups": [
         {
           "DockedWidth": 83,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "controllers",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\controllers\\controllers.csproj",
+              "RelativeDocumentMoniker": "controllers\\controllers.csproj",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\controllers\\controllers.csproj",
+              "RelativeToolTip": "controllers\\controllers.csproj",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-10-17T01:43:22.676Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "MathLpContext.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\repositories\\Dbcontext\\MathLpContext.cs",
-              "RelativeDocumentMoniker": "repositories\\Dbcontext\\MathLpContext.cs",
-              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\repositories\\Dbcontext\\MathLpContext.cs",
-              "RelativeToolTip": "repositories\\Dbcontext\\MathLpContext.cs",
-              "ViewState": "AgIAAHsAAAAAAAAAAAAswAAAAAAAAAAAAAAAAA==",
+              "Title": "DifficultyUpdateDto.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\applications\\DTOs\\DifficultyUpdateDto.cs",
+              "RelativeDocumentMoniker": "applications\\DTOs\\DifficultyUpdateDto.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\applications\\DTOs\\DifficultyUpdateDto.cs",
+              "RelativeToolTip": "applications\\DTOs\\DifficultyUpdateDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-14T01:50:11.719Z",
+              "WhenOpened": "2025-10-17T01:42:48.125Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "DifficultyCreateDto.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\applications\\DTOs\\DifficultyCreateDto.cs",
+              "RelativeDocumentMoniker": "applications\\DTOs\\DifficultyCreateDto.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\applications\\DTOs\\DifficultyCreateDto.cs",
+              "RelativeToolTip": "applications\\DTOs\\DifficultyCreateDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-17T01:42:44.457Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\controllers\\appsettings.json",
+              "RelativeDocumentMoniker": "controllers\\appsettings.json",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\controllers\\appsettings.json",
+              "RelativeToolTip": "controllers\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-17T01:27:24.79Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\controllers\\Program.cs",
+              "RelativeDocumentMoniker": "controllers\\Program.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\controllers\\Program.cs",
+              "RelativeToolTip": "controllers\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-17T01:27:04.082Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DifficultyController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\controllers\\Controllers\\DifficultyController.cs",
+              "RelativeDocumentMoniker": "controllers\\Controllers\\DifficultyController.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\controllers\\Controllers\\DifficultyController.cs",
+              "RelativeToolTip": "controllers\\Controllers\\DifficultyController.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAgAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-17T01:26:29.866Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DifficultyService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\services\\Services\\DifficultyService.cs",
+              "RelativeDocumentMoniker": "services\\Services\\DifficultyService.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\services\\Services\\DifficultyService.cs",
+              "RelativeToolTip": "services\\Services\\DifficultyService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-17T01:25:06.035Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IDifficultyService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\services\\Interfaces\\IDifficultyService.cs",
+              "RelativeDocumentMoniker": "services\\Interfaces\\IDifficultyService.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\services\\Interfaces\\IDifficultyService.cs",
+              "RelativeToolTip": "services\\Interfaces\\IDifficultyService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-17T01:24:59.748Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "DifficultyRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\repositories\\Repositories\\DifficultyRepository.cs",
+              "RelativeDocumentMoniker": "repositories\\Repositories\\DifficultyRepository.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\repositories\\Repositories\\DifficultyRepository.cs",
+              "RelativeToolTip": "repositories\\Repositories\\DifficultyRepository.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwBIAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-17T01:19:23.438Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "IDifficultyRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\repositories\\Interfaces\\IDifficultyRepository.cs",
+              "RelativeDocumentMoniker": "repositories\\Interfaces\\IDifficultyRepository.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\repositories\\Interfaces\\IDifficultyRepository.cs",
+              "RelativeToolTip": "repositories\\Interfaces\\IDifficultyRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-17T01:17:52.617Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Difficulty.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\repositories\\Models\\Difficulty.cs",
+              "RelativeDocumentMoniker": "repositories\\Models\\Difficulty.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\repositories\\Models\\Difficulty.cs",
+              "RelativeToolTip": "repositories\\Models\\Difficulty.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABQAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-17T01:11:19.64Z",
               "EditorCaption": ""
             },
             {
@@ -145,7 +311,7 @@
         },
         {
           "DockedWidth": 317,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -182,23 +348,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:35:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\controllers\\appsettings.json",
-              "RelativeDocumentMoniker": "controllers\\appsettings.json",
-              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\controllers\\appsettings.json",
-              "RelativeToolTip": "controllers\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-10-14T01:57:29.564Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:8:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
             },
             {
               "$type": "Bookmark",

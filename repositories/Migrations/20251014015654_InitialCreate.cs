@@ -3,10 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace repositories.Migrations
 {
     /// <inheritdoc />
-    public partial class InitCreate : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -69,7 +71,7 @@ namespace repositories.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "aIRequests",
+                name: "AiRequest",
                 columns: table => new
                 {
                     AIRequestId = table.Column<int>(type: "int", nullable: false)
@@ -85,15 +87,15 @@ namespace repositories.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_aIRequests", x => x.AIRequestId);
+                    table.PrimaryKey("PK_AiRequest", x => x.AIRequestId);
                     table.ForeignKey(
-                        name: "FK_aIRequests_levels_LevelId",
+                        name: "FK_AiRequest_levels_LevelId",
                         column: x => x.LevelId,
                         principalTable: "levels",
                         principalColumn: "LevelId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_aIRequests_users_UserId",
+                        name: "FK_AiRequest_users_UserId",
                         column: x => x.UserId,
                         principalTable: "users",
                         principalColumn: "UserId",
@@ -194,7 +196,7 @@ namespace repositories.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TeacherId = table.Column<int>(type: "int", nullable: false),
                     LevelId = table.Column<int>(type: "int", nullable: false),
-                    AIRequestId = table.Column<int>(type: "int", nullable: true),
+                    AiRequestId = table.Column<int>(type: "int", nullable: true),
                     Title = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     Duration = table.Column<int>(type: "int", nullable: false),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -209,9 +211,9 @@ namespace repositories.Migrations
                 {
                     table.PrimaryKey("PK_lessonPlans", x => x.LessonPlanId);
                     table.ForeignKey(
-                        name: "FK_lessonPlans_aIRequests_AIRequestId",
-                        column: x => x.AIRequestId,
-                        principalTable: "aIRequests",
+                        name: "FK_lessonPlans_AiRequest_AiRequestId",
+                        column: x => x.AiRequestId,
+                        principalTable: "AiRequest",
                         principalColumn: "AIRequestId",
                         onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
@@ -237,7 +239,7 @@ namespace repositories.Migrations
                     QuizId = table.Column<int>(type: "int", nullable: true),
                     QuestionBankId = table.Column<int>(type: "int", nullable: true),
                     DifficultyId = table.Column<int>(type: "int", nullable: true),
-                    AIRequestId = table.Column<int>(type: "int", nullable: true),
+                    AiRequestId = table.Column<int>(type: "int", nullable: true),
                     Topic = table.Column<int>(type: "int", nullable: false),
                     QuestionText = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     QuestionType = table.Column<int>(type: "int", nullable: false),
@@ -253,9 +255,9 @@ namespace repositories.Migrations
                 {
                     table.PrimaryKey("PK_questions", x => x.QuestionId);
                     table.ForeignKey(
-                        name: "FK_questions_aIRequests_AIRequestId",
-                        column: x => x.AIRequestId,
-                        principalTable: "aIRequests",
+                        name: "FK_questions_AiRequest_AiRequestId",
+                        column: x => x.AiRequestId,
+                        principalTable: "AiRequest",
                         principalColumn: "AIRequestId",
                         onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
@@ -436,7 +438,7 @@ namespace repositories.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Attachment",
+                name: "attachments",
                 columns: table => new
                 {
                     AttachmentId = table.Column<int>(type: "int", nullable: false)
@@ -450,23 +452,121 @@ namespace repositories.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Attachment", x => x.AttachmentId);
+                    table.PrimaryKey("PK_attachments", x => x.AttachmentId);
                     table.ForeignKey(
-                        name: "FK_Attachment_lessonDetails_LessonDetailId",
+                        name: "FK_attachments_lessonDetails_LessonDetailId",
                         column: x => x.LessonDetailId,
                         principalTable: "lessonDetails",
                         principalColumn: "LessonDetailId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "difficulties",
+                columns: new[] { "DifficultyId", "Description", "Name", "Value" },
+                values: new object[,]
+                {
+                    { 1, "Basic level", "Easy", 1 },
+                    { 2, "Intermediate level", "Medium", 2 },
+                    { 3, "Advanced level", "Hard", 3 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "levels",
+                columns: new[] { "LevelId", "EducationLevel", "LevelName", "Order" },
+                values: new object[,]
+                {
+                    { 1, 0, "Primary School", 1 },
+                    { 2, 1, "Secondary School", 2 },
+                    { 3, 2, "High School", 3 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "users",
+                columns: new[] { "UserId", "CreatedAt", "Credit", "Email", "GradeLevel", "IsActive", "LevelId", "Password", "Role", "Username" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(2024, 6, 14, 8, 51, 0, 0, DateTimeKind.Utc), 0m, "student1@example.com", null, true, 1, "hashedpassword", 0, "student1" },
+                    { 2, new DateTime(2024, 6, 14, 8, 51, 0, 0, DateTimeKind.Utc), 100m, "teacher1@example.com", null, true, 2, "hashedpassword", 1, "teacher1" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AiRequest",
+                columns: new[] { "AIRequestId", "Cost", "CreatedAt", "LevelId", "Prompt", "RequestType", "Response", "Status", "UserId" },
+                values: new object[] { 1, 1.5m, new DateTime(2024, 6, 14, 8, 51, 0, 0, DateTimeKind.Utc), 2, "Generate a lesson plan for algebra.", 0, "Lesson plan generated.", 1, 2 });
+
+            migrationBuilder.InsertData(
+                table: "auditLogs",
+                columns: new[] { "LogId", "Action", "Details", "EntityId", "EntityName", "Timestamp", "UserId" },
+                values: new object[] { 1, 0, "Created lesson plan.", 1, "LessonPlan", new DateTime(2024, 6, 14, 8, 51, 0, 0, DateTimeKind.Utc), 2 });
+
+            migrationBuilder.InsertData(
+                table: "questionBanks",
+                columns: new[] { "QuestionBankId", "Description", "IsPublic", "LevelId", "Name", "TeacherId" },
+                values: new object[] { 1, "Basic algebra questions", true, 2, "Algebra Questions", 2 });
+
+            migrationBuilder.InsertData(
+                table: "quizzes",
+                columns: new[] { "QuizId", "AttemptLimit", "CreatedAt", "IsAIGenerated", "LevelId", "PublishedAt", "Status", "TeacherId", "TimeLimit", "Title", "TotalScore" },
+                values: new object[] { 1, 3, new DateTime(2024, 6, 14, 8, 51, 0, 0, DateTimeKind.Utc), false, 2, null, 1, 2, 30, "Algebra Quiz", 100 });
+
+            migrationBuilder.InsertData(
+                table: "lessonPlans",
+                columns: new[] { "LessonPlanId", "AiRequestId", "Content", "CreatedAt", "Duration", "ExportPath", "LevelId", "PublishedAt", "Status", "TeacherId", "Title", "UpdatedAt", "Version" },
+                values: new object[] { 1, 1, "Introduction to Algebra", new DateTime(2024, 6, 14, 8, 51, 0, 0, DateTimeKind.Utc), 60, null, 2, null, 1, 2, "Algebra Basics", null, 1 });
+
+            migrationBuilder.InsertData(
+                table: "questions",
+                columns: new[] { "QuestionId", "AiRequestId", "CorrectAnswer", "CreatedAt", "DifficultyId", "Explanation", "IsAIGenerated", "QuestionBankId", "QuestionText", "QuestionType", "QuizId", "Status", "Tags", "Topic", "UpdatedAt" },
+                values: new object[] { 1, 1, "2", new DateTime(2024, 6, 14, 8, 51, 0, 0, DateTimeKind.Utc), 1, "Divide both sides by 2.", false, 1, "What is x in 2x=4?", 0, 1, 1, "algebra,equation", 3, null });
+
+            migrationBuilder.InsertData(
+                table: "submissions",
+                columns: new[] { "SubmissionId", "AttemptNumber", "DurationTaken", "Feedback", "QuizId", "Score", "Status", "StudentId", "SubmittedAt" },
+                values: new object[] { 1, 1, 1200, "Great job!", 1, 100m, 0, 1, new DateTime(2024, 6, 14, 8, 51, 0, 0, DateTimeKind.Utc) });
+
+            migrationBuilder.InsertData(
+                table: "answers",
+                columns: new[] { "AnswerId", "AnswerText", "IsCorrect", "QuestionId" },
+                values: new object[,]
+                {
+                    { 1, "2", true, 1 },
+                    { 2, "4", false, 1 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "lessons",
+                columns: new[] { "LessonId", "Content", "IsShared", "LessonPlanId", "PublishedDate", "Title" },
+                values: new object[] { 1, "Algebra is ...", true, 1, new DateTime(2024, 6, 14, 8, 51, 0, 0, DateTimeKind.Utc), "What is Algebra?" });
+
+            migrationBuilder.InsertData(
+                table: "submissionDetails",
+                columns: new[] { "SubmissionDetailId", "Explanation", "IsCorrect", "QuestionId", "ScoreEarned", "StudentAnswer", "SubmissionId" },
+                values: new object[] { 1, "Correct answer.", true, 1, 100m, "2", 1 });
+
+            migrationBuilder.InsertData(
+                table: "lessonDetails",
+                columns: new[] { "LessonDetailId", "Content", "ContentLaTeX", "ContentType", "CreatedAt", "LessonId", "Order", "UpdatedAt" },
+                values: new object[] { 1, "Algebra is a branch of mathematics ...", null, 0, new DateTime(2024, 6, 14, 8, 51, 0, 0, DateTimeKind.Utc), 1, 1, null });
+
+            migrationBuilder.InsertData(
+                table: "progresses",
+                columns: new[] { "ProgressId", "AttemptDate", "CompletionStatus", "IsActive", "LessonId", "StudentId" },
+                values: new object[] { 1, new DateTime(2024, 6, 14, 8, 51, 0, 0, DateTimeKind.Utc), 2, true, 1, 1 });
+
+            migrationBuilder.InsertData(
+                table: "attachments",
+                columns: new[] { "AttachmentId", "FileName", "FilePath", "FileSize", "FileType", "LessonDetailId", "UploadTimestamp" },
+                values: new object[] { 1, "intro.pdf", "/files/intro.pdf", 102400L, "pdf", 1, new DateTime(2024, 6, 14, 8, 51, 0, 0, DateTimeKind.Utc) });
+
             migrationBuilder.CreateIndex(
-                name: "IX_aIRequests_LevelId",
-                table: "aIRequests",
+                name: "IX_AiRequest_LevelId",
+                table: "AiRequest",
                 column: "LevelId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_aIRequests_UserId",
-                table: "aIRequests",
+                name: "IX_AiRequest_UserId",
+                table: "AiRequest",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
@@ -475,8 +575,8 @@ namespace repositories.Migrations
                 column: "QuestionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Attachment_LessonDetailId",
-                table: "Attachment",
+                name: "IX_attachments_LessonDetailId",
+                table: "attachments",
                 column: "LessonDetailId");
 
             migrationBuilder.CreateIndex(
@@ -490,9 +590,9 @@ namespace repositories.Migrations
                 column: "LessonId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_lessonPlans_AIRequestId",
+                name: "IX_lessonPlans_AiRequestId",
                 table: "lessonPlans",
-                column: "AIRequestId");
+                column: "AiRequestId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_lessonPlans_LevelId",
@@ -530,9 +630,9 @@ namespace repositories.Migrations
                 column: "TeacherId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_questions_AIRequestId",
+                name: "IX_questions_AiRequestId",
                 table: "questions",
-                column: "AIRequestId");
+                column: "AiRequestId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_questions_DifficultyId",
@@ -592,7 +692,7 @@ namespace repositories.Migrations
                 name: "answers");
 
             migrationBuilder.DropTable(
-                name: "Attachment");
+                name: "attachments");
 
             migrationBuilder.DropTable(
                 name: "auditLogs");
@@ -628,7 +728,7 @@ namespace repositories.Migrations
                 name: "lessonPlans");
 
             migrationBuilder.DropTable(
-                name: "aIRequests");
+                name: "AiRequest");
 
             migrationBuilder.DropTable(
                 name: "users");
