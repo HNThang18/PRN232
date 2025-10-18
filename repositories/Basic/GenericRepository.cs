@@ -12,10 +12,10 @@ namespace repositories.Basic
     {
         protected MathLpContext _context;
 
-        public GenericRepository()
-        {
-            _context ??= new MathLpContext();
-        }
+        //public GenericRepository()
+        //{
+        //    _context ??= new MathLpContext();
+        //}
 
         public GenericRepository(MathLpContext context)
         {

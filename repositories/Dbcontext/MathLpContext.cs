@@ -5,14 +5,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Text.Json;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
+using applications.Interfaces;
 namespace repositories.Dbcontext
 {
     public class MathLpContext : DbContext
     {
-        public MathLpContext() { }
-        public MathLpContext(DbContextOptions<MathLpContext> options) : base(options)
+        private readonly ICurrentUserService _currentUserService;
+        //public MathLpContext() { }
+        public MathLpContext(DbContextOptions<MathLpContext> options, ICurrentUserService currentUserService)
+            : base(options)
         {
+            _currentUserService = currentUserService;
         }
         public DbSet<AuditLog> auditLogs { get; set; }
         public DbSet<Difficulty> difficulties { get; set; }
@@ -29,6 +34,133 @@ namespace repositories.Dbcontext
         public DbSet<Submission> submissions { get; set; }
         public DbSet<SubmissionDetail> submissionDetails { get; set; }
         public DbSet<Attachment> attachments { get; set; }
+
+        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            // Lấy danh sách các thay đổi
+            var auditEntries = OnBeforeSaveChanges();
+
+            // Lưu các thay đổi (bao gồm cả dữ liệu gốc VÀ các audit log mới)
+            var result = await base.SaveChangesAsync(cancellationToken);
+
+            return result;
+        }
+
+        private List<AuditEntry> OnBeforeSaveChanges()
+        {
+            ChangeTracker.DetectChanges();
+            var auditEntries = new List<AuditEntry>();
+
+            var currentUserId = _currentUserService.GetUserId();
+            var currentIpAddress = _currentUserService.GetIpAddress();
+
+            foreach (var entry in ChangeTracker.Entries())
+            {
+                // Bỏ qua các entity không cần log hoặc chính entity AuditLog
+                if (entry.Entity is AuditLog || entry.State == EntityState.Detached || entry.State == EntityState.Unchanged)
+                    continue;
+
+                var auditEntry = new AuditEntry
+                {
+                    TableName = entry.Metadata.GetTableName() ?? "Unknown",
+                    UserId = currentUserId,
+                    IpAddress = currentIpAddress,
+                    Timestamp = DateTime.UtcNow
+                };
+
+                var serializerOptions = new JsonSerializerOptions
+                {
+                    ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles,
+                    WriteIndented = false
+                };
+
+                string? details = null;
+
+                switch (entry.State)
+                {
+                    case EntityState.Added:
+                        auditEntry.Action = LogAction.Create; //
+                        details = JsonSerializer.Serialize(entry.CurrentValues.ToObject(), serializerOptions);
+                        auditEntry.EntityId = GetPrimaryKey(entry);
+                        break;
+
+                    case EntityState.Deleted:
+                        auditEntry.Action = LogAction.Delete; //
+                        details = JsonSerializer.Serialize(entry.OriginalValues.ToObject(), serializerOptions);
+                        auditEntry.EntityId = GetPrimaryKey(entry);
+                        break;
+
+                    case EntityState.Modified:
+                        if (entry.Properties.Any(p => p.IsModified))
+                        {
+                            auditEntry.Action = LogAction.Update; //
+                            var changes = new
+                            {
+                                Old = entry.OriginalValues.ToObject(),
+                                New = entry.CurrentValues.ToObject()
+                            };
+                            details = JsonSerializer.Serialize(changes, serializerOptions);
+                            auditEntry.EntityId = GetPrimaryKey(entry);
+                        }
+                        break;
+                }
+
+                if (details != null)
+                {
+                    auditEntry.Details = details;
+                    auditEntries.Add(auditEntry);
+                }
+            }
+
+            // Thêm tất cả các entry log vào DbContext
+            foreach (var auditEntry in auditEntries)
+            {
+                auditLogs.Add(auditEntry.ToAuditLog());
+            }
+
+            return auditEntries;
+        }
+
+        // Lớp helper tạm thời
+        public class AuditEntry
+        {
+            public string TableName { get; set; }
+            public int? UserId { get; set; }
+            public LogAction Action { get; set; } //
+            public int? EntityId { get; set; }
+            public DateTime Timestamp { get; set; }
+            public string? Details { get; set; }
+            public string? IpAddress { get; set; }
+
+            public AuditLog ToAuditLog()
+            {
+                return new AuditLog
+                {
+                    UserId = this.UserId,
+                    Action = this.Action,
+                    EntityName = this.TableName,
+                    EntityId = this.EntityId,
+                    Timestamp = this.Timestamp,
+                    Details = this.Details ?? "{}",
+                    IpAddress = this.IpAddress
+                };
+            }
+        }
+
+        private int? GetPrimaryKey(EntityEntry entry)
+        {
+            var key = entry.Metadata.FindPrimaryKey()?.Properties.FirstOrDefault();
+            if (key != null)
+            {
+                var value = entry.Property(key.Name).CurrentValue;
+                if (value != null && value is int)
+                {
+                    return (int)value;
+                }
+            }
+            return null;
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

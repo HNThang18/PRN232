@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using repositories.Dbcontext;
 
@@ -11,9 +12,11 @@ using repositories.Dbcontext;
 namespace repositories.Migrations
 {
     [DbContext(typeof(MathLpContext))]
-    partial class MathLpContextModelSnapshot : ModelSnapshot
+    [Migration("20251018102306_UpdateAuditLogFinal")]
+    partial class UpdateAuditLogFinal
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

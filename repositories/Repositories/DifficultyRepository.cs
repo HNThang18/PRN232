@@ -10,7 +10,7 @@ namespace repositories.Repositories
 {
     public class DifficultyRepository : GenericRepository<Difficulty>, IDifficultyRepository
     {
-        public DifficultyRepository() : base() { }
+        //public DifficultyRepository() : base() { }
 
         public DifficultyRepository(MathLpContext context) : base(context) { }
 
