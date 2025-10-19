@@ -1,4 +1,5 @@
-﻿using applications.DTOs;
+﻿using applications.DTOs.Request;
+using applications.DTOs.Response;
 using repositories.Interfaces;
 using repositories.Models;
 using services.Interfaces;

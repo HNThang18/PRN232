@@ -1,7 +1,7 @@
-﻿using applications.DTOs;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using services.Interfaces;
 using repositories.Models;
+using applications.DTOs.Request;
 
 namespace controllers.Controllers
 {
