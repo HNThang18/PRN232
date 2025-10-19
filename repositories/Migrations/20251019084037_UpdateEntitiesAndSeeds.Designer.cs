@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using repositories.Dbcontext;
 
@@ -11,9 +12,11 @@ using repositories.Dbcontext;
 namespace repositories.Migrations
 {
     [DbContext(typeof(MathLpContext))]
-    partial class MathLpContextModelSnapshot : ModelSnapshot
+    [Migration("20251019084037_UpdateEntitiesAndSeeds")]
+    partial class UpdateEntitiesAndSeeds
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -151,9 +154,7 @@ namespace repositories.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("UploadTimestamp")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("GETUTCDATE()");
+                        .HasColumnType("datetime2");
 
                     b.Property<int?>("UploadedBy")
                         .HasColumnType("int");
@@ -209,9 +210,7 @@ namespace repositories.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<DateTime>("Timestamp")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("GETUTCDATE()");
+                        .HasColumnType("datetime2");
 
                     b.Property<int?>("UserId")
                         .HasColumnType("int");
@@ -339,7 +338,7 @@ namespace repositories.Migrations
                         {
                             LessonId = 1,
                             Content = "Algebra is ...",
-                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(2025, 10, 19, 8, 40, 36, 640, DateTimeKind.Utc).AddTicks(6333),
                             IsGeneratedByAI = false,
                             IsShared = true,
                             LessonPlanId = 1,
@@ -368,9 +367,7 @@ namespace repositories.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("GETUTCDATE()");
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("LessonId")
                         .HasColumnType("int");
@@ -420,9 +417,7 @@ namespace repositories.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedAt")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("GETUTCDATE()");
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("Duration")
                         .HasColumnType("int");

@@ -26,19 +26,19 @@ namespace repositories.Models
         [ForeignKey("Lesson")]
         public int LessonId { get; set; }
 
-        public int Order { get; set; }
+        public int Order { get; set; }  // Thứ tự hiển thị trong Lesson
 
         [Required]
-        [MaxLength(50)]
-        public ContentType ContentType { get; set; }
+        public ContentType ContentType { get; set; }  // Loại nội dung (Text, Video,...)
 
         [Required]
         public string Content { get; set; } // Có thể là text, URL, ...
         public string? ContentLaTeX { get; set; } // Lưu nội dung dưới dạng LaTeX để render công thức
 
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
 
+        // Navigation
         public virtual Lesson Lesson { get; set; }
         public virtual ICollection<Attachment> Attachments { get; set; }
     }

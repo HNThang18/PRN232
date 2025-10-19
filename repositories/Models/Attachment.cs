@@ -14,23 +14,27 @@ namespace repositories.Models
         public int AttachmentId { get; set; }
 
         [Required]
-        [ForeignKey("LessonDetail")]
+        [ForeignKey("LessonDetail")]    
         public int LessonDetailId { get; set; }
 
         [Required]
         [MaxLength(255)]
-        public string FileName { get; set; }
+        public string FileName { get; set; } // Tên file hiển thị
 
         [Required]
-        public string FilePath { get; set; }
+        [MaxLength(500)]
+        public string FilePath { get; set; } // URL hoặc đường dẫn lưu file
 
+
+        [MaxLength(50)]
+        public string FileType { get; set; } // "image/png", "application/pdf", ...
         public long FileSize { get; set; } // Kích thước file tính bằng bytes
 
-        [MaxLength(100)]
-        public string FileType { get; set; }
+        public int? UploadedBy { get; set; } // FK → User (nếu có quản lý người upload)
+        public DateTime UploadTimestamp { get; set; }
 
-        public DateTime UploadTimestamp { get; set; } = DateTime.UtcNow;
-
+        // Navigation
         public virtual LessonDetail LessonDetail { get; set; }
+        public virtual User? User { get; set; }
     }
 }

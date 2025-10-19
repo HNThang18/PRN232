@@ -252,10 +252,65 @@ namespace repositories.Dbcontext
                 .HasForeignKey(lp => lp.LevelId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            // Specify decimal precision for User.Credit
+            modelBuilder.Entity<Lesson>()
+                .HasOne(l => l.LessonPlan)
+                .WithMany(lp => lp.Lessons)
+                .HasForeignKey(l => l.LessonPlanId)
+                .OnDelete(DeleteBehavior.Cascade); // khi xóa LessonPlan thì xóa các Lesson liên quan trong LessonPlan
+
+            modelBuilder.Entity<Progress>()
+                .HasOne(p => p.Lesson)
+                .WithMany(l => l.Progresses)
+                .HasForeignKey(p => p.LessonId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<LessonDetail>()
+                .HasOne(ld => ld.Lesson)
+                .WithMany(l => l.LessonDetails)
+                .HasForeignKey(ld => ld.LessonId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Attachment>()
+                .HasOne(a => a.LessonDetail)
+                .WithMany(ld => ld.Attachments)
+                .HasForeignKey(a => a.LessonDetailId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+
+            // Default values for timestamps
+            modelBuilder.Entity<LessonPlan>()
+                .Property(lp => lp.CreatedAt)
+                .HasDefaultValueSql("GETUTCDATE()");
+
+            modelBuilder.Entity<LessonDetail>()
+                .Property(ld => ld.CreatedAt)
+                .HasDefaultValueSql("GETUTCDATE()");
+
+            modelBuilder.Entity<Attachment>()
+                .Property(a => a.UploadTimestamp)
+                .HasDefaultValueSql("GETUTCDATE()");
+
+            modelBuilder.Entity<AuditLog>()
+                .Property(a => a.Timestamp)
+                .HasDefaultValueSql("GETUTCDATE()");
+
+            // Explicit precision for ALL decimals to fix truncation warnings
+            modelBuilder.Entity<AiRequest>()
+                .Property(a => a.Cost)
+                .HasColumnType("decimal(18,2)");
+
             modelBuilder.Entity<User>()
                 .Property(u => u.Credit)
                 .HasColumnType("decimal(18,2)");
+
+            modelBuilder.Entity<Submission>()
+                .Property(s => s.Score)
+                .HasColumnType("decimal(18,2)");
+
+            modelBuilder.Entity<SubmissionDetail>()
+                .Property(sd => sd.ScoreEarned)
+                .HasColumnType("decimal(18,2)");
+
 
             // Sample data seeding
             modelBuilder.Entity<Level>().HasData(
@@ -280,7 +335,7 @@ namespace repositories.Dbcontext
             );
 
             modelBuilder.Entity<LessonPlan>().HasData(
-                new LessonPlan { LessonPlanId = 1, TeacherId = 2, LevelId = 2, AiRequestId = 1, Title = "Algebra Basics", Duration = 60, Content = "Introduction to Algebra", Status = LessonPlanStatus.Published, Version = 1, CreatedAt = new DateTime(2024, 6, 14, 8, 51, 0, DateTimeKind.Utc) }
+                new LessonPlan { LessonPlanId = 1, TeacherId = 2, LevelId = 2, AiRequestId = 1, Title = "Algebra Basics", Topic = "Algebra", Duration = 60, Content = "Introduction to Algebra", Status = LessonPlanStatus.Published, Version = 1, CreatedAt = new DateTime(2024, 6, 14, 8, 51, 0, DateTimeKind.Utc) }
             );
 
             modelBuilder.Entity<Lesson>().HasData(
