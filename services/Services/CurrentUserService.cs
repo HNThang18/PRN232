@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 using services.Interfaces;
-using applications.Interfaces;
+using applications;
 
 namespace services.Services
 {

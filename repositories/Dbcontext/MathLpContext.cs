@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.Json;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using applications.Interfaces;
+using applications;
 namespace repositories.Dbcontext
 {
     public class MathLpContext : DbContext

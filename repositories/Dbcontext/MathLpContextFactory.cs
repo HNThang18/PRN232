@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using System.IO;
-using applications.Interfaces; // Nơi chứa ICurrentUserService
+using applications; // Nơi chứa ICurrentUserService
 
 namespace repositories.Dbcontext
 {

@@ -1,12 +1,9 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace applications.DTOs
+namespace applications.DTOs.Difficulty
 {
-    public class DifficultyUpdateDto
+    public class DifficultyCreateDto
     {
-        [Required]
-        public int DifficultyId { get; set; }
-
         [Required]
         [MaxLength(50)]
         public string Name { get; set; }
