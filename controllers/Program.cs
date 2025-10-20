@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
-using applications.Interfaces;
+using applications;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -53,6 +53,8 @@ builder.Services.AddDbContext<MathLpContext>(options =>
 // Register repositories and services
 builder.Services.AddScoped<IDifficultyRepository, DifficultyRepository>();
 builder.Services.AddScoped<IDifficultyService, DifficultyService>();
+builder.Services.AddScoped<IQuestionBankRepository, QuestionBankRepository>();
+builder.Services.AddScoped<IQuestionBankService, QuestionBankService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IJwtService, JwtService>();

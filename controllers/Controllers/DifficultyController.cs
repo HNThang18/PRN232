@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using repositories.Models;
 using services.Interfaces;
-using applications.DTOs;
+using applications.DTOs.Difficulty;
 
 namespace controllers.Controllers
 {
