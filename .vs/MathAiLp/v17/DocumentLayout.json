@@ -1,70 +1,42 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\",
+  "WorkspaceRootPath": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\BE\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|c:\\users\\admin\\documents\\github\\prn232\\controllers\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|d:\\personal\\school\\chuyennghanh8\\prn232\\be\\repositories\\repositories\\lessonplanrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|solutionrelative:repositories\\repositories\\lessonplanrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|d:\\personal\\school\\chuyennghanh8\\prn232\\be\\repositories\\repositories\\lessonrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|solutionrelative:repositories\\repositories\\lessonrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|d:\\personal\\school\\chuyennghanh8\\prn232\\be\\repositories\\interfaces\\ilessonplanrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|solutionrelative:repositories\\interfaces\\ilessonplanrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|d:\\personal\\school\\chuyennghanh8\\prn232\\be\\repositories\\models\\lessonplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|solutionrelative:repositories\\models\\lessonplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBBF46FE-1B6E-46C1-92EB-64B648F8CF0A}|services\\services.csproj|d:\\personal\\school\\chuyennghanh8\\prn232\\be\\services\\services\\lessonplanservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBBF46FE-1B6E-46C1-92EB-64B648F8CF0A}|services\\services.csproj|solutionrelative:services\\services\\lessonplanservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBBF46FE-1B6E-46C1-92EB-64B648F8CF0A}|services\\services.csproj|d:\\personal\\school\\chuyennghanh8\\prn232\\be\\services\\interfaces\\ilessonplanservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBBF46FE-1B6E-46C1-92EB-64B648F8CF0A}|services\\services.csproj|solutionrelative:services\\interfaces\\ilessonplanservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|d:\\personal\\school\\chuyennghanh8\\prn232\\be\\controllers\\controllers\\lessonplancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|solutionrelative:controllers\\controllers\\lessonplancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|d:\\personal\\school\\chuyennghanh8\\prn232\\be\\controllers\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|solutionrelative:controllers\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|c:\\users\\admin\\documents\\github\\prn232\\controllers\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|solutionrelative:controllers\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|c:\\users\\admin\\documents\\github\\prn232\\controllers\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|solutionrelative:controllers\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|c:\\users\\admin\\documents\\github\\prn232\\repositories\\repositories\\questionbankrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|solutionrelative:repositories\\repositories\\questionbankrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{40789404-2095-4717-A622-68DF9F9E6615}|applications\\applications.csproj|c:\\users\\admin\\documents\\github\\prn232\\applications\\dtos\\difficulty\\difficultyupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{40789404-2095-4717-A622-68DF9F9E6615}|applications\\applications.csproj|solutionrelative:applications\\dtos\\difficulty\\difficultyupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{40789404-2095-4717-A622-68DF9F9E6615}|applications\\applications.csproj|c:\\users\\admin\\documents\\github\\prn232\\applications\\dtos\\difficulty\\difficultycreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{40789404-2095-4717-A622-68DF9F9E6615}|applications\\applications.csproj|solutionrelative:applications\\dtos\\difficulty\\difficultycreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|c:\\users\\admin\\documents\\github\\prn232\\repositories\\interfaces\\iquestionbankrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|solutionrelative:repositories\\interfaces\\iquestionbankrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BBBF46FE-1B6E-46C1-92EB-64B648F8CF0A}|services\\services.csproj|c:\\users\\admin\\documents\\github\\prn232\\services\\interfaces\\iquestionbankservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BBBF46FE-1B6E-46C1-92EB-64B648F8CF0A}|services\\services.csproj|solutionrelative:services\\interfaces\\iquestionbankservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|c:\\users\\admin\\documents\\github\\prn232\\controllers\\controllers\\questionbankcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|solutionrelative:controllers\\controllers\\questionbankcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|c:\\users\\admin\\documents\\github\\prn232\\controllers\\controllers.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|solutionrelative:controllers\\controllers.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BBBF46FE-1B6E-46C1-92EB-64B648F8CF0A}|services\\services.csproj|c:\\users\\admin\\documents\\github\\prn232\\services\\services\\difficultyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BBBF46FE-1B6E-46C1-92EB-64B648F8CF0A}|services\\services.csproj|solutionrelative:services\\services\\difficultyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|c:\\users\\admin\\documents\\github\\prn232\\repositories\\interfaces\\idifficultyrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|solutionrelative:repositories\\interfaces\\idifficultyrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|c:\\users\\admin\\documents\\github\\prn232\\repositories\\models\\difficulty.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|solutionrelative:repositories\\models\\difficulty.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|c:\\users\\admin\\documents\\github\\prn232\\repositories\\repositories\\difficultyrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|solutionrelative:repositories\\repositories\\difficultyrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BBBF46FE-1B6E-46C1-92EB-64B648F8CF0A}|services\\services.csproj|c:\\users\\admin\\documents\\github\\prn232\\services\\interfaces\\idifficultyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BBBF46FE-1B6E-46C1-92EB-64B648F8CF0A}|services\\services.csproj|solutionrelative:services\\interfaces\\idifficultyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BBBF46FE-1B6E-46C1-92EB-64B648F8CF0A}|services\\services.csproj|c:\\users\\admin\\documents\\github\\prn232\\services\\services\\questionbankservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BBBF46FE-1B6E-46C1-92EB-64B648F8CF0A}|services\\services.csproj|solutionrelative:services\\services\\questionbankservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|d:\\personal\\school\\chuyennghanh8\\prn232\\be\\controllers\\controllers\\difficultycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|solutionrelative:controllers\\controllers\\difficultycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -73,333 +45,21 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 83,
-          "SelectedChildIndex": 35,
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:3:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:2:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:4:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:3:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:6:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:7:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:8:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:9:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:10:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1a46fd64-28d5-434c-8eb3-17a02d419b53}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:2:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:130:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{004be353-6879-467c-9d1e-9ac23cdf6d49}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:28:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:131:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:22:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:23:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:21:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\controllers\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "controllers\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\controllers\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "controllers\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAFoAAAARAAAAAAAAAA==",
+              "Title": "ILessonPlanRepository.cs",
+              "DocumentMoniker": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\BE\\repositories\\Interfaces\\ILessonPlanRepository.cs",
+              "RelativeDocumentMoniker": "repositories\\Interfaces\\ILessonPlanRepository.cs",
+              "ToolTip": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\BE\\repositories\\Interfaces\\ILessonPlanRepository.cs",
+              "RelativeToolTip": "repositories\\Interfaces\\ILessonPlanRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-20T00:58:28.391Z",
+              "WhenOpened": "2025-10-26T03:54:42.878Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "QuestionBankController.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\controllers\\Controllers\\QuestionBankController.cs",
-              "RelativeDocumentMoniker": "controllers\\Controllers\\QuestionBankController.cs",
-              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\controllers\\Controllers\\QuestionBankController.cs",
-              "RelativeToolTip": "controllers\\Controllers\\QuestionBankController.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAABRwFsAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-17T01:56:11.758Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "IQuestionBankService.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\services\\Interfaces\\IQuestionBankService.cs",
-              "RelativeDocumentMoniker": "services\\Interfaces\\IQuestionBankService.cs",
-              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\services\\Interfaces\\IQuestionBankService.cs",
-              "RelativeToolTip": "services\\Interfaces\\IQuestionBankService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-17T01:55:54.491Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "QuestionBankRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\repositories\\Repositories\\QuestionBankRepository.cs",
-              "RelativeDocumentMoniker": "repositories\\Repositories\\QuestionBankRepository.cs",
-              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\repositories\\Repositories\\QuestionBankRepository.cs",
-              "RelativeToolTip": "repositories\\Repositories\\QuestionBankRepository.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAADwvw0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-17T01:55:51.315Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "IQuestionBankRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\repositories\\Interfaces\\IQuestionBankRepository.cs",
-              "RelativeDocumentMoniker": "repositories\\Interfaces\\IQuestionBankRepository.cs",
-              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\repositories\\Interfaces\\IQuestionBankRepository.cs",
-              "RelativeToolTip": "repositories\\Interfaces\\IQuestionBankRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-17T01:55:47.224Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "controllers.csproj",
-              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\controllers\\controllers.csproj",
-              "RelativeDocumentMoniker": "controllers\\controllers.csproj",
-              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\controllers\\controllers.csproj",
-              "RelativeToolTip": "controllers\\controllers.csproj",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-10-17T01:43:22.676Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "QuestionBankService.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\services\\Services\\QuestionBankService.cs",
-              "RelativeDocumentMoniker": "services\\Services\\QuestionBankService.cs",
-              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\services\\Services\\QuestionBankService.cs",
-              "RelativeToolTip": "services\\Services\\QuestionBankService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-17T01:56:00.133Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\controllers\\Program.cs",
-              "RelativeDocumentMoniker": "controllers\\Program.cs",
-              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\controllers\\Program.cs",
-              "RelativeToolTip": "controllers\\Program.cs",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAAADgAAABIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-17T01:27:04.082Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\controllers\\appsettings.json",
-              "RelativeDocumentMoniker": "controllers\\appsettings.json",
-              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\controllers\\appsettings.json",
-              "RelativeToolTip": "controllers\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAACCAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-10-17T01:27:24.79Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "DifficultyCreateDto.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\applications\\DTOs\\Difficulty\\DifficultyCreateDto.cs",
-              "RelativeDocumentMoniker": "applications\\DTOs\\Difficulty\\DifficultyCreateDto.cs",
-              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\applications\\DTOs\\Difficulty\\DifficultyCreateDto.cs",
-              "RelativeToolTip": "applications\\DTOs\\Difficulty\\DifficultyCreateDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-17T01:42:44.457Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "DifficultyUpdateDto.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\applications\\DTOs\\Difficulty\\DifficultyUpdateDto.cs",
-              "RelativeDocumentMoniker": "applications\\DTOs\\Difficulty\\DifficultyUpdateDto.cs",
-              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\applications\\DTOs\\Difficulty\\DifficultyUpdateDto.cs",
-              "RelativeToolTip": "applications\\DTOs\\Difficulty\\DifficultyUpdateDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-17T01:42:48.125Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "DifficultyService.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\services\\Services\\DifficultyService.cs",
-              "RelativeDocumentMoniker": "services\\Services\\DifficultyService.cs",
-              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\services\\Services\\DifficultyService.cs",
-              "RelativeToolTip": "services\\Services\\DifficultyService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAABCAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-17T01:25:06.035Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "IDifficultyService.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\services\\Interfaces\\IDifficultyService.cs",
-              "RelativeDocumentMoniker": "services\\Interfaces\\IDifficultyService.cs",
-              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\services\\Interfaces\\IDifficultyService.cs",
-              "RelativeToolTip": "services\\Interfaces\\IDifficultyService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-17T01:24:59.748Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "DifficultyRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\repositories\\Repositories\\DifficultyRepository.cs",
-              "RelativeDocumentMoniker": "repositories\\Repositories\\DifficultyRepository.cs",
-              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\repositories\\Repositories\\DifficultyRepository.cs",
-              "RelativeToolTip": "repositories\\Repositories\\DifficultyRepository.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAAwBIAAAA9AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-17T01:19:23.438Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "IDifficultyRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\repositories\\Interfaces\\IDifficultyRepository.cs",
-              "RelativeDocumentMoniker": "repositories\\Interfaces\\IDifficultyRepository.cs",
-              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\repositories\\Interfaces\\IDifficultyRepository.cs",
-              "RelativeToolTip": "repositories\\Interfaces\\IDifficultyRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-17T01:17:52.617Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Difficulty.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\repositories\\Models\\Difficulty.cs",
-              "RelativeDocumentMoniker": "repositories\\Models\\Difficulty.cs",
-              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\repositories\\Models\\Difficulty.cs",
-              "RelativeToolTip": "repositories\\Models\\Difficulty.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABQAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-17T01:11:19.64Z"
-            }
-          ]
-        },
-        {
-          "DockedWidth": 317,
-          "SelectedChildIndex": -1,
-          "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{74946827-37a0-11d2-a273-00c04f8ef4ff}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
             },
             {
               "$type": "Bookmark",
@@ -407,107 +67,7 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:31:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:35:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:17:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:20:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:25:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:26:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:27:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:32:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:33:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:34:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:36:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:39:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:43:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:37:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:44:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:47:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:51:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:55:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:53:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:57:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:58:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:62:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:45:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
               "$type": "Bookmark",
@@ -515,55 +75,110 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:9:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:10:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
-            }
-          ]
-        },
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": -1,
-          "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LessonPlanRepository.cs",
+              "DocumentMoniker": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\BE\\repositories\\Repositories\\LessonPlanRepository.cs",
+              "RelativeDocumentMoniker": "repositories\\Repositories\\LessonPlanRepository.cs",
+              "ToolTip": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\BE\\repositories\\Repositories\\LessonPlanRepository.cs",
+              "RelativeToolTip": "repositories\\Repositories\\LessonPlanRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-26T03:54:02.915Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{f2e84780-2af1-11d1-a7fa-00a0c9110051}"
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LessonRepository.cs",
+              "DocumentMoniker": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\BE\\repositories\\Repositories\\LessonRepository.cs",
+              "RelativeDocumentMoniker": "repositories\\Repositories\\LessonRepository.cs",
+              "ToolTip": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\BE\\repositories\\Repositories\\LessonRepository.cs",
+              "RelativeToolTip": "repositories\\Repositories\\LessonRepository.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-26T03:53:24.026Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{4a18f9d0-b838-11d0-93eb-00a0c90f2734}"
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LessonPlan.cs",
+              "DocumentMoniker": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\BE\\repositories\\Models\\LessonPlan.cs",
+              "RelativeDocumentMoniker": "repositories\\Models\\LessonPlan.cs",
+              "ToolTip": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\BE\\repositories\\Models\\LessonPlan.cs",
+              "RelativeToolTip": "repositories\\Models\\LessonPlan.cs",
+              "ViewState": "AgIAADQAAAAAAAAAAAAuwC0AAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-21T00:16:07.394Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:1:0:{90243340-bd7a-11d0-93ef-00a0c90f2734}"
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "LessonPlanService.cs",
+              "DocumentMoniker": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\BE\\services\\Services\\LessonPlanService.cs",
+              "RelativeDocumentMoniker": "services\\Services\\LessonPlanService.cs",
+              "ToolTip": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\BE\\services\\Services\\LessonPlanService.cs",
+              "RelativeToolTip": "services\\Services\\LessonPlanService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-21T00:12:40.224Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{0504ff91-9d61-11d0-a794-00a0c9110051}"
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ILessonPlanService.cs",
+              "DocumentMoniker": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\BE\\services\\Interfaces\\ILessonPlanService.cs",
+              "RelativeDocumentMoniker": "services\\Interfaces\\ILessonPlanService.cs",
+              "ToolTip": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\BE\\services\\Interfaces\\ILessonPlanService.cs",
+              "RelativeToolTip": "services\\Interfaces\\ILessonPlanService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-21T00:12:19.376Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:11:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
-            }
-          ]
-        },
-        {
-          "DockedWidth": 826,
-          "SelectedChildIndex": -1,
-          "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:21:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "DifficultyController.cs",
+              "DocumentMoniker": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\BE\\controllers\\Controllers\\DifficultyController.cs",
+              "RelativeDocumentMoniker": "controllers\\Controllers\\DifficultyController.cs",
+              "ToolTip": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\BE\\controllers\\Controllers\\DifficultyController.cs",
+              "RelativeToolTip": "controllers\\Controllers\\DifficultyController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-20T22:48:49.765Z"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:28:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "LessonPlanController.cs",
+              "DocumentMoniker": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\BE\\controllers\\Controllers\\LessonPlanController.cs",
+              "RelativeDocumentMoniker": "controllers\\Controllers\\LessonPlanController.cs",
+              "ToolTip": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\BE\\controllers\\Controllers\\LessonPlanController.cs",
+              "RelativeToolTip": "controllers\\Controllers\\LessonPlanController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-20T22:48:47.453Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\BE\\controllers\\appsettings.json",
+              "RelativeDocumentMoniker": "controllers\\appsettings.json",
+              "ToolTip": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\BE\\controllers\\appsettings.json",
+              "RelativeToolTip": "controllers\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-20T22:44:36.944Z",
+              "EditorCaption": ""
             }
           ]
         }
