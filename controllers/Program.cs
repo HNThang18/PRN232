@@ -11,6 +11,7 @@ using Microsoft.OpenApi.Models;
 using applications;
 using repositories.EventSourcing.Repositories;
 using services.EventSourcing;
+using services.EventSourcing.Projectors;
 using repositories.EventSourcing.Aggregates;
 
 
@@ -87,6 +88,9 @@ builder.Services.AddScoped<IAiIntegrationService, AiIntegrationService>();
 builder.Services.AddScoped<IEventStoreRepository, EventStoreRepository>();
 builder.Services.AddScoped<IAggregateRepository<QuizGenerationAggregate>, AggregateRepository<QuizGenerationAggregate>>();
 builder.Services.AddScoped<IQuizGenerationEventService, QuizGenerationEventService>();
+
+// Register Projection services
+builder.Services.AddScoped<IQuizProjectorService, QuizProjectorService>();
 
 builder.Services.AddAuthentication(options =>
 {

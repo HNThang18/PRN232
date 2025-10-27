@@ -9,6 +9,7 @@ using System.Text.Json;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using applications;
 using repositories.EventSourcing.Models;
+using repositories.EventSourcing.Projections;
 
 namespace repositories.Dbcontext
 {
@@ -38,7 +39,12 @@ namespace repositories.Dbcontext
         public DbSet<SubmissionDetail> submissionDetails { get; set; }
         public DbSet<Attachment> attachments { get; set; }
 
+        // Event Sourcing
         public DbSet<EventStoreEntity> EventStore { get; set; }
+        
+        // Projections
+        public DbSet<QuizListProjection> QuizListProjections { get; set; }
+        public DbSet<QuizStatisticsProjection> QuizStatisticsProjections { get; set; }
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {

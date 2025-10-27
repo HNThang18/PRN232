@@ -6,6 +6,7 @@ using repositories.Models;
 using services.Interfaces;
 using System.Text.Json;
 using applications;
+using services.EventSourcing.Projectors;
 
 namespace services.EventSourcing
 {
@@ -16,6 +17,7 @@ namespace services.EventSourcing
         private readonly IAiRequestRepository _aiRequestRepository;
         private readonly ICurrentUserService _currentUserService;
         private readonly IAggregateRepository<QuizGenerationAggregate> _aggregateRepository;
+        private readonly IQuizProjectorService _projectorService;
         private readonly ILogger<QuizGenerationEventService> _logger;
 
         public QuizGenerationEventService(
@@ -24,6 +26,7 @@ namespace services.EventSourcing
             IAiRequestRepository aiRequestRepository,
             ICurrentUserService currentUserService,
             IAggregateRepository<QuizGenerationAggregate> aggregateRepository,
+            IQuizProjectorService projectorService,
             ILogger<QuizGenerationEventService> logger)
         {
             _aiService = aiService;
@@ -31,6 +34,7 @@ namespace services.EventSourcing
             _aiRequestRepository = aiRequestRepository;
             _currentUserService = currentUserService;
             _aggregateRepository = aggregateRepository;
+            _projectorService = projectorService;
             _logger = logger;
         }
 
@@ -46,7 +50,6 @@ namespace services.EventSourcing
             {
                 _logger.LogInformation("Starting quiz generation with event sourcing. AggregateId: {AggregateId}", aggregateId);
 
-                // Get user ID
                 var userId = currentUserId ?? request.TeacherId ?? 0;
                 if (userId == 0)
                 {
@@ -67,7 +70,7 @@ namespace services.EventSourcing
                     JsonSerializer.Serialize(request),
                     currentUserId);
 
-                await _aggregateRepository.SaveAsync(aggregate);
+                await SaveAndProjectAsync(aggregate);
                 _logger.LogInformation("Quiz generation initiated. AggregateId: {AggregateId}", aggregateId);
 
                 // Event 2: Create AI Request
@@ -83,7 +86,7 @@ namespace services.EventSourcing
                 await _aiRequestRepository.AddAsync(aiRequest);
 
                 aggregate.CreateAiRequest(aiRequest.AIRequestId, currentUserId);
-                await _aggregateRepository.SaveAsync(aggregate);
+                await SaveAndProjectAsync(aggregate);
                 _logger.LogInformation("AI Request created. RequestId: {RequestId}", aiRequest.AIRequestId);
 
                 // Event 3: Generate content with AI
@@ -95,12 +98,11 @@ namespace services.EventSourcing
                     aiResponse.TotalPoints,
                     currentUserId);
 
-                // Update AI Request status
                 aiRequest.Response = JsonSerializer.Serialize(aiResponse);
                 aiRequest.Status = AiRequestStatus.Success;
                 await _aiRequestRepository.UpdateAsync(aiRequest);
 
-                await _aggregateRepository.SaveAsync(aggregate);
+                await SaveAndProjectAsync(aggregate);
                 _logger.LogInformation("AI content generated successfully. QuestionCount: {Count}", aiResponse.Questions.Count);
 
                 // Event 4: Create Quiz entity
@@ -118,7 +120,6 @@ namespace services.EventSourcing
                     Questions = new List<Question>()
                 };
 
-                // Create questions
                 var questionIds = new List<int>();
                 foreach (var aiQuestion in aiResponse.Questions)
                 {
@@ -158,7 +159,6 @@ namespace services.EventSourcing
                     quiz.Questions.Add(question);
                 }
 
-                // Save quiz to database
                 await _quizRepository.AddAsync(quiz);
                 questionIds = quiz.Questions.Select(q => q.QuestionId).ToList();
 
@@ -171,17 +171,17 @@ namespace services.EventSourcing
                     quiz.TotalScore,
                     currentUserId);
 
-                await _aggregateRepository.SaveAsync(aggregate);
+                await SaveAndProjectAsync(aggregate);
                 _logger.LogInformation("Quiz created in database. QuizId: {QuizId}", quiz.QuizId);
 
                 // Event 5: Add questions
                 aggregate.AddQuestions(questionIds, currentUserId);
-                await _aggregateRepository.SaveAsync(aggregate);
+                await SaveAndProjectAsync(aggregate);
                 _logger.LogInformation("Questions added to quiz. Count: {Count}", questionIds.Count);
 
                 // Event 6: Complete generation
                 aggregate.CompleteGeneration(currentUserId);
-                await _aggregateRepository.SaveAsync(aggregate);
+                await SaveAndProjectAsync(aggregate);
                 _logger.LogInformation("Quiz generation completed successfully. AggregateId: {AggregateId}, QuizId: {QuizId}", 
                     aggregateId, quiz.QuizId);
 
@@ -197,7 +197,7 @@ namespace services.EventSourcing
                     ex.StackTrace ?? string.Empty,
                     currentUserId);
 
-                await _aggregateRepository.SaveAsync(aggregate);
+                await SaveAndProjectAsync(aggregate);
 
                 throw new Exception($"Failed to generate quiz: {ex.Message}", ex);
             }
@@ -214,6 +214,21 @@ namespace services.EventSourcing
         }
 
         #region Helper Methods
+
+        private async Task SaveAndProjectAsync(QuizGenerationAggregate aggregate)
+        {
+            // Get uncommitted events before save
+            var uncommittedEvents = aggregate.GetUncommittedEvents().ToList();
+            
+            // Save to event store
+            await _aggregateRepository.SaveAsync(aggregate);
+            
+            // Project events to read models
+            foreach (var @event in uncommittedEvents)
+            {
+                await _projectorService.ProjectEventAsync(@event);
+            }
+        }
 
         private QuestionType MapQuestionType(string aiQuestionType)
         {
