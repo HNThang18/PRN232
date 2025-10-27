@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using System.Text.Json;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using applications;
+using repositories.EventSourcing.Models;
+
 namespace repositories.Dbcontext
 {
     public class MathLpContext : DbContext
@@ -35,6 +37,8 @@ namespace repositories.Dbcontext
         public DbSet<Submission> submissions { get; set; }
         public DbSet<SubmissionDetail> submissionDetails { get; set; }
         public DbSet<Attachment> attachments { get; set; }
+
+        public DbSet<EventStoreEntity> EventStore { get; set; }
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {

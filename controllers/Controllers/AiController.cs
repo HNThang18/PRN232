@@ -14,15 +14,18 @@ namespace controllers.Controllers
     {
         private readonly IAiIntegrationService _aiIntegrationService;
         private readonly IAiService _aiService;
+        private readonly IQuizGenerationEventService _quizEventService;
         private readonly ILogger<AiController> _logger;
 
         public AiController(
             IAiIntegrationService aiIntegrationService,
             IAiService aiService,
+            IQuizGenerationEventService quizEventService,
             ILogger<AiController> logger)
         {
             _aiIntegrationService = aiIntegrationService;
             _aiService = aiService;
+            _quizEventService = quizEventService;
             _logger = logger;
         }
 
@@ -154,25 +157,37 @@ namespace controllers.Controllers
 
             try
             {
-                _logger.LogInformation("Generating quiz: {Title}", request.Title);
+                _logger.LogInformation("Generating quiz with Event Sourcing: {Title}", request.Title);
 
-                var quiz = await _aiIntegrationService.GenerateAndSaveQuizAsync(request, cancellationToken);
+                // Use Event Sourcing service instead of direct integration service
+                var aggregate = await _quizEventService.GenerateQuizWithEventSourcingAsync(request, cancellationToken);
 
                 return Ok(ApiResponse<object>.SuccessResponse(new
                 {
-                    quizId = quiz.QuizId,
-                    title = quiz.Title,
-                    questionCount = quiz.Questions?.Count ?? 0,
-                    totalScore = quiz.TotalScore,
-                    timeLimit = quiz.TimeLimit,
-                    status = quiz.Status.ToString(),
-                    createdAt = quiz.CreatedAt,
-                    message = "Quiz generated successfully"
+                    aggregateId = aggregate.Id,
+                    quizId = aggregate.QuizId,
+                    title = aggregate.Title,
+                    questionCount = aggregate.QuestionCount,
+                    totalScore = aggregate.TotalScore,
+                    timeLimit = aggregate.Duration,
+                    status = aggregate.IsCompleted ? "Completed" : aggregate.IsFailed ? "Failed" : "Processing",
+                    isCompleted = aggregate.IsCompleted,
+                    isFailed = aggregate.IsFailed,
+                    errorMessage = aggregate.ErrorMessage,
+                    processingDuration = aggregate.ProcessingDuration,
+                    eventCount = aggregate.Version,
+                    createdAt = aggregate.InitiatedAt,
+                    completedAt = aggregate.CompletedAt,
+                    message = aggregate.IsCompleted 
+                        ? "Quiz generated successfully with event sourcing" 
+                        : aggregate.IsFailed 
+                        ? $"Quiz generation failed: {aggregate.ErrorMessage}"
+                        : "Quiz generation in progress"
                 }));
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error generating quiz");
+                _logger.LogError(ex, "Error generating quiz with event sourcing");
                 return StatusCode(500, ApiResponse<object>.ErrorResponse(500, ex.Message));
             }
         }
@@ -198,6 +213,75 @@ namespace controllers.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error previewing quiz");
+                return StatusCode(500, ApiResponse<object>.ErrorResponse(500, ex.Message));
+            }
+        }
+
+        [HttpGet("quizzes/generation/{aggregateId}")]
+        public async Task<IActionResult> GetQuizGenerationHistoryAsync(string aggregateId)
+        {
+            try
+            {
+                _logger.LogInformation("Retrieving quiz generation history for aggregate: {AggregateId}", aggregateId);
+
+                var aggregate = await _quizEventService.GetGenerationHistoryAsync(aggregateId);
+
+                return Ok(ApiResponse<object>.SuccessResponse(new
+                {
+                    aggregateId = aggregate.Id,
+                    version = aggregate.Version,
+                    quizId = aggregate.QuizId,
+                    title = aggregate.Title,
+                    topic = aggregate.Topic,
+                    gradeLevel = aggregate.GradeLevel,
+                    questionCount = aggregate.QuestionCount,
+                    totalScore = aggregate.TotalScore,
+                    duration = aggregate.Duration,
+                    teacherId = aggregate.TeacherId,
+                    levelId = aggregate.LevelId,
+                    aiRequestId = aggregate.AiRequestId,
+                    aiRequestStatus = aggregate.AiRequestStatus?.ToString(),
+                    isCompleted = aggregate.IsCompleted,
+                    isFailed = aggregate.IsFailed,
+                    errorMessage = aggregate.ErrorMessage,
+                    initiatedAt = aggregate.InitiatedAt,
+                    completedAt = aggregate.CompletedAt,
+                    processingDuration = aggregate.ProcessingDuration,
+                    questionIds = aggregate.QuestionIds,
+                    eventTimeline = new
+                    {
+                        initiated = aggregate.InitiatedAt,
+                        aiRequestCreated = aggregate.AiRequestId.HasValue,
+                        contentGenerated = !string.IsNullOrEmpty(aggregate.AiResponse),
+                        quizCreated = aggregate.QuizId.HasValue,
+                        questionsAdded = aggregate.QuestionIds?.Any() == true,
+                        completed = aggregate.CompletedAt
+                    }
+                }));
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error retrieving quiz generation history");
+                return StatusCode(500, ApiResponse<object>.ErrorResponse(500, ex.Message));
+            }
+        }
+
+        [HttpGet("quizzes/generation/{aggregateId}/exists")]
+        public async Task<IActionResult> CheckGenerationExistsAsync(string aggregateId)
+        {
+            try
+            {
+                var exists = await _quizEventService.GenerationExistsAsync(aggregateId);
+
+                return Ok(ApiResponse<object>.SuccessResponse(new
+                {
+                    aggregateId,
+                    exists
+                }));
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error checking generation existence");
                 return StatusCode(500, ApiResponse<object>.ErrorResponse(500, ex.Message));
             }
         }

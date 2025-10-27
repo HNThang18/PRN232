@@ -9,6 +9,9 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
 using applications;
+using repositories.EventSourcing.Repositories;
+using services.EventSourcing;
+using repositories.EventSourcing.Aggregates;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -79,6 +82,12 @@ builder.Services.AddScoped<IAiRequestRepository, AiRequestRepository>();
 
 builder.Services.AddScoped<IAiService, AiService>();
 builder.Services.AddScoped<IAiIntegrationService, AiIntegrationService>();
+
+// Register Event Sourcing services
+builder.Services.AddScoped<IEventStoreRepository, EventStoreRepository>();
+builder.Services.AddScoped<IAggregateRepository<QuizGenerationAggregate>, AggregateRepository<QuizGenerationAggregate>>();
+builder.Services.AddScoped<IQuizGenerationEventService, QuizGenerationEventService>();
+
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
