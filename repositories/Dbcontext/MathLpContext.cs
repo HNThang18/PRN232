@@ -20,6 +20,7 @@ namespace repositories.Dbcontext
             _currentUserService = currentUserService;
         }
         public DbSet<AuditLog> auditLogs { get; set; }
+        public DbSet<AiRequest> AiRequests { get; set; }
         public DbSet<Difficulty> difficulties { get; set; }
         public DbSet<Lesson> lessons { get; set; }
         public DbSet<LessonDetail> lessonDetails { get; set; }

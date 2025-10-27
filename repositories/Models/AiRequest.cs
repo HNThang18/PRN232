@@ -17,6 +17,7 @@ namespace repositories.Models
     public enum RequestType
     {
         GenerateLessonPlan,
+        GenerateQuestions,
         GenerateQuiz
     }
     public class AiRequest

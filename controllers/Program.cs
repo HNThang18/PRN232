@@ -50,6 +50,9 @@ builder.Services.AddSwaggerGen(option =>
 builder.Services.AddDbContext<MathLpContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Register HttpClient for AI Service
+builder.Services.AddHttpClient<IAiService, AiService>();
+
 // Register repositories and services
 builder.Services.AddScoped<ILessonRepository, LessonRepository>();
 builder.Services.AddScoped<ILessonService, LessonService>();
@@ -63,11 +66,17 @@ builder.Services.AddScoped<IDifficultyRepository, DifficultyRepository>();
 builder.Services.AddScoped<IDifficultyService, DifficultyService>();
 builder.Services.AddScoped<IQuestionBankRepository, QuestionBankRepository>();
 builder.Services.AddScoped<IQuestionBankService, QuestionBankService>();
+builder.Services.AddScoped<IQuestionRepository, QuestionRepository>();
+builder.Services.AddScoped<IQuestionService, QuestionService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IJwtService, JwtService>();
 builder.Services.AddScoped<IAuditLogService, AuditLogService>();
 builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
+builder.Services.AddScoped<IAiRequestRepository, AiRequestRepository>();
+
+builder.Services.AddScoped<IAiService, AiService>();
+builder.Services.AddScoped<IAiIntegrationService, AiIntegrationService>();
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -86,7 +95,7 @@ builder.Services.AddAuthentication(options =>
             ValidateIssuerSigningKey = true,
             ValidIssuer = builder.Configuration["Jwt:Issuer"],
             ValidAudience = builder.Configuration["Jwt:Audience"],
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"] ?? throw new InvalidOperationException("JWT Key is not configured")))
         };
     });
 
