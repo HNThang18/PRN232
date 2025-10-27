@@ -15,6 +15,7 @@ namespace services.Services
         private readonly ILessonPlanRepository _lessonPlanRepository;
         private readonly ILessonRepository _lessonRepository;
         private readonly IQuestionRepository _questionRepository;
+        private readonly IQuizRepository _quizRepository;
         private readonly IAiRequestRepository _aiRequestRepository;
         private readonly ICurrentUserService _currentUserService;
         private readonly ILogger<AiIntegrationService> _logger;
@@ -24,6 +25,7 @@ namespace services.Services
             ILessonPlanRepository lessonPlanRepository,
             ILessonRepository lessonRepository,
             IQuestionRepository questionRepository,
+            IQuizRepository quizRepository,
             IAiRequestRepository aiRequestRepository,
             ICurrentUserService currentUserService,
             ILogger<AiIntegrationService> logger)
@@ -32,6 +34,7 @@ namespace services.Services
             _lessonPlanRepository = lessonPlanRepository;
             _lessonRepository = lessonRepository;
             _questionRepository = questionRepository;
+            _quizRepository = quizRepository;
             _aiRequestRepository = aiRequestRepository;
             _currentUserService = currentUserService;
             _logger = logger;
@@ -46,7 +49,6 @@ namespace services.Services
             {
                 _logger.LogInformation("Generating lesson plan using AI for topic: {Topic}", request.Topic);
 
-                // Get current user ID from JWT token or use request TeacherId
                 var userId = _currentUserService.GetUserId() ?? request.TeacherId;
                 if (userId == 0)
                 {
@@ -169,7 +171,6 @@ namespace services.Services
                 _logger.LogInformation("Generating {Count} questions using AI for topic: {Topic}", 
                     request.Count, request.Topic);
 
-                // Get current user ID from JWT token
                 var currentUserId = _currentUserService.GetUserId();
                 if (!currentUserId.HasValue)
                 {
@@ -273,7 +274,6 @@ namespace services.Services
             {
                 _logger.LogInformation("Generating quiz using AI: {Title}", request.Title);
 
-                // Get current user ID from JWT token or use request TeacherId
                 var userId = _currentUserService.GetUserId() ?? request.TeacherId ?? 0;
                 if (userId == 0)
                 {
@@ -355,8 +355,7 @@ namespace services.Services
                     quiz.Questions.Add(question);
                 }
 
-                // TODO: Save quiz (need to implement quiz repository)
-                // await _quizRepository.AddAsync(quiz);
+                await _quizRepository.AddAsync(quiz);
 
                 _logger.LogInformation("Successfully created quiz with {QuestionCount} questions", quiz.Questions.Count);
 
