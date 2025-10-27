@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using repositories.Models;
 using services.Interfaces;
 using System.Security.Claims;
+using applications.DTOs.Response;
 
 namespace controllers.Controllers;
 
@@ -21,18 +22,38 @@ public class AttachmentController : ControllerBase
         _logger = logger;
     }
 
+    // ===== HELPER METHOD =====
+
+    private static AttachmentResponseDto MapToDto(Attachment attachment, string? formattedFileSize = null)
+    {
+        return new AttachmentResponseDto
+        {
+            AttachmentId = attachment.AttachmentId,
+            FileName = attachment.FileName,
+            FilePath = attachment.FilePath,
+            FileType = attachment.FileType,
+            FileSize = attachment.FileSize,
+            FormattedFileSize = formattedFileSize ?? $"{attachment.FileSize} bytes",
+            UploadTimestamp = attachment.UploadTimestamp,
+            LessonDetailId = attachment.LessonDetailId,
+            UploadedBy = attachment.UploadedBy
+        };
+    }
+
     // ===== BASIC CRUD =====
 
     /// <summary>
     /// Get all attachments
     /// </summary>
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Attachment>>> GetAllAttachments()
+    public async Task<ActionResult<IEnumerable<AttachmentResponseDto>>> GetAllAttachments()
     {
         try
         {
             var attachments = await _attachmentService.GetAllAttachmentsAsync();
-            return Ok(attachments);
+            var dtos = attachments.Select(a => MapToDto(a)).ToList();
+
+            return Ok(dtos);
         }
         catch (Exception ex)
         {
@@ -45,7 +66,7 @@ public class AttachmentController : ControllerBase
     /// Get attachment by ID
     /// </summary>
     [HttpGet("{id}")]
-    public async Task<ActionResult<Attachment>> GetAttachment(int id)
+    public async Task<ActionResult<AttachmentResponseDto>> GetAttachment(int id)
     {
         try
         {
@@ -53,7 +74,10 @@ public class AttachmentController : ControllerBase
             if (attachment == null)
                 return NotFound(new { message = $"Không tìm thấy file đính kèm với ID {id}" });
 
-            return Ok(attachment);
+            var formattedSize = await _attachmentService.GetFormattedFileSizeAsync(attachment.FileSize);
+            var dto = MapToDto(attachment, formattedSize);
+
+            return Ok(dto);
         }
         catch (Exception ex)
         {
@@ -163,12 +187,13 @@ public class AttachmentController : ControllerBase
     /// Get attachments by LessonDetail ID
     /// </summary>
     [HttpGet("lessondetail/{lessonDetailId}")]
-    public async Task<ActionResult<IEnumerable<Attachment>>> GetAttachmentsByLessonDetail(int lessonDetailId)
+    public async Task<ActionResult<IEnumerable<AttachmentResponseDto>>> GetAttachmentsByLessonDetail(int lessonDetailId)
     {
         try
         {
             var attachments = await _attachmentService.GetAttachmentsByLessonDetailIdAsync(lessonDetailId);
-            return Ok(attachments);
+            var dtos = attachments.Select(a => MapToDto(a)).ToList();
+            return Ok(dtos);
         }
         catch (Exception ex)
         {
@@ -181,12 +206,13 @@ public class AttachmentController : ControllerBase
     /// Get attachments by file type
     /// </summary>
     [HttpGet("filetype/{fileType}")]
-    public async Task<ActionResult<IEnumerable<Attachment>>> GetAttachmentsByFileType(string fileType)
+    public async Task<ActionResult<IEnumerable<AttachmentResponseDto>>> GetAttachmentsByFileType(string fileType)
     {
         try
         {
             var attachments = await _attachmentService.GetAttachmentsByFileTypeAsync(fileType);
-            return Ok(attachments);
+            var dtos = attachments.Select(a => MapToDto(a)).ToList();
+            return Ok(dtos);
         }
         catch (Exception ex)
         {
@@ -199,12 +225,13 @@ public class AttachmentController : ControllerBase
     /// Get attachments by user ID
     /// </summary>
     [HttpGet("user/{userId}")]
-    public async Task<ActionResult<IEnumerable<Attachment>>> GetAttachmentsByUser(int userId)
+    public async Task<ActionResult<IEnumerable<AttachmentResponseDto>>> GetAttachmentsByUser(int userId)
     {
         try
         {
             var attachments = await _attachmentService.GetAttachmentsByUserIdAsync(userId);
-            return Ok(attachments);
+            var dtos = attachments.Select(a => MapToDto(a)).ToList();
+            return Ok(dtos);
         }
         catch (Exception ex)
         {

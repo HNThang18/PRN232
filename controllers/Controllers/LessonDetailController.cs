@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using repositories.Models;
 using services.Interfaces;
+using applications.DTOs.Response;
 
 namespace controllers.Controllers;
 
@@ -20,18 +21,67 @@ public class LessonDetailController : ControllerBase
         _logger = logger;
     }
 
+    // ===== HELPER METHOD =====
+
+    private static LessonDetailResponseDto MapToDto(LessonDetail lessonDetail)
+    {
+        return new LessonDetailResponseDto
+        {
+            LessonDetailId = lessonDetail.LessonDetailId,
+            Order = lessonDetail.Order,
+            ContentType = lessonDetail.ContentType.ToString(),
+            Content = lessonDetail.Content,
+            ContentLaTeX = lessonDetail.ContentLaTeX,
+            CreatedAt = lessonDetail.CreatedAt,
+            UpdatedAt = lessonDetail.UpdatedAt,
+            LessonId = lessonDetail.LessonId,
+            LessonTitle = lessonDetail.Lesson?.Title,
+            AttachmentsCount = lessonDetail.Attachments?.Count ?? 0
+        };
+    }
+
+    private static LessonDetailWithAttachmentsDto MapToWithAttachmentsDto(LessonDetail lessonDetail)
+    {
+        return new LessonDetailWithAttachmentsDto
+        {
+            LessonDetailId = lessonDetail.LessonDetailId,
+            Order = lessonDetail.Order,
+            ContentType = lessonDetail.ContentType.ToString(),
+            Content = lessonDetail.Content,
+            ContentLaTeX = lessonDetail.ContentLaTeX,
+            CreatedAt = lessonDetail.CreatedAt,
+            UpdatedAt = lessonDetail.UpdatedAt,
+            LessonId = lessonDetail.LessonId,
+            LessonTitle = lessonDetail.Lesson?.Title,
+            AttachmentsCount = lessonDetail.Attachments?.Count ?? 0,
+            Attachments = lessonDetail.Attachments?.Select(a => new AttachmentResponseDto
+            {
+                AttachmentId = a.AttachmentId,
+                FileName = a.FileName,
+                FilePath = a.FilePath,
+                FileType = a.FileType,
+                FileSize = a.FileSize,
+                FormattedFileSize = $"{a.FileSize} bytes",
+                UploadTimestamp = a.UploadTimestamp,
+                LessonDetailId = a.LessonDetailId,
+                UploadedBy = a.UploadedBy
+            }).ToList() ?? new List<AttachmentResponseDto>()
+        };
+    }
+
     // ===== BASIC CRUD =====
 
     /// <summary>
     /// Get all lesson details
     /// </summary>
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<LessonDetail>>> GetAllLessonDetails()
+    public async Task<ActionResult<IEnumerable<LessonDetailResponseDto>>> GetAllLessonDetails()
     {
         try
         {
             var lessonDetails = await _lessonDetailService.GetAllLessonDetailsAsync();
-            return Ok(lessonDetails);
+            var dtos = lessonDetails.Select(ld => MapToDto(ld)).ToList();
+            return Ok(dtos);
         }
         catch (Exception ex)
         {
@@ -44,7 +94,7 @@ public class LessonDetailController : ControllerBase
     /// Get lesson detail by ID
     /// </summary>
     [HttpGet("{id}")]
-    public async Task<ActionResult<LessonDetail>> GetLessonDetail(int id)
+    public async Task<ActionResult<LessonDetailResponseDto>> GetLessonDetail(int id)
     {
         try
         {
@@ -52,7 +102,8 @@ public class LessonDetailController : ControllerBase
             if (lessonDetail == null)
                 return NotFound(new { message = $"Không tìm thấy chi tiết bài học với ID {id}" });
 
-            return Ok(lessonDetail);
+            var dto = MapToDto(lessonDetail);
+            return Ok(dto);
         }
         catch (ArgumentException ex)
         {
@@ -69,7 +120,7 @@ public class LessonDetailController : ControllerBase
     /// Get lesson detail with attachments
     /// </summary>
     [HttpGet("{id}/with-attachments")]
-    public async Task<ActionResult<LessonDetail>> GetLessonDetailWithAttachments(int id)
+    public async Task<ActionResult<LessonDetailWithAttachmentsDto>> GetLessonDetailWithAttachments(int id)
     {
         try
         {
@@ -77,7 +128,8 @@ public class LessonDetailController : ControllerBase
             if (lessonDetail == null)
                 return NotFound(new { message = $"Không tìm thấy chi tiết bài học với ID {id}" });
 
-            return Ok(lessonDetail);
+            var dto = MapToWithAttachmentsDto(lessonDetail);
+            return Ok(dto);
         }
         catch (ArgumentException ex)
         {
@@ -95,12 +147,13 @@ public class LessonDetailController : ControllerBase
     /// </summary>
     [HttpPost]
     [Authorize]
-    public async Task<ActionResult<LessonDetail>> CreateLessonDetail([FromBody] LessonDetail lessonDetail)
+    public async Task<ActionResult<LessonDetailResponseDto>> CreateLessonDetail([FromBody] LessonDetail lessonDetail)
     {
         try
         {
             var created = await _lessonDetailService.AddLessonDetailAsync(lessonDetail);
-            return CreatedAtAction(nameof(GetLessonDetail), new { id = created.LessonDetailId }, created);
+            var dto = MapToDto(created);
+            return CreatedAtAction(nameof(GetLessonDetail), new { id = created.LessonDetailId }, dto);
         }
         catch (ArgumentException ex)
         {
@@ -188,12 +241,13 @@ public class LessonDetailController : ControllerBase
     /// Get lesson details by lesson ID
     /// </summary>
     [HttpGet("lesson/{lessonId}")]
-    public async Task<ActionResult<IEnumerable<LessonDetail>>> GetLessonDetailsByLesson(int lessonId)
+    public async Task<ActionResult<IEnumerable<LessonDetailResponseDto>>> GetLessonDetailsByLesson(int lessonId)
     {
         try
         {
             var lessonDetails = await _lessonDetailService.GetLessonDetailsByLessonIdAsync(lessonId);
-            return Ok(lessonDetails);
+            var dtos = lessonDetails.Select(ld => MapToDto(ld)).ToList();
+            return Ok(dtos);
         }
         catch (ArgumentException ex)
         {
@@ -210,12 +264,13 @@ public class LessonDetailController : ControllerBase
     /// Get lesson details by content type
     /// </summary>
     [HttpGet("content-type/{contentType}")]
-    public async Task<ActionResult<IEnumerable<LessonDetail>>> GetLessonDetailsByContentType(ContentType contentType)
+    public async Task<ActionResult<IEnumerable<LessonDetailResponseDto>>> GetLessonDetailsByContentType(ContentType contentType)
     {
         try
         {
             var lessonDetails = await _lessonDetailService.GetLessonDetailsByContentTypeAsync(contentType);
-            return Ok(lessonDetails);
+            var dtos = lessonDetails.Select(ld => MapToDto(ld)).ToList();
+            return Ok(dtos);
         }
         catch (Exception ex)
         {
@@ -326,12 +381,13 @@ public class LessonDetailController : ControllerBase
     /// </summary>
     [HttpPost("{id}/duplicate")]
     [Authorize]
-    public async Task<ActionResult<LessonDetail>> DuplicateLessonDetail(int id, [FromQuery] int? targetLessonId = null)
+    public async Task<ActionResult<LessonDetailResponseDto>> DuplicateLessonDetail(int id, [FromQuery] int? targetLessonId = null)
     {
         try
         {
             var duplicate = await _lessonDetailService.DuplicateLessonDetailAsync(id, targetLessonId);
-            return CreatedAtAction(nameof(GetLessonDetail), new { id = duplicate.LessonDetailId }, duplicate);
+            var dto = MapToDto(duplicate);
+            return CreatedAtAction(nameof(GetLessonDetail), new { id = duplicate.LessonDetailId }, dto);
         }
         catch (ArgumentException ex)
         {

@@ -1,4 +1,5 @@
 ﻿using applications.DTOs.LessonPlan;
+using applications.DTOs.Response;
 using Microsoft.AspNetCore.Mvc;
 using repositories.Models;
 using services.Interfaces;
@@ -16,6 +17,70 @@ namespace controllers.Controllers
             _lessonPlanService = lessonPlanService;
         }
 
+        // ===== HELPER METHODS =====
+
+        private static LessonPlanResponseDto MapToResponseDto(LessonPlan lp)
+        {
+            return new LessonPlanResponseDto
+            {
+                LessonPlanId = lp.LessonPlanId,
+                Title = lp.Title,
+                Topic = lp.Topic,
+                Description = lp.LearningObjectives, // Map LearningObjectives to Description
+                EstimatedDuration = lp.Duration, // Map Duration to EstimatedDuration
+                Status = lp.Status.ToString(),
+                IsPublic = lp.IsPublic,
+                Version = lp.Version,
+                PublishedDate = lp.CreatedAt, // LessonPlan doesn't have PublishedDate, use CreatedAt
+                CreatedAt = lp.CreatedAt,
+                UpdatedAt = lp.UpdatedAt,
+                TeacherId = lp.TeacherId,
+                LevelId = lp.LevelId,
+                AiRequestId = lp.AiRequestId,
+                TeacherName = lp.Teacher?.Username,
+                LevelName = lp.Level?.LevelName,
+                LessonsCount = lp.Lessons?.Count ?? 0
+            };
+        }
+
+        private static LessonPlanWithLessonsDto MapToWithLessonsDto(LessonPlan lp)
+        {
+            return new LessonPlanWithLessonsDto
+            {
+                LessonPlanId = lp.LessonPlanId,
+                Title = lp.Title,
+                Topic = lp.Topic,
+                Description = lp.LearningObjectives,
+                EstimatedDuration = lp.Duration,
+                Status = lp.Status.ToString(),
+                IsPublic = lp.IsPublic,
+                Version = lp.Version,
+                PublishedDate = lp.CreatedAt,
+                CreatedAt = lp.CreatedAt,
+                UpdatedAt = lp.UpdatedAt,
+                TeacherId = lp.TeacherId,
+                LevelId = lp.LevelId,
+                AiRequestId = lp.AiRequestId,
+                TeacherName = lp.Teacher?.Username,
+                LevelName = lp.Level?.LevelName,
+                LessonsCount = lp.Lessons?.Count ?? 0,
+                Lessons = lp.Lessons?.Select(l => new LessonResponseDto
+                {
+                    LessonId = l.LessonId,
+                    Title = l.Title,
+                    Content = l.Content,
+                    Order = l.Order,
+                    IsShared = l.IsShared,
+                    PublishedDate = l.PublishedDate,
+                    CreatedAt = l.CreatedAt,
+                    UpdatedAt = l.UpdatedAt,
+                    LessonPlanId = l.LessonPlanId,
+                    LessonPlanTitle = l.LessonPlan?.Title,
+                    LessonDetailsCount = l.LessonDetails?.Count ?? 0,
+                    ProgressCount = l.Progresses?.Count ?? 0
+                }).ToList() ?? new List<LessonResponseDto>()
+            };
+        }        // Keep old mapper for backward compatibility with CreateLessonPlanDto
         private static LessonPlanDto MapToDto(LessonPlan lp)
         {
             return new LessonPlanDto
@@ -36,7 +101,7 @@ namespace controllers.Controllers
             try
             {
                 var lessonPlans = await _lessonPlanService.GetAllLessonPlansAsync(cancellationToken);
-                var lessonPlanDtos = lessonPlans.Select(MapToDto).ToList();
+                var lessonPlanDtos = lessonPlans.Select(MapToResponseDto).ToList();
                 return Ok(new { success = true, data = lessonPlanDtos });
             }
             catch (Exception ex)
@@ -51,7 +116,7 @@ namespace controllers.Controllers
             try
             {
                 var lessonPlan = await _lessonPlanService.GetLessonPlanByIdAsync(id, cancellationToken);
-                var lessonPlanDto = MapToDto(lessonPlan!);
+                var lessonPlanDto = MapToResponseDto(lessonPlan!);
                 return Ok(new { success = true, data = lessonPlanDto });
             }
             catch (ArgumentException ex)
@@ -166,7 +231,12 @@ namespace controllers.Controllers
             try
             {
                 var lessonPlan = await _lessonPlanService.GetLessonPlanWithLessonsAsync(id, cancellationToken);
-                return Ok(new { success = true, data = lessonPlan });
+                if (lessonPlan == null)
+                {
+                    return NotFound(new { success = false, error = new { code = 404, message = "Lesson plan not found." } });
+                }
+                var dto = MapToWithLessonsDto(lessonPlan);
+                return Ok(new { success = true, data = dto });
             }
             catch (ArgumentException ex)
             {
@@ -192,7 +262,7 @@ namespace controllers.Controllers
             try
             {
                 var lessonPlans = await _lessonPlanService.GetLessonPlansByTeacherIdAsync(teacherId, cancellationToken);
-                var lessonPlanDtos = lessonPlans.Select(MapToDto).ToList();
+                var lessonPlanDtos = lessonPlans.Select(MapToResponseDto).ToList();
                 return Ok(new { success = true, data = lessonPlanDtos });
             }
             catch (ArgumentException ex)
@@ -215,7 +285,7 @@ namespace controllers.Controllers
             try
             {
                 var lessonPlans = await _lessonPlanService.GetLessonPlansByLevelIdAsync(levelId, cancellationToken);
-                var lessonPlanDtos = lessonPlans.Select(MapToDto).ToList();
+                var lessonPlanDtos = lessonPlans.Select(MapToResponseDto).ToList();
                 return Ok(new { success = true, data = lessonPlanDtos });
             }
             catch (ArgumentException ex)
@@ -238,7 +308,7 @@ namespace controllers.Controllers
             try
             {
                 var lessonPlans = await _lessonPlanService.GetPublicLessonPlansAsync(cancellationToken);
-                var lessonPlanDtos = lessonPlans.Select(MapToDto).ToList();
+                var lessonPlanDtos = lessonPlans.Select(MapToResponseDto).ToList();
                 return Ok(new { success = true, data = lessonPlanDtos });
             }
             catch (Exception ex)

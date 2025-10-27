@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using repositories.Models;
 using services.Interfaces;
+using applications.DTOs.Response;
 
 namespace controllers.Controllers
 {
@@ -19,6 +20,59 @@ namespace controllers.Controllers
             _lessonService = lessonService;
         }
 
+        // ===== HELPER METHODS =====
+
+        private static LessonResponseDto MapToDto(Lesson lesson)
+        {
+            return new LessonResponseDto
+            {
+                LessonId = lesson.LessonId,
+                Title = lesson.Title,
+                Content = lesson.Content,
+                Order = lesson.Order,
+                IsShared = lesson.IsShared,
+                PublishedDate = lesson.PublishedDate,
+                CreatedAt = lesson.CreatedAt,
+                UpdatedAt = lesson.UpdatedAt,
+                LessonPlanId = lesson.LessonPlanId,
+                LessonPlanTitle = lesson.LessonPlan?.Title,
+                LessonDetailsCount = lesson.LessonDetails?.Count ?? 0,
+                ProgressCount = lesson.Progresses?.Count ?? 0
+            };
+        }
+
+        private static LessonWithDetailsDto MapToWithDetailsDto(Lesson lesson)
+        {
+            return new LessonWithDetailsDto
+            {
+                LessonId = lesson.LessonId,
+                Title = lesson.Title,
+                Content = lesson.Content,
+                Order = lesson.Order,
+                IsShared = lesson.IsShared,
+                PublishedDate = lesson.PublishedDate,
+                CreatedAt = lesson.CreatedAt,
+                UpdatedAt = lesson.UpdatedAt,
+                LessonPlanId = lesson.LessonPlanId,
+                LessonPlanTitle = lesson.LessonPlan?.Title,
+                LessonDetailsCount = lesson.LessonDetails?.Count ?? 0,
+                ProgressCount = lesson.Progresses?.Count ?? 0,
+                LessonDetails = lesson.LessonDetails?.Select(ld => new LessonDetailResponseDto
+                {
+                    LessonDetailId = ld.LessonDetailId,
+                    Order = ld.Order,
+                    ContentType = ld.ContentType.ToString(),
+                    Content = ld.Content,
+                    ContentLaTeX = ld.ContentLaTeX,
+                    CreatedAt = ld.CreatedAt,
+                    UpdatedAt = ld.UpdatedAt,
+                    LessonId = ld.LessonId,
+                    LessonTitle = ld.Lesson?.Title,
+                    AttachmentsCount = ld.Attachments?.Count ?? 0
+                }).ToList() ?? new List<LessonDetailResponseDto>()
+            };
+        }
+
         // ================== BASIC CRUD ==================
 
         /// <summary>
@@ -31,7 +85,8 @@ namespace controllers.Controllers
             try
             {
                 var lessons = await _lessonService.GetAllLessonsAsync();
-                return Ok(new { success = true, data = lessons });
+                var dtos = lessons.Select(l => MapToDto(l)).ToList();
+                return Ok(new { success = true, data = dtos });
             }
             catch (Exception ex)
             {
@@ -53,7 +108,8 @@ namespace controllers.Controllers
                 {
                     return NotFound(new { success = false, error = new { code = 404, message = "Lesson not found." } });
                 }
-                return Ok(new { success = true, data = lesson });
+                var dto = MapToDto(lesson);
+                return Ok(new { success = true, data = dto });
             }
             catch (ArgumentException ex)
             {
@@ -75,7 +131,12 @@ namespace controllers.Controllers
             try
             {
                 var lesson = await _lessonService.GetLessonWithDetailsAsync(id);
-                return Ok(new { success = true, data = lesson });
+                if (lesson == null)
+                {
+                    return NotFound(new { success = false, error = new { code = 404, message = "Lesson not found." } });
+                }
+                var dto = MapToWithDetailsDto(lesson);
+                return Ok(new { success = true, data = dto });
             }
             catch (KeyNotFoundException ex)
             {
@@ -102,10 +163,11 @@ namespace controllers.Controllers
             try
             {
                 var createdLesson = await _lessonService.AddLessonAsync(lesson);
+                var dto = MapToDto(createdLesson);
                 return CreatedAtAction(
                     nameof(GetLessonByIdAsync),
                     new { id = createdLesson.LessonId },
-                    new { success = true, data = createdLesson }
+                    new { success = true, data = dto }
                 );
             }
             catch (ArgumentException ex)
@@ -204,7 +266,8 @@ namespace controllers.Controllers
             try
             {
                 var lessons = await _lessonService.GetLessonsByLessonPlanIdAsync(lessonPlanId);
-                return Ok(new { success = true, data = lessons });
+                var dtos = lessons.Select(l => MapToDto(l)).ToList();
+                return Ok(new { success = true, data = dtos });
             }
             catch (ArgumentException ex)
             {
@@ -226,7 +289,8 @@ namespace controllers.Controllers
             try
             {
                 var lessons = await _lessonService.GetSharedLessonsAsync();
-                return Ok(new { success = true, data = lessons });
+                var dtos = lessons.Select(l => MapToDto(l)).ToList();
+                return Ok(new { success = true, data = dtos });
             }
             catch (Exception ex)
             {
