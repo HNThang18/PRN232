@@ -167,7 +167,6 @@ namespace repositories.Dbcontext
             //modelBuilder.Entity<AuditLog>().Property(e => e.Id).ValueGeneratedOnAdd();
             //modelBuilder.Entity<AIRequest>().Property(e => e.Id).ValueGeneratedOnAdd();
             //modelBuilder.Entity<Difficulty>().Property(e => e.Id).ValueGeneratedOnAdd();
-            //modelBuilder.Entity<Lesson>().Property(e => e.Id).ValueGeneratedOnAdd();
             //modelBuilder.Entity<LessonDetail>().Property(e => e.Id).ValueGeneratedOnAdd();
             //modelBuilder.Entity<LessonPlan>().Property(e => e.Id).ValueGeneratedOnAdd();
             //modelBuilder.Entity<Level>().Property(e => e.Id).ValueGeneratedOnAdd();
@@ -179,6 +178,36 @@ namespace repositories.Dbcontext
             //modelBuilder.Entity<Quiz>().Property(e => e.Id).ValueGeneratedOnAdd();
             //modelBuilder.Entity<Submission>().Property(e => e.Id).ValueGeneratedOnAdd();
             //modelBuilder.Entity<SubmissionDetail>().Property(e => e.Id).ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<Lesson>(entity =>
+            {
+                // Index
+                entity.HasIndex(e => e.LessonPlanId);
+                entity.HasIndex(e => e.IsShared);
+                entity.HasIndex(e => new { e.LessonPlanId, e.Order })
+                    .IsUnique(); // Composite unique index
+
+                // Default values
+                entity.Property(e => e.CreatedAt)
+                    .HasDefaultValueSql("GETUTCDATE()");
+
+                entity.Property(e => e.IsGeneratedByAI)
+                    .HasDefaultValue(false);
+
+                entity.Property(e => e.IsShared)
+                    .HasDefaultValue(false);
+
+                // Relationships
+                entity.HasOne(e => e.LessonPlan)
+                    .WithMany(lp => lp.Lessons)
+                    .HasForeignKey(e => e.LessonPlanId)
+                    .OnDelete(DeleteBehavior.Cascade); // Xóa giáo án → xóa lessons
+
+                entity.HasMany(e => e.LessonDetails)
+                    .WithOne(ld => ld.Lesson)
+                    .HasForeignKey(ld => ld.LessonId)
+                    .OnDelete(DeleteBehavior.Cascade); // Xóa lesson → xóa details
+            });
 
             modelBuilder.Entity<AiRequest>()
                 .HasOne(ar => ar.User)
@@ -339,7 +368,18 @@ namespace repositories.Dbcontext
             );
 
             modelBuilder.Entity<Lesson>().HasData(
-                new Lesson { LessonId = 1, LessonPlanId = 1, Title = "What is Algebra?", Content = "Algebra is ...", PublishedDate = new DateTime(2024, 6, 14, 8, 51, 0, DateTimeKind.Utc), IsShared = true }
+                new Lesson
+                {
+                    LessonId = 1,
+                    LessonPlanId = 1,
+                    Title = "What is Algebra?",
+                    Content = "Algebra is ...",
+                    Order = 1, // ⭐ Thêm Order
+                    IsGeneratedByAI = false,
+                    IsShared = true,
+                    PublishedDate = new DateTime(2024, 6, 14, 8, 51, 0, DateTimeKind.Utc),
+                    CreatedAt = new DateTime(2024, 6, 14, 8, 51, 0, DateTimeKind.Utc) // ⭐ Set cứng CreatedAt
+                }
             );
 
             modelBuilder.Entity<LessonDetail>().HasData(

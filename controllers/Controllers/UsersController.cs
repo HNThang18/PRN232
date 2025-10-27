@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace controllers.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/users")]
     [Authorize(Roles = "Admin")]
     public class UsersController : ControllerBase
     {

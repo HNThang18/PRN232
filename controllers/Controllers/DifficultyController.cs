@@ -6,7 +6,7 @@ using applications.DTOs.Difficulty;
 namespace controllers.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/difficulties")]
     public class DifficultyController : ControllerBase
     {
         private readonly IDifficultyService _difficultyService;

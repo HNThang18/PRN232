@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using repositories.Dbcontext;
 
@@ -11,9 +12,11 @@ using repositories.Dbcontext;
 namespace repositories.Migrations
 {
     [DbContext(typeof(MathLpContext))]
-    partial class MathLpContextModelSnapshot : ModelSnapshot
+    [Migration("20251026234553_UpdateLessonModel")]
+    partial class UpdateLessonModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -351,11 +354,11 @@ namespace repositories.Migrations
                         {
                             LessonId = 1,
                             Content = "Algebra is ...",
-                            CreatedAt = new DateTime(2024, 6, 14, 8, 51, 0, 0, DateTimeKind.Utc),
+                            CreatedAt = new DateTime(2025, 10, 26, 23, 45, 50, 330, DateTimeKind.Utc).AddTicks(2709),
                             IsGeneratedByAI = false,
                             IsShared = true,
                             LessonPlanId = 1,
-                            Order = 1,
+                            Order = 0,
                             PublishedDate = new DateTime(2024, 6, 14, 8, 51, 0, 0, DateTimeKind.Utc),
                             Title = "What is Algebra?"
                         });

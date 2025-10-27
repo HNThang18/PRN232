@@ -51,8 +51,14 @@ builder.Services.AddDbContext<MathLpContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Register repositories and services
+builder.Services.AddScoped<ILessonRepository, LessonRepository>();
+builder.Services.AddScoped<ILessonService, LessonService>();
+builder.Services.AddScoped<ILessonDetailRepository, LessonDetailRepository>();
+builder.Services.AddScoped<ILessonDetailService, LessonDetailService>();
 builder.Services.AddScoped<ILessonPlanRepository, LessonPlanRepository>();
 builder.Services.AddScoped<ILessonPlanService, LessonPlanService>();
+builder.Services.AddScoped<IAttachmentRepository, AttachmentRepository>();
+builder.Services.AddScoped<IAttachmentService, AttachmentService>();
 builder.Services.AddScoped<IDifficultyRepository, DifficultyRepository>();
 builder.Services.AddScoped<IDifficultyService, DifficultyService>();
 builder.Services.AddScoped<IQuestionBankRepository, QuestionBankRepository>();

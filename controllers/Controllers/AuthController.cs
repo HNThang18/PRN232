@@ -6,14 +6,14 @@ using applications.DTOs.Response;
 
 namespace controllers.Controllers
 {
-   
-        [ApiController]
-        [Route("api/[controller]")]
-        public class AuthController : ControllerBase
-        {
-            private readonly IUserService _userService;
-            private readonly IJwtService _jwtService;
-            private readonly IAuditLogService _auditLogService;
+
+    [ApiController]
+    [Route("api/auth")]
+    public class AuthController : ControllerBase
+    {
+        private readonly IUserService _userService;
+        private readonly IJwtService _jwtService;
+        private readonly IAuditLogService _auditLogService;
 
 
         public AuthController(IUserService userService, IJwtService jwtService, IAuditLogService auditLogService)
@@ -24,8 +24,8 @@ namespace controllers.Controllers
         }
 
         [HttpPost("register")]
-            public async Task<IActionResult> Register([FromBody] RegisterRequestDto request)
-            {
+        public async Task<IActionResult> Register([FromBody] RegisterRequestDto request)
+        {
             try
             {
                 var newUser = await _userService.RegisterAsync(request);
@@ -44,7 +44,12 @@ namespace controllers.Controllers
                     CreatedAt = newUser.CreatedAt //
                 };
 
-                return CreatedAtAction(nameof(Register), new { id = newUser.UserId }, result);
+                return CreatedAtAction(
+                    actionName: "GetUserById",
+                    controllerName: "Users",
+                    routeValues: new { id = newUser.UserId },
+                    value: result
+                );
             }
             catch (InvalidOperationException ex)
             {
@@ -56,9 +61,9 @@ namespace controllers.Controllers
             }
         }
 
-            [HttpPost("login")]
-            public async Task<IActionResult> Login([FromBody] LoginRequestDto request)
-            {
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] LoginRequestDto request)
+        {
             var user = await _userService.ValidateUserAsync(request.Username, request.Password);
 
             if (user == null)
@@ -84,19 +89,19 @@ namespace controllers.Controllers
             string token = _jwtService.GenerateToken(user);
 
 
-                // TODO: Ghi log login thành công (phần AuditLog)
+            // TODO: Ghi log login thành công (phần AuditLog)
 
-                // Trả về DTO
-                var response = new AuthResponseDto
-                {
-                    Token = token,
-                    UserId = user.UserId,
-                    Username = user.Username,
-                    Role = (user.Role).ToString()
-                };
+            // Trả về DTO
+            var response = new AuthResponseDto
+            {
+                Token = token,
+                UserId = user.UserId,
+                Username = user.Username,
+                Role = (user.Role).ToString()
+            };
 
-                return Ok(response);
-            }
+            return Ok(response);
         }
     }
+}
 

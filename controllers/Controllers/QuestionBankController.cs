@@ -6,7 +6,7 @@ using applications.DTOs.QuestionBank;
 namespace controllers.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/question-banks")]
     public class QuestionBankController : ControllerBase
     {
 
