@@ -7,7 +7,7 @@ using applications.DTOs.Response;
 namespace controllers.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/lesson-details")]
 public class LessonDetailController : ControllerBase
 {
     private readonly ILessonDetailService _lessonDetailService;

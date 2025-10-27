@@ -8,7 +8,7 @@ using applications.DTOs.Response;
 namespace controllers.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/attachments")]
 public class AttachmentController : ControllerBase
 {
     private readonly IAttachmentService _attachmentService;
