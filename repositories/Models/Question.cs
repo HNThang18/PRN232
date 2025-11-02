@@ -51,8 +51,8 @@ namespace repositories.Models
         [ForeignKey("Difficulty")]
         public int? DifficultyId { get; set; }
 
-        [ForeignKey("AIRequest")]
-        public int? AIRequestId { get; set; }
+        [ForeignKey("AiRequest")]
+        public int? AiRequestId { get; set; }
 
         [Required]
         public Topic Topic { get; set; }
@@ -77,7 +77,7 @@ namespace repositories.Models
         public virtual Quiz Quiz { get; set; }
         public virtual QuestionBank QuestionBank { get; set; }
         public virtual Difficulty Difficulty { get; set; }
-        public virtual AIRequest AIRequest { get; set; }
+        public virtual AiRequest AiRequest { get; set; }
         public virtual ICollection<Answer> Answers { get; set; }
         public virtual ICollection<SubmissionDetail> SubmissionDetails { get; set; }
     }

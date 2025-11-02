@@ -12,7 +12,10 @@ namespace repositories.Models
     {
         Create,
         Update,
-        Delete
+        Delete,
+        Login,
+        View,
+        GenerateAI
     }
     public class AuditLog
     {
@@ -29,11 +32,14 @@ namespace repositories.Models
         [MaxLength(100)]
         public string EntityName { get; set; }
 
-        public int EntityId { get; set; }
+        public int? EntityId { get; set; }
 
         public DateTime Timestamp { get; set; } = DateTime.UtcNow;
 
         public string? Details { get; set; } // Có thể lưu dưới dạng JSON để chứa dữ liệu cũ và mới
+
+        [MaxLength(50)]
+        public string? IpAddress { get; set; }
 
         public virtual User User { get; set; }
     }

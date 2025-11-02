@@ -54,7 +54,7 @@ namespace repositories.Models
         public virtual ICollection<Quiz> Quizzes { get; set; }
         public virtual ICollection<Submission> Submissions { get; set; }
         public virtual ICollection<Progress> Progresses { get; set; }
-        public virtual ICollection<AIRequest> AIRequests { get; set; }
+        public virtual ICollection<AiRequest> AiRequests { get; set; }
         public virtual ICollection<AuditLog> AuditLogs { get; set; }
         public virtual ICollection<QuestionBank> QuestionBanks { get; set; }
     }

@@ -1,0 +1,406 @@
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using repositories.Models;
+using services.Interfaces;
+using applications.DTOs.Response;
+
+namespace controllers.Controllers;
+
+[ApiController]
+[Route("api/lesson-details")]
+public class LessonDetailController : ControllerBase
+{
+    private readonly ILessonDetailService _lessonDetailService;
+    private readonly ILogger<LessonDetailController> _logger;
+
+    public LessonDetailController(
+        ILessonDetailService lessonDetailService,
+        ILogger<LessonDetailController> logger)
+    {
+        _lessonDetailService = lessonDetailService;
+        _logger = logger;
+    }
+
+    // ===== HELPER METHOD =====
+
+    private static LessonDetailResponseDto MapToDto(LessonDetail lessonDetail)
+    {
+        return new LessonDetailResponseDto
+        {
+            LessonDetailId = lessonDetail.LessonDetailId,
+            Order = lessonDetail.Order,
+            ContentType = lessonDetail.ContentType.ToString(),
+            Content = lessonDetail.Content,
+            ContentLaTeX = lessonDetail.ContentLaTeX,
+            CreatedAt = lessonDetail.CreatedAt,
+            UpdatedAt = lessonDetail.UpdatedAt,
+            LessonId = lessonDetail.LessonId,
+            LessonTitle = lessonDetail.Lesson?.Title,
+            AttachmentsCount = lessonDetail.Attachments?.Count ?? 0
+        };
+    }
+
+    private static LessonDetailWithAttachmentsDto MapToWithAttachmentsDto(LessonDetail lessonDetail)
+    {
+        return new LessonDetailWithAttachmentsDto
+        {
+            LessonDetailId = lessonDetail.LessonDetailId,
+            Order = lessonDetail.Order,
+            ContentType = lessonDetail.ContentType.ToString(),
+            Content = lessonDetail.Content,
+            ContentLaTeX = lessonDetail.ContentLaTeX,
+            CreatedAt = lessonDetail.CreatedAt,
+            UpdatedAt = lessonDetail.UpdatedAt,
+            LessonId = lessonDetail.LessonId,
+            LessonTitle = lessonDetail.Lesson?.Title,
+            AttachmentsCount = lessonDetail.Attachments?.Count ?? 0,
+            Attachments = lessonDetail.Attachments?.Select(a => new AttachmentResponseDto
+            {
+                AttachmentId = a.AttachmentId,
+                FileName = a.FileName,
+                FilePath = a.FilePath,
+                FileType = a.FileType,
+                FileSize = a.FileSize,
+                FormattedFileSize = $"{a.FileSize} bytes",
+                UploadTimestamp = a.UploadTimestamp,
+                LessonDetailId = a.LessonDetailId,
+                UploadedBy = a.UploadedBy
+            }).ToList() ?? new List<AttachmentResponseDto>()
+        };
+    }
+
+    // ===== BASIC CRUD =====
+
+    /// <summary>
+    /// Get all lesson details
+    /// </summary>
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<LessonDetailResponseDto>>> GetAllLessonDetails()
+    {
+        try
+        {
+            var lessonDetails = await _lessonDetailService.GetAllLessonDetailsAsync();
+            var dtos = lessonDetails.Select(ld => MapToDto(ld)).ToList();
+            return Ok(dtos);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error occurred while getting all lesson details");
+            return StatusCode(500, new { message = "Đã xảy ra lỗi khi lấy danh sách chi tiết bài học", error = ex.Message });
+        }
+    }
+
+    /// <summary>
+    /// Get lesson detail by ID
+    /// </summary>
+    [HttpGet("{id}")]
+    public async Task<ActionResult<LessonDetailResponseDto>> GetLessonDetail(int id)
+    {
+        try
+        {
+            var lessonDetail = await _lessonDetailService.GetLessonDetailByIdAsync(id);
+            if (lessonDetail == null)
+                return NotFound(new { message = $"Không tìm thấy chi tiết bài học với ID {id}" });
+
+            var dto = MapToDto(lessonDetail);
+            return Ok(dto);
+        }
+        catch (ArgumentException ex)
+        {
+            return BadRequest(new { message = ex.Message });
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error occurred while getting lesson detail {LessonDetailId}", id);
+            return StatusCode(500, new { message = "Đã xảy ra lỗi khi lấy chi tiết bài học", error = ex.Message });
+        }
+    }
+
+    /// <summary>
+    /// Get lesson detail with attachments
+    /// </summary>
+    [HttpGet("{id}/with-attachments")]
+    public async Task<ActionResult<LessonDetailWithAttachmentsDto>> GetLessonDetailWithAttachments(int id)
+    {
+        try
+        {
+            var lessonDetail = await _lessonDetailService.GetLessonDetailWithAttachmentsAsync(id);
+            if (lessonDetail == null)
+                return NotFound(new { message = $"Không tìm thấy chi tiết bài học với ID {id}" });
+
+            var dto = MapToWithAttachmentsDto(lessonDetail);
+            return Ok(dto);
+        }
+        catch (ArgumentException ex)
+        {
+            return BadRequest(new { message = ex.Message });
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error occurred while getting lesson detail {LessonDetailId} with attachments", id);
+            return StatusCode(500, new { message = "Đã xảy ra lỗi khi lấy chi tiết bài học", error = ex.Message });
+        }
+    }
+
+    /// <summary>
+    /// Create new lesson detail
+    /// </summary>
+    [HttpPost]
+    [Authorize]
+    public async Task<ActionResult<LessonDetailResponseDto>> CreateLessonDetail([FromBody] LessonDetail lessonDetail)
+    {
+        try
+        {
+            var created = await _lessonDetailService.AddLessonDetailAsync(lessonDetail);
+            var dto = MapToDto(created);
+            return CreatedAtAction(nameof(GetLessonDetail), new { id = created.LessonDetailId }, dto);
+        }
+        catch (ArgumentException ex)
+        {
+            return BadRequest(new { message = ex.Message });
+        }
+        catch (KeyNotFoundException ex)
+        {
+            return NotFound(new { message = ex.Message });
+        }
+        catch (InvalidOperationException ex)
+        {
+            return BadRequest(new { message = ex.Message });
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error occurred while creating lesson detail");
+            return StatusCode(500, new { message = "Đã xảy ra lỗi khi tạo chi tiết bài học", error = ex.Message });
+        }
+    }
+
+    /// <summary>
+    /// Update lesson detail
+    /// </summary>
+    [HttpPut("{id}")]
+    [Authorize]
+    public async Task<IActionResult> UpdateLessonDetail(int id, [FromBody] LessonDetail lessonDetail)
+    {
+        try
+        {
+            if (id != lessonDetail.LessonDetailId)
+                return BadRequest(new { message = "ID không khớp" });
+
+            await _lessonDetailService.UpdateLessonDetailAsync(lessonDetail);
+            return NoContent();
+        }
+        catch (ArgumentException ex)
+        {
+            return BadRequest(new { message = ex.Message });
+        }
+        catch (KeyNotFoundException ex)
+        {
+            return NotFound(new { message = ex.Message });
+        }
+        catch (InvalidOperationException ex)
+        {
+            return BadRequest(new { message = ex.Message });
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error occurred while updating lesson detail {LessonDetailId}", id);
+            return StatusCode(500, new { message = "Đã xảy ra lỗi khi cập nhật chi tiết bài học", error = ex.Message });
+        }
+    }
+
+    /// <summary>
+    /// Delete lesson detail
+    /// </summary>
+    [HttpDelete("{id}")]
+    [Authorize]
+    public async Task<IActionResult> DeleteLessonDetail(int id)
+    {
+        try
+        {
+            await _lessonDetailService.DeleteLessonDetailAsync(id);
+            return NoContent();
+        }
+        catch (ArgumentException ex)
+        {
+            return BadRequest(new { message = ex.Message });
+        }
+        catch (KeyNotFoundException ex)
+        {
+            return NotFound(new { message = ex.Message });
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error occurred while deleting lesson detail {LessonDetailId}", id);
+            return StatusCode(500, new { message = "Đã xảy ra lỗi khi xóa chi tiết bài học", error = ex.Message });
+        }
+    }
+
+    // ===== QUERY ENDPOINTS =====
+
+    /// <summary>
+    /// Get lesson details by lesson ID
+    /// </summary>
+    [HttpGet("lesson/{lessonId}")]
+    public async Task<ActionResult<IEnumerable<LessonDetailResponseDto>>> GetLessonDetailsByLesson(int lessonId)
+    {
+        try
+        {
+            var lessonDetails = await _lessonDetailService.GetLessonDetailsByLessonIdAsync(lessonId);
+            var dtos = lessonDetails.Select(ld => MapToDto(ld)).ToList();
+            return Ok(dtos);
+        }
+        catch (ArgumentException ex)
+        {
+            return BadRequest(new { message = ex.Message });
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error occurred while getting lesson details for lesson {LessonId}", lessonId);
+            return StatusCode(500, new { message = "Đã xảy ra lỗi khi lấy danh sách chi tiết bài học", error = ex.Message });
+        }
+    }
+
+    /// <summary>
+    /// Get lesson details by content type
+    /// </summary>
+    [HttpGet("content-type/{contentType}")]
+    public async Task<ActionResult<IEnumerable<LessonDetailResponseDto>>> GetLessonDetailsByContentType(ContentType contentType)
+    {
+        try
+        {
+            var lessonDetails = await _lessonDetailService.GetLessonDetailsByContentTypeAsync(contentType);
+            var dtos = lessonDetails.Select(ld => MapToDto(ld)).ToList();
+            return Ok(dtos);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error occurred while getting lesson details by content type {ContentType}", contentType);
+            return StatusCode(500, new { message = "Đã xảy ra lỗi khi lấy danh sách chi tiết bài học", error = ex.Message });
+        }
+    }
+
+    /// <summary>
+    /// Count lesson details by lesson ID
+    /// </summary>
+    [HttpGet("lesson/{lessonId}/count")]
+    public async Task<ActionResult<int>> CountLessonDetailsByLesson(int lessonId)
+    {
+        try
+        {
+            var count = await _lessonDetailService.CountLessonDetailsByLessonIdAsync(lessonId);
+            return Ok(new { count });
+        }
+        catch (ArgumentException ex)
+        {
+            return BadRequest(new { message = ex.Message });
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error occurred while counting lesson details for lesson {LessonId}", lessonId);
+            return StatusCode(500, new { message = "Đã xảy ra lỗi khi đếm chi tiết bài học", error = ex.Message });
+        }
+    }
+
+    // ===== BUSINESS LOGIC ENDPOINTS =====
+
+    /// <summary>
+    /// Reorder lesson details (bulk update)
+    /// </summary>
+    [HttpPost("lesson/{lessonId}/reorder")]
+    [Authorize]
+    public async Task<IActionResult> ReorderLessonDetails(int lessonId, [FromBody] Dictionary<int, int> newOrders)
+    {
+        try
+        {
+            await _lessonDetailService.ReorderLessonDetailsAsync(lessonId, newOrders);
+            return NoContent();
+        }
+        catch (ArgumentException ex)
+        {
+            return BadRequest(new { message = ex.Message });
+        }
+        catch (InvalidOperationException ex)
+        {
+            return BadRequest(new { message = ex.Message });
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error occurred while reordering lesson details for lesson {LessonId}", lessonId);
+            return StatusCode(500, new { message = "Đã xảy ra lỗi khi sắp xếp lại chi tiết bài học", error = ex.Message });
+        }
+    }
+
+    /// <summary>
+    /// Check if lesson detail can be deleted
+    /// </summary>
+    [HttpGet("{id}/can-delete")]
+    [Authorize]
+    public async Task<ActionResult<object>> CanDeleteLessonDetail(int id)
+    {
+        try
+        {
+            var canDelete = await _lessonDetailService.CanDeleteLessonDetailAsync(id);
+            return Ok(new { canDelete });
+        }
+        catch (ArgumentException ex)
+        {
+            return BadRequest(new { message = ex.Message });
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error occurred while checking if lesson detail {LessonDetailId} can be deleted", id);
+            return StatusCode(500, new { message = "Đã xảy ra lỗi khi kiểm tra", error = ex.Message });
+        }
+    }
+
+    /// <summary>
+    /// Delete all lesson details for a lesson
+    /// </summary>
+    [HttpDelete("lesson/{lessonId}/all")]
+    [Authorize]
+    public async Task<IActionResult> DeleteLessonDetailsByLesson(int lessonId)
+    {
+        try
+        {
+            await _lessonDetailService.DeleteLessonDetailsByLessonIdAsync(lessonId);
+            return NoContent();
+        }
+        catch (ArgumentException ex)
+        {
+            return BadRequest(new { message = ex.Message });
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error occurred while deleting lesson details for lesson {LessonId}", lessonId);
+            return StatusCode(500, new { message = "Đã xảy ra lỗi khi xóa chi tiết bài học", error = ex.Message });
+        }
+    }
+
+    /// <summary>
+    /// Duplicate a lesson detail
+    /// </summary>
+    [HttpPost("{id}/duplicate")]
+    [Authorize]
+    public async Task<ActionResult<LessonDetailResponseDto>> DuplicateLessonDetail(int id, [FromQuery] int? targetLessonId = null)
+    {
+        try
+        {
+            var duplicate = await _lessonDetailService.DuplicateLessonDetailAsync(id, targetLessonId);
+            var dto = MapToDto(duplicate);
+            return CreatedAtAction(nameof(GetLessonDetail), new { id = duplicate.LessonDetailId }, dto);
+        }
+        catch (ArgumentException ex)
+        {
+            return BadRequest(new { message = ex.Message });
+        }
+        catch (KeyNotFoundException ex)
+        {
+            return NotFound(new { message = ex.Message });
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error occurred while duplicating lesson detail {LessonDetailId}", id);
+            return StatusCode(500, new { message = "Đã xảy ra lỗi khi nhân bản chi tiết bài học", error = ex.Message });
+        }
+    }
+}

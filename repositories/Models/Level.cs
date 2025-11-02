@@ -31,7 +31,7 @@ namespace repositories.Models
         public virtual ICollection<User> Users { get; set; }
         public virtual ICollection<LessonPlan> LessonPlans { get; set; }
         public virtual ICollection<Quiz> Quizzes { get; set; }
-        public virtual ICollection<AIRequest> AIRequests { get; set; }
+        public virtual ICollection<AiRequest> AiRequests { get; set; }
         public virtual ICollection<QuestionBank> QuestionBanks { get; set; }
     }
 }
