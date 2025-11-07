@@ -3,7 +3,9 @@ using applications.DTOs.Response;
 using applications.DTOs.Response.AI;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using repositories.Models;
 using services.Interfaces;
+using System.Security.Claims;
 
 namespace controllers.Controllers
 {
@@ -28,8 +30,7 @@ namespace controllers.Controllers
 
         [HttpPost("lesson-plans/generate")]
         public async Task<IActionResult> GenerateLessonPlanAsync(
-            [FromBody] AiLessonPlanRequestDto request, 
-            CancellationToken cancellationToken)
+            [FromBody] AiLessonPlanRequestDto request)
         {
             if (!ModelState.IsValid)
             {
@@ -40,7 +41,10 @@ namespace controllers.Controllers
             {
                 _logger.LogInformation("Generating lesson plan for topic: {Topic}", request.Topic);
 
-                var lessonPlan = await _aiIntegrationService.GenerateAndSaveLessonPlanAsync(request, cancellationToken);
+                // Create a dedicated timeout for AI operations - don't link to request cancellation
+                using var cts = new CancellationTokenSource(TimeSpan.FromMinutes(10));
+                
+                var lessonPlan = await _aiIntegrationService.GenerateAndSaveLessonPlanAsync(request, cts.Token);
 
                 return Ok(ApiResponse<object>.SuccessResponse(new
                 {
@@ -227,6 +231,128 @@ namespace controllers.Controllers
             {
                 _logger.LogError(ex, "Error checking AI service health");
                 return StatusCode(500, ApiResponse<object>.ErrorResponse(500, "Failed to check AI service health"));
+            }
+        }
+
+        [HttpPost("chat")]
+        public async Task<IActionResult> ChatWithAiAsync(
+            [FromBody] AiChatRequestDto request,
+            CancellationToken cancellationToken)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ApiResponse<object>.ErrorResponse(400, "Invalid request data"));
+            }
+
+            try
+            {
+                // Get user role from JWT claims
+                var userRole = User.FindFirst(ClaimTypes.Role)?.Value ?? "user";
+                
+                // Override the UserRole with the actual role from JWT
+                request.UserRole = userRole.ToLower();
+                
+                _logger.LogInformation("Processing chat request from {Role}: {Message}", userRole, request.Message);
+
+                var response = await _aiService.ChatAsync(request, cancellationToken);
+
+                return Ok(ApiResponse<AiChatResponseDto>.SuccessResponse(response));
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error processing chat request");
+                return StatusCode(500, ApiResponse<object>.ErrorResponse(500, ex.Message));
+            }
+        }
+
+        [HttpGet("requests/history")]
+        public async Task<IActionResult> GetRequestHistoryAsync(
+            [FromQuery] string? type = null,
+            [FromQuery] string? status = null,
+            [FromQuery] string? search = null,
+            [FromQuery] int page = 1,
+            [FromQuery] int limit = 20,
+            CancellationToken cancellationToken = default)
+        {
+            try
+            {
+                var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int userId))
+                {
+                    return Unauthorized(ApiResponse<object>.ErrorResponse(401, "User not authenticated"));
+                }
+
+                RequestType? requestType = null;
+                if (!string.IsNullOrEmpty(type) && Enum.TryParse<RequestType>(type, true, out var parsedType))
+                {
+                    requestType = parsedType;
+                }
+
+                AiRequestStatus? requestStatus = null;
+                if (!string.IsNullOrEmpty(status) && Enum.TryParse<AiRequestStatus>(status, true, out var parsedStatus))
+                {
+                    requestStatus = parsedStatus;
+                }
+
+                var history = await _aiIntegrationService.GetRequestHistoryAsync(
+                    userId, requestType, requestStatus, search, page, limit, cancellationToken);
+
+                var total = await _aiIntegrationService.GetRequestCountAsync(
+                    userId, requestType, requestStatus, search, cancellationToken);
+
+                return Ok(new
+                {
+                    success = true,
+                    data = history,
+                    pagination = new
+                    {
+                        page,
+                        limit,
+                        total
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error fetching request history");
+                return StatusCode(500, ApiResponse<object>.ErrorResponse(500, ex.Message));
+            }
+        }
+
+        /// <summary>
+        /// Get specific AI request details
+        /// GET: api/ai/requests/{id}
+        /// </summary>
+        [HttpGet("requests/{id:int}")]
+        public async Task<IActionResult> GetRequestDetailsAsync(int id, CancellationToken cancellationToken)
+        {
+            try
+            {
+                var request = await _aiIntegrationService.GetRequestDetailsAsync(id, cancellationToken);
+
+                if (request == null)
+                {
+                    return NotFound(ApiResponse<object>.ErrorResponse(404, "Request not found"));
+                }
+
+                // Check if user owns this request
+                var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int userId))
+                {
+                    return Unauthorized(ApiResponse<object>.ErrorResponse(401, "User not authenticated"));
+                }
+
+                if (request.UserId != userId && !User.IsInRole("Admin"))
+                {
+                    return Forbid();
+                }
+
+                return Ok(ApiResponse<AiRequestDetailDto>.SuccessResponse(request));
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error fetching request details");
+                return StatusCode(500, ApiResponse<object>.ErrorResponse(500, ex.Message));
             }
         }
 

@@ -18,6 +18,8 @@ namespace services.Services
         private readonly IQuizRepository _quizRepository;
         private readonly IAiRequestRepository _aiRequestRepository;
         private readonly ICurrentUserService _currentUserService;
+        private readonly IWordDocumentService _wordDocumentService;
+        private readonly ICloudinaryStorageService _cloudinaryStorageService;
         private readonly ILogger<AiIntegrationService> _logger;
 
         public AiIntegrationService(
@@ -28,6 +30,8 @@ namespace services.Services
             IQuizRepository quizRepository,
             IAiRequestRepository aiRequestRepository,
             ICurrentUserService currentUserService,
+            IWordDocumentService wordDocumentService,
+            ICloudinaryStorageService cloudinaryStorageService,
             ILogger<AiIntegrationService> logger)
         {
             _aiService = aiService;
@@ -37,6 +41,8 @@ namespace services.Services
             _quizRepository = quizRepository;
             _aiRequestRepository = aiRequestRepository;
             _currentUserService = currentUserService;
+            _wordDocumentService = wordDocumentService;
+            _cloudinaryStorageService = cloudinaryStorageService;
             _logger = logger;
         }
 
@@ -139,6 +145,31 @@ namespace services.Services
                 foreach (var lesson in lessons)
                 {
                     await _lessonRepository.AddLessonAsync(lesson);
+                }
+
+                // Load lessons into lessonPlan for Word document generation
+                lessonPlan.Lessons = lessons;
+
+                // Generate Word document and upload to Cloudinary
+                try
+                {
+                    _logger.LogInformation("Generating Word document for lesson plan: {Title}", lessonPlan.Title);
+                    
+                    using var wordStream = await _wordDocumentService.GenerateLessonPlanWithLessonsDocumentAsync(lessonPlan);
+                    
+                    var fileName = $"LessonPlan_{lessonPlan.LessonPlanId}_{DateTime.UtcNow:yyyyMMdd_HHmmss}.docx";
+                    var fileUrl = await _cloudinaryStorageService.UploadWordDocumentAsync(wordStream, fileName);
+                    
+                    // Update lesson plan with export path
+                    lessonPlan.ExportPath = fileUrl;
+                    await _lessonPlanRepository.UpdateLessonPlanAsync(lessonPlan, cancellationToken);
+                    
+                    _logger.LogInformation("Word document uploaded successfully: {Url}", fileUrl);
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogWarning(ex, "Failed to generate/upload Word document, but lesson plan was created successfully");
+                    // Don't throw - lesson plan creation was successful even if document generation failed
                 }
 
                 _logger.LogInformation("Successfully created lesson plan with {LessonCount} lessons", lessons.Count);
@@ -421,6 +452,71 @@ namespace services.Services
             if (grade >= 10 && grade <= 12) return 3;
 
             return 2; // Default to secondary
+        }
+
+        #endregion
+
+        #region AI Request History
+
+        public async Task<IEnumerable<AiRequestHistoryDto>> GetRequestHistoryAsync(
+            int userId,
+            RequestType? requestType = null,
+            AiRequestStatus? status = null,
+            string? search = null,
+            int page = 1,
+            int limit = 20,
+            CancellationToken cancellationToken = default)
+        {
+            var requests = await _aiRequestRepository.GetRequestHistoryAsync(
+                userId, requestType, status, search, page, limit);
+
+            return requests.Select(r => new AiRequestHistoryDto
+            {
+                RequestId = r.AIRequestId,
+                UserId = r.UserId,
+                UserName = r.User?.Username ?? "Unknown",
+                RequestType = r.RequestType.ToString(),
+                Prompt = r.Prompt,
+                Response = r.Response,
+                Status = r.Status.ToString(),
+                Cost = r.Cost,
+                CreatedAt = r.CreatedAt,
+                LevelId = r.LevelId,
+                LevelName = r.Level?.LevelName ?? "Unknown"
+            });
+        }
+
+        public async Task<int> GetRequestCountAsync(
+            int userId,
+            RequestType? requestType = null,
+            AiRequestStatus? status = null,
+            string? search = null,
+            CancellationToken cancellationToken = default)
+        {
+            return await _aiRequestRepository.GetTotalCountAsync(userId, requestType, status, search);
+        }
+
+        public async Task<AiRequestDetailDto?> GetRequestDetailsAsync(int requestId, CancellationToken cancellationToken = default)
+        {
+            var request = await _aiRequestRepository.GetByIdAsync(requestId);
+            if (request == null) return null;
+
+            return new AiRequestDetailDto
+            {
+                RequestId = request.AIRequestId,
+                UserId = request.UserId,
+                UserName = request.User?.Username ?? "Unknown",
+                RequestType = request.RequestType.ToString(),
+                Prompt = request.Prompt,
+                Response = request.Response,
+                Status = request.Status.ToString(),
+                Cost = request.Cost,
+                CreatedAt = request.CreatedAt,
+                LevelId = request.LevelId,
+                LevelName = request.Level?.LevelName ?? "Unknown",
+                LessonPlanIds = request.LessonPlans?.Select(lp => lp.LessonPlanId).ToList(),
+                QuestionIds = request.Questions?.Select(q => q.QuestionId).ToList()
+            };
         }
 
         #endregion

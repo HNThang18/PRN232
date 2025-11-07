@@ -54,5 +54,88 @@ namespace repositories.Repositories
                 .OrderByDescending(a => a.CreatedAt)
                 .ToListAsync();
         }
+
+        public async Task<IEnumerable<AiRequest>> GetByRequestTypeAsync(RequestType requestType)
+        {
+            return await _context.AiRequests
+                .Include(a => a.User)
+                .Include(a => a.Level)
+                .Where(a => a.RequestType == requestType)
+                .OrderByDescending(a => a.CreatedAt)
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<AiRequest>> GetRequestHistoryAsync(
+            int? userId = null,
+            RequestType? requestType = null,
+            AiRequestStatus? status = null,
+            string? search = null,
+            int page = 1,
+            int limit = 20)
+        {
+            var query = _context.AiRequests
+                .Include(a => a.User)
+                .Include(a => a.Level)
+                .Include(a => a.LessonPlans)
+                .Include(a => a.Questions)
+                .AsQueryable();
+
+            if (userId.HasValue)
+            {
+                query = query.Where(a => a.UserId == userId.Value);
+            }
+
+            if (requestType.HasValue)
+            {
+                query = query.Where(a => a.RequestType == requestType.Value);
+            }
+
+            if (status.HasValue)
+            {
+                query = query.Where(a => a.Status == status.Value);
+            }
+
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                query = query.Where(a => a.Prompt.Contains(search) || (a.Response != null && a.Response.Contains(search)));
+            }
+
+            return await query
+                .OrderByDescending(a => a.CreatedAt)
+                .Skip((page - 1) * limit)
+                .Take(limit)
+                .ToListAsync();
+        }
+
+        public async Task<int> GetTotalCountAsync(
+            int? userId = null,
+            RequestType? requestType = null,
+            AiRequestStatus? status = null,
+            string? search = null)
+        {
+            var query = _context.AiRequests.AsQueryable();
+
+            if (userId.HasValue)
+            {
+                query = query.Where(a => a.UserId == userId.Value);
+            }
+
+            if (requestType.HasValue)
+            {
+                query = query.Where(a => a.RequestType == requestType.Value);
+            }
+
+            if (status.HasValue)
+            {
+                query = query.Where(a => a.Status == status.Value);
+            }
+
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                query = query.Where(a => a.Prompt.Contains(search) || (a.Response != null && a.Response.Contains(search)));
+            }
+
+            return await query.CountAsync();
+        }
     }
 }

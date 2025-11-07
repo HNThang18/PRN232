@@ -13,6 +13,16 @@ using applications;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Configure Kestrel to allow longer requests for AI operations
+builder.WebHost.ConfigureKestrel(serverOptions =>
+{
+    serverOptions.Limits.KeepAliveTimeout = TimeSpan.FromMinutes(10);
+    serverOptions.Limits.RequestHeadersTimeout = TimeSpan.FromMinutes(10);
+    // Disable minimum data rate to prevent timeout during long AI operations
+    serverOptions.Limits.MinRequestBodyDataRate = null;
+    serverOptions.Limits.MinResponseDataRate = null;
+});
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -50,8 +60,12 @@ builder.Services.AddSwaggerGen(option =>
 builder.Services.AddDbContext<MathLpContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Register HttpClient for AI Service
-builder.Services.AddHttpClient<IAiService, AiService>();
+// Register HttpClient for AI Service with extended timeout for AI operations
+builder.Services.AddHttpClient<IAiService, AiService>()
+    .ConfigureHttpClient(client =>
+    {
+        client.Timeout = TimeSpan.FromMinutes(5); // AI operations can take time
+    });
 
 // Register repositories and services
 builder.Services.AddScoped<ILessonRepository, LessonRepository>();
@@ -79,6 +93,10 @@ builder.Services.AddScoped<IAiRequestRepository, AiRequestRepository>();
 
 builder.Services.AddScoped<IAiService, AiService>();
 builder.Services.AddScoped<IAiIntegrationService, AiIntegrationService>();
+
+// Add Word Document and Cloudinary Storage services
+builder.Services.AddScoped<IWordDocumentService, WordDocumentService>();
+builder.Services.AddScoped<ICloudinaryStorageService, CloudinaryStorageService>();
 
 //add Repositories for Submissions and Progress
 builder.Services.AddScoped<ISubmissionRepository, SubmissionRepository>();
@@ -111,6 +129,16 @@ builder.Services.AddAuthentication(options =>
         };
     });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", builder =>
+    {
+        builder.AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader();
+    });
+});
+
 builder.Services.AddAuthorization();
 
 var app = builder.Build();
@@ -123,6 +151,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("AllowAll");
 
 app.UseAuthentication();
 

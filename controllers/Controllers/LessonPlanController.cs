@@ -449,5 +449,43 @@ namespace controllers.Controllers
                 return StatusCode(500, new { success = false, error = new { code = 500, message = ex.Message } });
             }
         }
+        [HttpGet("{id:int}/download")]
+        public async Task<IActionResult> GetLessonPlanDownloadUrlAsync(int id, CancellationToken cancellationToken)
+        {
+            try
+            {
+                var lessonPlan = await _lessonPlanService.GetLessonPlanByIdAsync(id, cancellationToken);
+                
+                if (lessonPlan == null)
+                {
+                    return NotFound(new { success = false, error = new { code = 404, message = "Lesson plan not found" } });
+                }
+
+                if (string.IsNullOrEmpty(lessonPlan.ExportPath))
+                {
+                    return NotFound(new { success = false, error = new { code = 404, message = "Word document not available for this lesson plan" } });
+                }
+
+                return Ok(new
+                {
+                    success = true,
+                    data = new
+                    {
+                        downloadUrl = lessonPlan.ExportPath,
+                        fileName = $"{lessonPlan.Title}.docx",
+                        lessonPlanId = lessonPlan.LessonPlanId,
+                        title = lessonPlan.Title
+                    }
+                });
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new { success = false, error = new { code = 400, message = ex.Message } });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { success = false, error = new { code = 500, message = ex.Message } });
+            }
+        }
     }
 }

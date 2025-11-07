@@ -15,5 +15,20 @@ namespace services.Interfaces
         Task<Quiz> GenerateAndSaveQuizAsync(
             AiQuizRequestDto request, 
             CancellationToken cancellationToken = default);
+        Task<IEnumerable<AiRequestHistoryDto>> GetRequestHistoryAsync(
+            int userId,
+            RequestType? requestType = null,
+            AiRequestStatus? status = null,
+            string? search = null,
+            int page = 1,
+            int limit = 20,
+            CancellationToken cancellationToken = default);
+        Task<int> GetRequestCountAsync(
+            int userId,
+            RequestType? requestType = null,
+            AiRequestStatus? status = null,
+            string? search = null,
+            CancellationToken cancellationToken = default);
+        Task<AiRequestDetailDto?> GetRequestDetailsAsync(int requestId, CancellationToken cancellationToken = default);
     }
 }

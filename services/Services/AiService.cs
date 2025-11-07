@@ -20,7 +20,7 @@ namespace services.Services
             _logger = logger;
             _aiServiceBaseUrl = configuration["AiService:BaseUrl"] ?? "http://localhost:8000";
             _httpClient.BaseAddress = new Uri(_aiServiceBaseUrl);
-            _httpClient.Timeout = TimeSpan.FromMinutes(2); // AI generation can take time
+            // Timeout is configured in Program.cs via AddHttpClient (5 minutes)
         }
 
         public async Task<AiLessonPlanResponseDto> GenerateLessonPlanAsync(
@@ -39,6 +39,8 @@ namespace services.Services
                     objectives = request.Objectives,
                     additional_requirements = request.AdditionalRequirements
                 };
+
+                _logger.LogInformation("AI Request Body: {Request}", System.Text.Json.JsonSerializer.Serialize(aiRequest));
 
                 var response = await _httpClient.PostAsJsonAsync(
                     "/api/v1/generate/lesson-plan", 
@@ -239,6 +241,57 @@ namespace services.Services
         {
             public int Code { get; set; }
             public string Message { get; set; } = string.Empty;
+        }
+
+        public async Task<AiChatResponseDto> ChatAsync(AiChatRequestDto request, CancellationToken cancellationToken = default)
+        {
+            try
+            {
+                _logger.LogInformation("Calling AI service for chat: {Message}", request.Message);
+
+                var aiRequest = new
+                {
+                    message = request.Message,
+                    conversation_id = request.ConversationId,
+                    user_role = request.UserRole ?? "user"
+                };
+
+                var response = await _httpClient.PostAsJsonAsync(
+                    "/api/v1/chat",
+                    aiRequest,
+                    cancellationToken);
+
+                response.EnsureSuccessStatusCode();
+
+                var rawContent = await response.Content.ReadAsStringAsync(cancellationToken);
+                _logger.LogDebug("AI chat response: {Response}", rawContent);
+
+                var chatResponse = JsonSerializer.Deserialize<AiChatResponseDto>(
+                    rawContent,
+                    new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+
+                if (chatResponse == null)
+                {
+                    throw new Exception("Failed to deserialize chat response from AI service");
+                }
+
+                return chatResponse;
+            }
+            catch (HttpRequestException ex)
+            {
+                _logger.LogError(ex, "HTTP error calling AI chat service");
+                throw new Exception($"Failed to connect to AI service: {ex.Message}", ex);
+            }
+            catch (JsonException ex)
+            {
+                _logger.LogError(ex, "Failed to deserialize AI chat response");
+                throw new Exception("Invalid response format from AI service", ex);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Unexpected error in AI chat");
+                throw;
+            }
         }
     }
 }
