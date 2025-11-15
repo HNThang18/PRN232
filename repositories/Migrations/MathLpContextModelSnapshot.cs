@@ -962,7 +962,7 @@ namespace repositories.Migrations
                             Email = "student1@example.com",
                             IsActive = true,
                             LevelId = 1,
-                            Password = "hashedpassword",
+                            Password = "$2a$11$X5GWjenMG8dMT4rI9sIGjutxFe9l6xm0VBTHFuArHL.CDkfMursM6",
                             Role = 0,
                             Username = "student1"
                         },
@@ -974,7 +974,7 @@ namespace repositories.Migrations
                             Email = "teacher1@example.com",
                             IsActive = true,
                             LevelId = 2,
-                            Password = "hashedpassword",
+                            Password = "$2a$11$X5GWjenMG8dMT4rI9sIGjutxFe9l6xm0VBTHFuArHL.CDkfMursM6",
                             Role = 1,
                             Username = "teacher1"
                         });

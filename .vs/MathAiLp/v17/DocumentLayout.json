@@ -1,22 +1,50 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\acer\\Desktop\\123\\Cn8\\PRN232\\PRN232\\",
+  "WorkspaceRootPath": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|c:\\users\\acer\\desktop\\123\\cn8\\prn232\\prn232\\controllers\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|d:\\personal\\school\\chuyennghanh8\\prn232\\group\\be\\repositories\\migrations\\20251014015654_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|solutionrelative:repositories\\migrations\\20251014015654_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|d:\\personal\\school\\chuyennghanh8\\prn232\\group\\be\\repositories\\migrations\\20251106153101_addexportpathtolessonplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|solutionrelative:repositories\\migrations\\20251106153101_addexportpathtolessonplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|d:\\personal\\school\\chuyennghanh8\\prn232\\group\\be\\repositories\\dbcontext\\mathlpcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|solutionrelative:repositories\\dbcontext\\mathlpcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBBF46FE-1B6E-46C1-92EB-64B648F8CF0A}|services\\services.csproj|d:\\personal\\school\\chuyennghanh8\\prn232\\group\\be\\services\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBBF46FE-1B6E-46C1-92EB-64B648F8CF0A}|services\\services.csproj|solutionrelative:services\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBBF46FE-1B6E-46C1-92EB-64B648F8CF0A}|services\\services.csproj|d:\\personal\\school\\chuyennghanh8\\prn232\\group\\be\\services\\services.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{BBBF46FE-1B6E-46C1-92EB-64B648F8CF0A}|services\\services.csproj|solutionrelative:services\\services.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|d:\\personal\\school\\chuyennghanh8\\prn232\\group\\be\\controllers\\controllers\\progresscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|solutionrelative:controllers\\controllers\\progresscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|d:\\personal\\school\\chuyennghanh8\\prn232\\group\\be\\controllers\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|solutionrelative:controllers\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|c:\\users\\acer\\desktop\\123\\cn8\\prn232\\prn232\\repositories\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|solutionrelative:repositories\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|d:\\personal\\school\\chuyennghanh8\\prn232\\group\\be\\controllers\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|solutionrelative:controllers\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|c:\\users\\acer\\desktop\\123\\cn8\\prn232\\prn232\\controllers\\controllers\\submissionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{40789404-2095-4717-A622-68DF9F9E6615}|applications\\applications.csproj|d:\\personal\\school\\chuyennghanh8\\prn232\\group\\be\\applications\\dtos\\response\\apiresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{40789404-2095-4717-A622-68DF9F9E6615}|applications\\applications.csproj|solutionrelative:applications\\dtos\\response\\apiresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|d:\\personal\\school\\chuyennghanh8\\prn232\\group\\be\\controllers\\controllers\\submissionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|solutionrelative:controllers\\controllers\\submissionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|c:\\users\\acer\\desktop\\123\\cn8\\prn232\\prn232\\controllers\\controllers\\progresscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|solutionrelative:controllers\\controllers\\progresscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|d:\\personal\\school\\chuyennghanh8\\prn232\\group\\be\\repositories\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|solutionrelative:repositories\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,45 +54,147 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "20251014015654_InitialCreate.cs",
+              "DocumentMoniker": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\repositories\\Migrations\\20251014015654_InitialCreate.cs",
+              "RelativeDocumentMoniker": "repositories\\Migrations\\20251014015654_InitialCreate.cs",
+              "ToolTip": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\repositories\\Migrations\\20251014015654_InitialCreate.cs",
+              "RelativeToolTip": "repositories\\Migrations\\20251014015654_InitialCreate.cs",
+              "ViewState": "AgIAANQBAAAAAAAAAAAIwOoBAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T15:13:03.811Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "20251106153101_AddExportPathToLessonPlan.cs",
+              "DocumentMoniker": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\repositories\\Migrations\\20251106153101_AddExportPathToLessonPlan.cs",
+              "RelativeDocumentMoniker": "repositories\\Migrations\\20251106153101_AddExportPathToLessonPlan.cs",
+              "ToolTip": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\repositories\\Migrations\\20251106153101_AddExportPathToLessonPlan.cs",
+              "RelativeToolTip": "repositories\\Migrations\\20251106153101_AddExportPathToLessonPlan.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAAAA4AAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T15:11:34.088Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "services",
+              "DocumentMoniker": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\services\\services.csproj",
+              "RelativeDocumentMoniker": "services\\services.csproj",
+              "ToolTip": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\services\\services.csproj",
+              "RelativeToolTip": "services\\services.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-11-15T14:56:29.362Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MathLpContext.cs",
+              "DocumentMoniker": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\repositories\\Dbcontext\\MathLpContext.cs",
+              "RelativeDocumentMoniker": "repositories\\Dbcontext\\MathLpContext.cs",
+              "ToolTip": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\repositories\\Dbcontext\\MathLpContext.cs",
+              "RelativeToolTip": "repositories\\Dbcontext\\MathLpContext.cs",
+              "ViewState": "AgIAAGIBAAAAAAAAAAAcwGMBAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T14:21:55.316Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ApiResponse.cs",
+              "DocumentMoniker": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\applications\\DTOs\\Response\\ApiResponse.cs",
+              "RelativeDocumentMoniker": "applications\\DTOs\\Response\\ApiResponse.cs",
+              "ToolTip": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\applications\\DTOs\\Response\\ApiResponse.cs",
+              "RelativeToolTip": "applications\\DTOs\\Response\\ApiResponse.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAAAAcAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T14:03:09.108Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\services\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "services\\Services\\UserService.cs",
+              "ToolTip": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\services\\Services\\UserService.cs",
+              "RelativeToolTip": "services\\Services\\UserService.cs",
+              "ViewState": "AgIAAG8AAAAAAAAAAAAMwIwAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T13:57:44.872Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\controllers\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "controllers\\Controllers\\AuthController.cs",
+              "ToolTip": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\controllers\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "controllers\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAMwEUAAABRAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T13:55:50.06Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\acer\\Desktop\\123\\Cn8\\PRN232\\PRN232\\controllers\\appsettings.json",
+              "DocumentMoniker": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\controllers\\appsettings.json",
               "RelativeDocumentMoniker": "controllers\\appsettings.json",
-              "ToolTip": "C:\\Users\\acer\\Desktop\\123\\Cn8\\PRN232\\PRN232\\controllers\\appsettings.json",
+              "ToolTip": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\controllers\\appsettings.json",
               "RelativeToolTip": "controllers\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAA9AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-11-02T08:48:33.529Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 10,
               "Title": "User.cs",
-              "DocumentMoniker": "C:\\Users\\acer\\Desktop\\123\\Cn8\\PRN232\\PRN232\\repositories\\Models\\User.cs",
+              "DocumentMoniker": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\repositories\\Models\\User.cs",
               "RelativeDocumentMoniker": "repositories\\Models\\User.cs",
-              "ToolTip": "C:\\Users\\acer\\Desktop\\123\\Cn8\\PRN232\\PRN232\\repositories\\Models\\User.cs",
+              "ToolTip": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\repositories\\Models\\User.cs",
               "RelativeToolTip": "repositories\\Models\\User.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwBEAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-02T08:47:15.602Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-02T08:47:15.602Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 9,
               "Title": "SubmissionsController.cs",
-              "DocumentMoniker": "C:\\Users\\acer\\Desktop\\123\\Cn8\\PRN232\\PRN232\\controllers\\Controllers\\SubmissionsController.cs",
+              "DocumentMoniker": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\controllers\\Controllers\\SubmissionsController.cs",
               "RelativeDocumentMoniker": "controllers\\Controllers\\SubmissionsController.cs",
-              "ToolTip": "C:\\Users\\acer\\Desktop\\123\\Cn8\\PRN232\\PRN232\\controllers\\Controllers\\SubmissionsController.cs",
+              "ToolTip": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\controllers\\Controllers\\SubmissionsController.cs",
               "RelativeToolTip": "controllers\\Controllers\\SubmissionsController.cs",
               "ViewState": "AgIAAE8AAAAAAAAAAADwv1MAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -73,11 +203,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "ProgressController.cs",
-              "DocumentMoniker": "C:\\Users\\acer\\Desktop\\123\\Cn8\\PRN232\\PRN232\\controllers\\Controllers\\ProgressController.cs",
+              "DocumentMoniker": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\controllers\\Controllers\\ProgressController.cs",
               "RelativeDocumentMoniker": "controllers\\Controllers\\ProgressController.cs",
-              "ToolTip": "C:\\Users\\acer\\Desktop\\123\\Cn8\\PRN232\\PRN232\\controllers\\Controllers\\ProgressController.cs",
+              "ToolTip": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\controllers\\Controllers\\ProgressController.cs",
               "RelativeToolTip": "controllers\\Controllers\\ProgressController.cs",
               "ViewState": "AgIAABgAAAAAAAAAAAAYwBEAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",

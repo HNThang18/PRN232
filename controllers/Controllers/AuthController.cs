@@ -1,8 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using services.Interfaces;
-using repositories.Models;
-using applications.DTOs.Request;
+﻿using applications.DTOs.Request;
 using applications.DTOs.Response;
+using Microsoft.AspNetCore.Mvc;
+using repositories.Models;
+using services.Interfaces;
+using System.Diagnostics;
 
 namespace controllers.Controllers
 {

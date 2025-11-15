@@ -350,9 +350,32 @@ namespace repositories.Dbcontext
             );
 
             modelBuilder.Entity<User>().HasData(
-                new User { UserId = 1, LevelId = 1, Username = "student1", Email = "student1@example.com", Password = "hashedpassword", Credit = 0, Role = UserRole.Student, IsActive = true, CreatedAt = new DateTime(2024, 6, 14, 8, 51, 0, DateTimeKind.Utc) },
-                new User { UserId = 2, LevelId = 2, Username = "teacher1", Email = "teacher1@example.com", Password = "hashedpassword", Credit = 100, Role = UserRole.Teacher, IsActive = true, CreatedAt = new DateTime(2024, 6, 14, 8, 51, 0, DateTimeKind.Utc) }
-            );
+                 new User
+                 {
+                     UserId = 1,
+                     LevelId = 1,
+                     Username = "student1",
+                     Email = "student1@example.com",
+                     Password = "$2a$11$X5GWjenMG8dMT4rI9sIGjutxFe9l6xm0VBTHFuArHL.CDkfMursM6",
+                     Credit = 0,
+                     Role = UserRole.Student,
+                     IsActive = true,
+                     CreatedAt = new DateTime(2024, 6, 14, 8, 51, 0, DateTimeKind.Utc)
+                 },
+                 new User
+                 {
+                     UserId = 2,
+                     LevelId = 2,
+                     Username = "teacher1",
+                     Email = "teacher1@example.com",
+                     Password = "$2a$11$X5GWjenMG8dMT4rI9sIGjutxFe9l6xm0VBTHFuArHL.CDkfMursM6",
+                     Credit = 100,
+                     Role = UserRole.Teacher,
+                     IsActive = true,
+                     CreatedAt = new DateTime(2024, 6, 14, 8, 51, 0, DateTimeKind.Utc)
+                 }
+             );
+
 
             modelBuilder.Entity<Difficulty>().HasData(
                 new Difficulty { DifficultyId = 1, Name = "Easy", Description = "Basic level", Value = 1 },

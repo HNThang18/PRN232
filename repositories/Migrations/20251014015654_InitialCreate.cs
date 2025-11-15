@@ -486,8 +486,8 @@ namespace repositories.Migrations
                 columns: new[] { "UserId", "CreatedAt", "Credit", "Email", "GradeLevel", "IsActive", "LevelId", "Password", "Role", "Username" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 6, 14, 8, 51, 0, 0, DateTimeKind.Utc), 0m, "student1@example.com", null, true, 1, "hashedpassword", 0, "student1" },
-                    { 2, new DateTime(2024, 6, 14, 8, 51, 0, 0, DateTimeKind.Utc), 100m, "teacher1@example.com", null, true, 2, "hashedpassword", 1, "teacher1" }
+                    { 1, new DateTime(2024, 6, 14, 8, 51, 0, 0, DateTimeKind.Utc), 0m, "student1@example.com", null, true, 1, "$2a$11$X5GWjenMG8dMT4rI9sIGjutxFe9l6xm0VBTHFuArHL.CDkfMursM6", 0, "student1" },
+                    { 2, new DateTime(2024, 6, 14, 8, 51, 0, 0, DateTimeKind.Utc), 100m, "teacher1@example.com", null, true, 2, "$2a$11$X5GWjenMG8dMT4rI9sIGjutxFe9l6xm0VBTHFuArHL.CDkfMursM6", 1, "teacher1" }
                 });
 
             migrationBuilder.InsertData(
