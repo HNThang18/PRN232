@@ -107,6 +107,10 @@ builder.Services.AddScoped<IProgressRepository, ProgressRepository>();
 builder.Services.AddScoped<ISubmissionService, SubmissionService>();
 builder.Services.AddScoped<IProgressService, ProgressService>();
 
+// Register Answer repository and service
+builder.Services.AddScoped<repositories.Interfaces.IAnswerRepository, repositories.Repositories.AnswerRepository>();
+builder.Services.AddScoped<services.Interfaces.IAnswerService, services.Services.AnswerService>();
+
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
