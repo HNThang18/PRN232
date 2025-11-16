@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using repositories.Basic;
 using repositories.Dbcontext;
 using repositories.Interfaces;
@@ -13,15 +13,14 @@ namespace repositories.Repositories
 {
     public class SubmissionRepository : GenericRepository<Submission>, ISubmissionRepository
     {
-        private readonly MathLpContext _context;
         public SubmissionRepository(MathLpContext context) : base(context)
         {
         }
 
         public async Task<List<Submission>> GetSubmissionsByStudentAndQuizAsync(int studentId, int quizId)
         {
-            // Sửa .CountAsync() thành .Where(...) và .ToListAsync()
-            return await _context.submissions // (Giả sử tên DbSet của bạn là 'submissions')
+            // S?a .CountAsync() th�nh .Where(...) v� .ToListAsync()
+            return await _context.submissions // (Gi? s? t�n DbSet c?a b?n l� 'submissions')
                 .Where(s => s.StudentId == studentId && s.QuizId == quizId)
                 .ToListAsync();
         }
@@ -33,11 +32,40 @@ namespace repositories.Repositories
 
         public async Task<Submission> GetSubmissionWithDetailsAsync(int submissionId)
         {
-            return await _context.submissions // (hoặc _context.Submissions)
-                .Include(s => s.Quiz) // Lấy thông tin Quiz (để lấy QuizTitle)
-                .Include(s => s.SubmissionDetails) // Lấy danh sách chi tiết
-                    .ThenInclude(sd => sd.Question) // Với MỖI chi tiết, lấy Question tương ứng
-                .FirstOrDefaultAsync(s => s.SubmissionId == submissionId);
+            return await _context.submissions
+                .Include(s => s.Quiz)
+                .Include(s => s.SubmissionDetails)
+                    .ThenInclude(sd => sd.Question)
+                .FirstOrDefaultAsync(s => s.SubmissionId == submissionId) ?? throw new Exception("Submission not found");
+        }
+
+        public async Task<IEnumerable<Submission>> GetSubmissionsByQuizIdAsync(int quizId)
+        {
+            return await _context.submissions
+                .Include(s => s.Student)
+                .Include(s => s.SubmissionDetails)
+                .Where(s => s.QuizId == quizId)
+                .OrderByDescending(s => s.SubmittedAt)
+                .ToListAsync();
+        }
+
+        public async Task<int> GetSubmissionCountByQuizIdAsync(int quizId)
+        {
+            return await _context.submissions
+                .Where(s => s.QuizId == quizId)
+                .CountAsync();
+        }
+
+        public async Task<decimal> GetAverageScoreByQuizIdAsync(int quizId)
+        {
+            var submissions = await _context.submissions
+                .Where(s => s.QuizId == quizId && s.Status == SubissionStatus.Completed)
+                .ToListAsync();
+
+            if (!submissions.Any())
+                return 0;
+
+            return submissions.Average(s => s.Score);
         }
     }
 }

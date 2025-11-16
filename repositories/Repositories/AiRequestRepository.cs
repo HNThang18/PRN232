@@ -137,5 +137,19 @@ namespace repositories.Repositories
 
             return await query.CountAsync();
         }
+
+        public async Task<int> GetRequestCountByUserIdAsync(int userId, DateTime startDate, DateTime endDate)
+        {
+            return await _context.AiRequests
+                .Where(a => a.UserId == userId && a.CreatedAt >= startDate && a.CreatedAt <= endDate)
+                .CountAsync();
+        }
+
+        public async Task<int> GetRequestCountByTypeAsync(RequestType requestType, DateTime startDate, DateTime endDate)
+        {
+            return await _context.AiRequests
+                .Where(a => a.RequestType == requestType && a.CreatedAt >= startDate && a.CreatedAt <= endDate)
+                .CountAsync();
+        }
     }
 }

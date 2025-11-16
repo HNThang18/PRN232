@@ -20,5 +20,14 @@ namespace services.Services
         {
             await _questionRepository.AddQuestionAsync(question);
         }
+
+        public async Task<IEnumerable<Question>> GetAvailableQuestionsAsync(
+            int? levelId = null, 
+            int? difficultyId = null, 
+            string? topic = null, 
+            string? searchTerm = null)
+        {
+            return await _questionRepository.GetAvailableQuestionsAsync(levelId, difficultyId, topic, searchTerm);
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using repositories.Basic;
 using repositories.Dbcontext;
 using repositories.Interfaces;
@@ -24,6 +24,68 @@ namespace repositories.Repositories
             return await _context.questions
                 .Where(q => questionIds.Contains(q.QuestionId))
                 .ToListAsync();
+        }
+
+        public new async Task<Question?> GetByIdAsync(int questionId)
+        {
+            return await _context.questions
+                .Include(q => q.Answers)
+                .Include(q => q.Difficulty)
+                .FirstOrDefaultAsync(q => q.QuestionId == questionId);
+        }
+
+        public async Task<IEnumerable<Question>> GetByQuizIdAsync(int quizId)
+        {
+            return await _context.questions
+                .Include(q => q.Answers)
+                .Include(q => q.Difficulty)
+                .Where(q => q.QuizId == quizId)
+                .ToListAsync();
+        }
+
+        public new async Task UpdateAsync(Question question)
+        {
+            _context.questions.Update(question);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<Question>> GetAvailableQuestionsAsync(
+            int? levelId = null, 
+            int? difficultyId = null, 
+            string? topic = null, 
+            string? searchTerm = null)
+        {
+            var query = _context.questions
+                .Include(q => q.Difficulty)
+                .Include(q => q.QuestionBank)
+                .ThenInclude(qb => qb.Level)
+                .Where(q => q.Status == QuestionStatus.Approved && q.QuizId == null);
+
+            if (levelId.HasValue)
+            {
+                query = query.Where(q => q.QuestionBank.LevelId == levelId.Value);
+            }
+
+            if (difficultyId.HasValue)
+            {
+                query = query.Where(q => q.DifficultyId == difficultyId.Value);
+            }
+
+            if (!string.IsNullOrWhiteSpace(topic))
+            {
+                // Convert topic string to enum and filter
+                if (Enum.TryParse<Topic>(topic, true, out var topicEnum))
+                {
+                    query = query.Where(q => q.Topic == topicEnum);
+                }
+            }
+
+            if (!string.IsNullOrWhiteSpace(searchTerm))
+            {
+                query = query.Where(q => q.QuestionText.Contains(searchTerm));
+            }
+
+            return await query.OrderByDescending(q => q.CreatedAt).ToListAsync();
         }
     }
 }
