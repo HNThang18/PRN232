@@ -8,5 +8,14 @@ namespace repositories.Interfaces
     {
         Task AddQuestionAsync(Question question);
         Task<List<Question>> GetQuestionsWithCorrectAnswersAsync(List<int> questionIds);
+
+        // CRUD
+        Task<List<Question>> GetAllAsync();
+        Task<Question?> GetByIdAsync(int id);
+        Task<int> CreateAsync(Question question);
+        Task<int> UpdateAsync(Question question);
+        Task<bool> RemoveAsync(Question question);
+
+        Task<List<Question>> GetByQuizIdAsync(int quizId);
     }
 }

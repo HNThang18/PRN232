@@ -3,8 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|c:\\users\\admin\\documents\\github\\prn232\\controllers\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|solutionrelative:controllers\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|c:\\users\\admin\\documents\\github\\prn232\\controllers\\controllers\\questionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|solutionrelative:controllers\\controllers\\questionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|c:\\users\\admin\\documents\\github\\prn232\\repositories\\models\\question.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|solutionrelative:repositories\\models\\question.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{40789404-2095-4717-A622-68DF9F9E6615}|applications\\applications.csproj|c:\\users\\admin\\documents\\github\\prn232\\applications\\dtos\\request\\questionrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{40789404-2095-4717-A622-68DF9F9E6615}|applications\\applications.csproj|solutionrelative:applications\\dtos\\request\\questionrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBBF46FE-1B6E-46C1-92EB-64B648F8CF0A}|services\\services.csproj|c:\\users\\admin\\documents\\github\\prn232\\services\\interfaces\\iquestionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBBF46FE-1B6E-46C1-92EB-64B648F8CF0A}|services\\services.csproj|solutionrelative:services\\interfaces\\iquestionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|c:\\users\\admin\\documents\\github\\prn232\\repositories\\repositories\\questionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|solutionrelative:repositories\\repositories\\questionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|c:\\users\\admin\\documents\\github\\prn232\\repositories\\interfaces\\iquestionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|solutionrelative:repositories\\interfaces\\iquestionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{40789404-2095-4717-A622-68DF9F9E6615}|applications\\applications.csproj|c:\\users\\admin\\documents\\github\\prn232\\applications\\dtos\\request\\answerrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -13,6 +33,18 @@
     {
       "AbsoluteMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|c:\\users\\admin\\documents\\github\\prn232\\controllers\\controllers\\answerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|solutionrelative:controllers\\controllers\\answerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|c:\\users\\admin\\documents\\github\\prn232\\controllers\\controllers\\questionbankcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|solutionrelative:controllers\\controllers\\questionbankcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBBF46FE-1B6E-46C1-92EB-64B648F8CF0A}|services\\services.csproj|c:\\users\\admin\\documents\\github\\prn232\\services\\services\\quizservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBBF46FE-1B6E-46C1-92EB-64B648F8CF0A}|services\\services.csproj|solutionrelative:services\\services\\quizservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|c:\\users\\admin\\documents\\github\\prn232\\controllers\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|solutionrelative:controllers\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|c:\\users\\admin\\documents\\github\\prn232\\repositories\\interfaces\\ianswerrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -33,6 +65,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|c:\\users\\admin\\documents\\github\\prn232\\controllers\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|solutionrelative:controllers\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBBF46FE-1B6E-46C1-92EB-64B648F8CF0A}|services\\services.csproj|c:\\users\\admin\\documents\\github\\prn232\\services\\services\\questionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBBF46FE-1B6E-46C1-92EB-64B648F8CF0A}|services\\services.csproj|solutionrelative:services\\services\\questionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -166,76 +202,141 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
-              "$type": "Bookmark",
               "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Question.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\repositories\\Models\\Question.cs",
+              "RelativeDocumentMoniker": "repositories\\Models\\Question.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\repositories\\Models\\Question.cs",
+              "RelativeToolTip": "repositories\\Models\\Question.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAYwAsAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T13:50:03.288Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "QuestionsController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\controllers\\Controllers\\QuestionsController.cs",
+              "RelativeDocumentMoniker": "controllers\\Controllers\\QuestionsController.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\controllers\\Controllers\\QuestionsController.cs",
+              "RelativeToolTip": "controllers\\Controllers\\QuestionsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T13:48:16.25Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "QuestionService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\services\\Services\\QuestionService.cs",
+              "RelativeDocumentMoniker": "services\\Services\\QuestionService.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\services\\Services\\QuestionService.cs",
+              "RelativeToolTip": "services\\Services\\QuestionService.cs",
+              "ViewState": "AgIAAEQAAAAAAAAAAEBVwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T13:47:28.343Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IQuestionService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\services\\Interfaces\\IQuestionService.cs",
+              "RelativeDocumentMoniker": "services\\Interfaces\\IQuestionService.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\services\\Interfaces\\IQuestionService.cs",
+              "RelativeToolTip": "services\\Interfaces\\IQuestionService.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T13:47:03.434Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "QuestionRequestDto.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\applications\\DTOs\\Request\\QuestionRequestDto.cs",
+              "RelativeDocumentMoniker": "applications\\DTOs\\Request\\QuestionRequestDto.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\applications\\DTOs\\Request\\QuestionRequestDto.cs",
+              "RelativeToolTip": "applications\\DTOs\\Request\\QuestionRequestDto.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T13:46:56.755Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "QuestionRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\repositories\\Repositories\\QuestionRepository.cs",
+              "RelativeDocumentMoniker": "repositories\\Repositories\\QuestionRepository.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\repositories\\Repositories\\QuestionRepository.cs",
+              "RelativeToolTip": "repositories\\Repositories\\QuestionRepository.cs",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T13:46:44.812Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IQuestionRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\repositories\\Interfaces\\IQuestionRepository.cs",
+              "RelativeDocumentMoniker": "repositories\\Interfaces\\IQuestionRepository.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\repositories\\Interfaces\\IQuestionRepository.cs",
+              "RelativeToolTip": "repositories\\Interfaces\\IQuestionRepository.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T13:46:25.038Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "QuestionBankController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\controllers\\Controllers\\QuestionBankController.cs",
+              "RelativeDocumentMoniker": "controllers\\Controllers\\QuestionBankController.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\controllers\\Controllers\\QuestionBankController.cs",
+              "RelativeToolTip": "controllers\\Controllers\\QuestionBankController.cs",
+              "ViewState": "AgIAAGEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T13:43:16.828Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "QuizService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\services\\Services\\QuizService.cs",
+              "RelativeDocumentMoniker": "services\\Services\\QuizService.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\services\\Services\\QuizService.cs",
+              "RelativeToolTip": "services\\Services\\QuizService.cs",
+              "ViewState": "AgIAAJ4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T13:41:19.847Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\controllers\\appsettings.json",
               "RelativeDocumentMoniker": "controllers\\appsettings.json",
               "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\controllers\\appsettings.json",
               "RelativeToolTip": "controllers\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAACCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-11-16T12:07:08.849Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AnswersController.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\controllers\\Controllers\\AnswersController.cs",
-              "RelativeDocumentMoniker": "controllers\\Controllers\\AnswersController.cs",
-              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\controllers\\Controllers\\AnswersController.cs",
-              "RelativeToolTip": "controllers\\Controllers\\AnswersController.cs",
-              "ViewState": "AgIAADMAAAAAAAAAAAAowDoAAABTAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-16T11:15:12.78Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AnswerService.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\services\\Services\\AnswerService.cs",
-              "RelativeDocumentMoniker": "services\\Services\\AnswerService.cs",
-              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\services\\Services\\AnswerService.cs",
-              "RelativeToolTip": "services\\Services\\AnswerService.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAQwB8AAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-16T11:00:31.33Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "IAnswerService.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\services\\Interfaces\\IAnswerService.cs",
-              "RelativeDocumentMoniker": "services\\Interfaces\\IAnswerService.cs",
-              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\services\\Interfaces\\IAnswerService.cs",
-              "RelativeToolTip": "services\\Interfaces\\IAnswerService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAgAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-16T11:00:31.282Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "AnswerRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\repositories\\Repositories\\AnswerRepository.cs",
-              "RelativeDocumentMoniker": "repositories\\Repositories\\AnswerRepository.cs",
-              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\repositories\\Repositories\\AnswerRepository.cs",
-              "RelativeToolTip": "repositories\\Repositories\\AnswerRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-16T11:00:31.25Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 11,
               "Title": "IAnswerRepository.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\repositories\\Interfaces\\IAnswerRepository.cs",
               "RelativeDocumentMoniker": "repositories\\Interfaces\\IAnswerRepository.cs",
@@ -247,7 +348,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "AnswerRequestDto.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\applications\\DTOs\\Request\\AnswerRequestDto.cs",
               "RelativeDocumentMoniker": "applications\\DTOs\\Request\\AnswerRequestDto.cs",
@@ -261,14 +362,68 @@
             {
               "$type": "Document",
               "DocumentIndex": 7,
+              "Title": "AnswersController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\controllers\\Controllers\\AnswersController.cs",
+              "RelativeDocumentMoniker": "controllers\\Controllers\\AnswersController.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\controllers\\Controllers\\AnswersController.cs",
+              "RelativeToolTip": "controllers\\Controllers\\AnswersController.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAowDoAAABTAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T11:15:12.78Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "AnswerRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\repositories\\Repositories\\AnswerRepository.cs",
+              "RelativeDocumentMoniker": "repositories\\Repositories\\AnswerRepository.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\repositories\\Repositories\\AnswerRepository.cs",
+              "RelativeToolTip": "repositories\\Repositories\\AnswerRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T11:00:31.25Z"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "IAnswerService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\services\\Interfaces\\IAnswerService.cs",
+              "RelativeDocumentMoniker": "services\\Interfaces\\IAnswerService.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\services\\Interfaces\\IAnswerService.cs",
+              "RelativeToolTip": "services\\Interfaces\\IAnswerService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAgAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T11:00:31.282Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "AnswerService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\services\\Services\\AnswerService.cs",
+              "RelativeDocumentMoniker": "services\\Services\\AnswerService.cs",
+              "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\services\\Services\\AnswerService.cs",
+              "RelativeToolTip": "services\\Services\\AnswerService.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwB8AAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T11:00:31.33Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\controllers\\Program.cs",
               "RelativeDocumentMoniker": "controllers\\Program.cs",
               "ToolTip": "C:\\Users\\Admin\\Documents\\GitHub\\PRN232\\controllers\\Program.cs",
               "RelativeToolTip": "controllers\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAKkAAAAAAAAAAABRwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-16T11:00:31.361Z"
+              "WhenOpened": "2025-11-16T11:00:31.361Z",
+              "EditorCaption": ""
             }
           ]
         },
