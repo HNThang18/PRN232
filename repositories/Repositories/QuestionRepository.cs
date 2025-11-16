@@ -49,43 +49,43 @@ namespace repositories.Repositories
         //     await _context.SaveChangesAsync();
         // }
 
-        // public async Task<IEnumerable<Question>> GetAvailableQuestionsAsync(
-        //     int? levelId = null, 
-        //     int? difficultyId = null, 
-        //     string? topic = null, 
-        //     string? searchTerm = null)
-        // {
-        //     var query = _context.questions
-        //         .Include(q => q.Difficulty)
-        //         .Include(q => q.QuestionBank)
-        //         .ThenInclude(qb => qb.Level)
-        //         .Where(q => q.Status == QuestionStatus.Approved && q.QuizId == null);
+        public async Task<IEnumerable<Question>> GetAvailableQuestionsAsync(
+            int? levelId = null,
+            int? difficultyId = null,
+            string? topic = null,
+            string? searchTerm = null)
+        {
+            var query = _context.questions
+                .Include(q => q.Difficulty)
+                .Include(q => q.QuestionBank)
+                .ThenInclude(qb => qb.Level)
+                .Where(q => q.Status == QuestionStatus.Approved && q.QuizId == null);
 
-        //     if (levelId.HasValue)
-        //     {
-        //         query = query.Where(q => q.QuestionBank.LevelId == levelId.Value);
-        //     }
+            if (levelId.HasValue)
+            {
+                query = query.Where(q => q.QuestionBank.LevelId == levelId.Value);
+            }
 
-        //     if (difficultyId.HasValue)
-        //     {
-        //         query = query.Where(q => q.DifficultyId == difficultyId.Value);
-        //     }
+            if (difficultyId.HasValue)
+            {
+                query = query.Where(q => q.DifficultyId == difficultyId.Value);
+            }
 
-        //     if (!string.IsNullOrWhiteSpace(topic))
-        //     {
-        //         // Convert topic string to enum and filter
-        //         if (Enum.TryParse<Topic>(topic, true, out var topicEnum))
-        //         {
-        //             query = query.Where(q => q.Topic == topicEnum);
-        //         }
-        //     }
+            if (!string.IsNullOrWhiteSpace(topic))
+            {
+                // Convert topic string to enum and filter
+                if (Enum.TryParse<Topic>(topic, true, out var topicEnum))
+                {
+                    query = query.Where(q => q.Topic == topicEnum);
+                }
+            }
 
-        //     if (!string.IsNullOrWhiteSpace(searchTerm))
-        //     {
-        //         query = query.Where(q => q.QuestionText.Contains(searchTerm));
-        //     }
+            if (!string.IsNullOrWhiteSpace(searchTerm))
+            {
+                query = query.Where(q => q.QuestionText.Contains(searchTerm));
+            }
 
-        //     return await query.OrderByDescending(q => q.CreatedAt).ToListAsync();
+            return await query.OrderByDescending(q => q.CreatedAt).ToListAsync();
         public async Task<List<Question>> GetAllAsync()
         {
             return await _context.questions.ToListAsync();
