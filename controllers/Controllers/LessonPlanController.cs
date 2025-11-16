@@ -129,37 +129,6 @@ namespace controllers.Controllers
             }
         }
 
-        [HttpPost]
-        public async Task<IActionResult> CreateLessonPlanAsync([FromBody] CreateLessonPlanDto dto, CancellationToken cancellationToken)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(new { success = false, error = new { code = 400, message = "Invalid request data" } });
-            }
-
-            try
-            {
-                var lessonPlan = new LessonPlan
-                {
-                    TeacherId = dto.TeacherId,
-                    LevelId = dto.LevelId,
-                    Topic = dto.TopicName ?? string.Empty,
-                    Title = dto.Title,
-                    CreatedAt = DateTime.UtcNow,
-                    Status = LessonPlanStatus.Draft
-                };
-
-                await _lessonPlanService.AddLessonPlanAsync(lessonPlan, cancellationToken);
-                var lessonPlanDto = MapToDto(lessonPlan);
-                return CreatedAtAction(nameof(GetLessonPlanByIdAsync), new { id = lessonPlan.LessonPlanId },
-                    new { success = true, data = lessonPlanDto });
-            }
-            catch (ArgumentException ex)
-            {
-                return BadRequest(new { success = false, error = new { code = 400, message = ex.Message } });
-            }
-        }
-
         [HttpPut("{id:int}")]
         public async Task<IActionResult> UpdateLessonPlanAsync(int id, [FromBody] LessonPlanUpdateDto dto, CancellationToken cancellationToken)
         {
@@ -422,10 +391,6 @@ namespace controllers.Controllers
             }
         }
 
-        /// <summary>
-        /// Kiểm tra có thể xóa lesson plan không
-        /// GET: api/lesson-plans/{id}/can-delete
-        /// </summary>
         [HttpGet("{id:int}/can-delete")]
         public async Task<IActionResult> CanDeleteLessonPlanAsync(int id, CancellationToken cancellationToken)
         {
