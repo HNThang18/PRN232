@@ -1,4 +1,5 @@
-﻿using repositories.Basic;
+﻿using Microsoft.EntityFrameworkCore;
+using repositories.Basic;
 using repositories.Dbcontext;
 using repositories.Interfaces;
 using repositories.Models;
@@ -15,6 +16,8 @@ namespace repositories.Repositories
         private readonly MathLpContext _context;
         public SubmissionDetailRepository(MathLpContext context) : base(context)
         {
+            _context = context;
+
         }
 
         public async Task<int> AddRangeAsync(IEnumerable<SubmissionDetail> details)
@@ -22,5 +25,6 @@ namespace repositories.Repositories
             await _context.submissionDetails.AddRangeAsync(details);
             return await _context.SaveChangesAsync();
         }
+
     }
 }

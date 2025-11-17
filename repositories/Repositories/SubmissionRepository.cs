@@ -15,13 +15,16 @@ namespace repositories.Repositories
     {
         public SubmissionRepository(MathLpContext context) : base(context)
         {
+            _context = context;
+
         }
 
         public async Task<List<Submission>> GetSubmissionsByStudentAndQuizAsync(int studentId, int quizId)
         {
-            // S?a .CountAsync() thành .Where(...) và .ToListAsync()
-            return await _context.submissions // (Gi? s? tên DbSet c?a b?n là 'submissions')
+           
+            return await _context.submissions
                 .Where(s => s.StudentId == studentId && s.QuizId == quizId)
+                .OrderByDescending(s => s.SubmittedAt)
                 .ToListAsync();
         }
         public async Task<int> GetSubmissionCountAsync(int studentId, int quizId) { 
@@ -36,36 +39,17 @@ namespace repositories.Repositories
                 .Include(s => s.Quiz)
                 .Include(s => s.SubmissionDetails)
                     .ThenInclude(sd => sd.Question)
-                .FirstOrDefaultAsync(s => s.SubmissionId == submissionId) ?? throw new Exception("Submission not found");
+                        .ThenInclude(q => q.Answers)
+                .FirstOrDefaultAsync(s => s.SubmissionId == submissionId);
         }
 
-        public async Task<IEnumerable<Submission>> GetSubmissionsByQuizIdAsync(int quizId)
+        public async Task<List<Submission>> GetSubmissionsByStudentAsync(int studentId)
         {
             return await _context.submissions
-                .Include(s => s.Student)
-                .Include(s => s.SubmissionDetails)
-                .Where(s => s.QuizId == quizId)
-                .OrderByDescending(s => s.SubmittedAt)
+                .Where(s => s.StudentId == studentId)
+                .Include(s => s.Quiz)
                 .ToListAsync();
         }
 
-        public async Task<int> GetSubmissionCountByQuizIdAsync(int quizId)
-        {
-            return await _context.submissions
-                .Where(s => s.QuizId == quizId)
-                .CountAsync();
-        }
-
-        public async Task<decimal> GetAverageScoreByQuizIdAsync(int quizId)
-        {
-            var submissions = await _context.submissions
-                .Where(s => s.QuizId == quizId && s.Status == SubissionStatus.Completed)
-                .ToListAsync();
-
-            if (!submissions.Any())
-                return 0;
-
-            return submissions.Average(s => s.Score);
-        }
     }
 }

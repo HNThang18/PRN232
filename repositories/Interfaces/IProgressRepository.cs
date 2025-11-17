@@ -11,5 +11,7 @@ namespace repositories.Interfaces
     {
         Task<Progress> GetByStudentAndLessonAsync(int studentId, int lessonId);
         Task<List<Progress>> GetByStudentAndLessonPlanAsync(int studentId, int lessonPlanId);
+        Task<List<Progress>> GetByStudentAsync(int studentId);
+
     }
 }

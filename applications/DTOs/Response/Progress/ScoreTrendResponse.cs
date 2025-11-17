@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace applications.DTOs.Response.Progress
 {
-    public class ProgressResponse
+    public class ScoreTrendResponse
     {
-        public int LessonId { get; set; }
-        public string CompletionStatus { get; set; }
-        public DateTime? AttemptDate { get; set; }
+        public string Week { get; set; }
+        public double Score { get; set; }
     }
 }

@@ -9,7 +9,7 @@ namespace controllers.Controllers
 {
     [Route("api/submissions")]
     [ApiController]
-    [Authorize] // BẮT BUỘC: Yêu cầu người dùng phải đăng nhập
+    [Authorize]
     public class SubmissionsController : ControllerBase
     {
         private readonly ISubmissionService _submissionService;

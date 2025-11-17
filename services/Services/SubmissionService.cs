@@ -203,7 +203,7 @@ namespace services.Services
 
             return submissions.Select(s => new SubmissionSummaryResponse
             {
-                SubmissionId = s.SubmissionId,
+                SubmissionId = s.SubmissionId,  
                 Score = s.Score,
                 SubmittedAt = s.SubmittedAt,
                 AttemptNumber = s.AttemptNumber
