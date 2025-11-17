@@ -334,7 +334,7 @@ namespace services.Services
                 // Create Quiz entity
                 var quiz = new Quiz
                 {
-                    TeacherId = request.TeacherId ?? 0,
+                    TeacherId = userId,
                     LevelId = MapGradeLevelToLevelId(request.GradeLevel),
                     Title = aiResponse.Title,
                     TimeLimit = aiResponse.Duration,

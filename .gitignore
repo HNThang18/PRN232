@@ -88,3 +88,4 @@ UpgradeLog*.htm
 # Các thư mục phụ thuộc của front-end (nếu có)
 node_modules/
 bower_components/
+controllers/appsettings.json

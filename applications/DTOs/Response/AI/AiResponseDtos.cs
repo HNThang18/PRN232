@@ -34,7 +34,7 @@ namespace applications.DTOs.Response.AI
         public string Topic { get; set; } = string.Empty;
         
         [JsonPropertyName("grade_level")]
-        public string GradeLevel { get; set; } = string.Empty;
+        public int GradeLevel { get; set; }
     }
 
     public class AiQuestionDto
@@ -71,7 +71,7 @@ namespace applications.DTOs.Response.AI
         public string Topic { get; set; } = string.Empty;
         
         [JsonPropertyName("grade_level")]
-        public string GradeLevel { get; set; } = string.Empty;
+        public int GradeLevel { get; set; }
         
         public int Duration { get; set; }
         

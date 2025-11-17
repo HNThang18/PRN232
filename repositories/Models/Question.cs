@@ -35,7 +35,8 @@ namespace repositories.Models
         PendingReview,
         Approved,
         Rejected,
-        NeedsRevision
+        NeedsRevision,
+        Deleted
     }
     public class Question
     {

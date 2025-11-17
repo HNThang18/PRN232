@@ -1,7 +1,23 @@
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace applications.DTOs.Request.AI
 {
+    public class DifficultyDistribution
+    {
+        [JsonPropertyName("easy")]
+        [Range(0, 100, ErrorMessage = "Easy percentage must be between 0 and 100")]
+        public double Easy { get; set; } = 0;
+
+        [JsonPropertyName("medium")]
+        [Range(0, 100, ErrorMessage = "Medium percentage must be between 0 and 100")]
+        public double Medium { get; set; } = 0;
+
+        [JsonPropertyName("hard")]
+        [Range(0, 100, ErrorMessage = "Hard percentage must be between 0 and 100")]
+        public double Hard { get; set; } = 0;
+    }
+
     public class AiQuizRequestDto
     {
         [Required(ErrorMessage = "Title is required")]
@@ -23,7 +39,8 @@ namespace applications.DTOs.Request.AI
         [Range(5, 50, ErrorMessage = "Question count must be between 5 and 50")]
         public int QuestionCount { get; set; }
 
-        public Dictionary<string, double>? DifficultyDistribution { get; set; }
+        [JsonPropertyName("difficultyDistribution")]
+        public DifficultyDistribution? DifficultyDistribution { get; set; }
 
         public bool IncludeEssay { get; set; } = false;
 

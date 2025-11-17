@@ -285,10 +285,8 @@ namespace controllers.Controllers
 
             try
             {
-                // Get user role from JWT claims
                 var userRole = User.FindFirst(ClaimTypes.Role)?.Value ?? "user";
-                
-                // Override the UserRole with the actual role from JWT
+
                 request.UserRole = userRole.ToLower();
                 
                 _logger.LogInformation("Processing chat request from {Role}: {Message}", userRole, request.Message);
@@ -358,10 +356,6 @@ namespace controllers.Controllers
             }
         }
 
-        /// <summary>
-        /// Get specific AI request details
-        /// GET: api/ai/requests/{id}
-        /// </summary>
         [HttpGet("requests/{id:int}")]
         public async Task<IActionResult> GetRequestDetailsAsync(int id, CancellationToken cancellationToken)
         {

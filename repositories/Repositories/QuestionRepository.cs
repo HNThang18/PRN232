@@ -39,7 +39,7 @@ namespace repositories.Repositories
             return await _context.questions
                 .Include(q => q.Answers)
                 .Include(q => q.Difficulty)
-                .Where(q => q.QuizId == quizId)
+                .Where(q => q.QuizId == quizId && q.Status != QuestionStatus.Deleted)
                 .ToListAsync();
         }
 
@@ -59,7 +59,7 @@ namespace repositories.Repositories
                 .Include(q => q.Difficulty)
                 .Include(q => q.QuestionBank)
                 .ThenInclude(qb => qb.Level)
-                .Where(q => q.Status == QuestionStatus.Approved && q.QuizId == null);
+                .Where(q => q.Status == QuestionStatus.Approved && q.QuizId == null && q.Status != QuestionStatus.Deleted);
 
             if (levelId.HasValue)
             {
@@ -87,40 +87,27 @@ namespace repositories.Repositories
 
             return await query.OrderByDescending(q => q.CreatedAt).ToListAsync();
         }
-        // public async Task<List<Question>> GetAllAsync()
-        // {
-        //     return await _context.questions.ToListAsync();
-        // }
+        public new async Task<List<Question>> GetAllAsync()
+        {
+            return await _context.questions
+                .Include(q => q.Answers)
+                .Include(q => q.Difficulty)
+                .Include(q => q.QuestionBank)
+                .Where(q => q.Status != QuestionStatus.Deleted)
+                .ToListAsync();
+        }
 
-        // public async Task<Question?> GetByIdAsync(int id)
-        // {
-        //     return await _context.questions.FindAsync(id);
-        // }
+        public new async Task<int> CreateAsync(Question question)
+        {
+            await _context.questions.AddAsync(question);
+            return await _context.SaveChangesAsync();
+        }
 
-        // public async Task<int> CreateAsync(Question question)
-        // {
-        //     await _context.questions.AddAsync(question);
-        //     return await _context.SaveChangesAsync();
-        // }
-
-        // public async Task<int> UpdateAsync(Question question)
-        // {
-        //     _context.ChangeTracker.Clear();
-        //     var tracker = _context.Attach(question);
-        //     tracker.State = EntityState.Modified;
-        //     return await _context.SaveChangesAsync();
-        // }
-
-        // public async Task<bool> RemoveAsync(Question question)
-        // {
-        //     _context.questions.Remove(question);
-        //     await _context.SaveChangesAsync();
-        //     return true;
-        // }
-
-        // public async Task<List<Question>> GetByQuizIdAsync(int quizId)
-        // {
-        //     return await _context.questions.Where(q => q.QuizId == quizId).ToListAsync();
-        // }
+        public new async Task<bool> RemoveAsync(Question question)
+        {
+            _context.questions.Remove(question);
+            await _context.SaveChangesAsync();
+            return true;
+        }
     }
 }

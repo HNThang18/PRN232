@@ -1,8 +1,8 @@
-using Microsoft.AspNetCore.Mvc;
+using applications.DTOs.Question;
 using applications.DTOs.Response;
-using repositories.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using services.Interfaces;
-using applications.DTOs.Request;
 
 namespace controllers.Controllers
 {
@@ -11,91 +11,152 @@ namespace controllers.Controllers
     public class QuestionsController : ControllerBase
     {
         private readonly IQuestionService _questionService;
+
         public QuestionsController(IQuestionService questionService)
         {
             _questionService = questionService;
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        [Authorize(Roles = "Teacher,Admin")]
+        public async Task<ActionResult<ApiResponse<IEnumerable<QuestionResponseDto>>>> GetAll()
         {
-            var list = await _questionService.GetAllAsync();
-            return Ok(ApiResponse<List<Question>>.SuccessResponse(list));
+            try
+            {
+                var questions = await _questionService.GetAllAsync();
+                return Ok(ApiResponse<IEnumerable<QuestionResponseDto>>.SuccessResponse(questions));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ApiResponse<IEnumerable<QuestionResponseDto>>.ErrorResponse(
+                    500, $"Error retrieving questions: {ex.Message}"));
+            }
         }
 
-        [HttpGet("{id:int}")]
-        public async Task<IActionResult> GetById(int id)
+        [HttpGet("{id}")]
+        [Authorize(Roles = "Teacher,Admin")]
+        public async Task<ActionResult<ApiResponse<QuestionResponseDto>>> GetById(int id)
         {
-            var item = await _questionService.GetByIdAsync(id);
-            if (item == null) return NotFound(ApiResponse<Question>.ErrorResponse(404, "Question not found"));
-            return Ok(ApiResponse<Question>.SuccessResponse(item));
+            try
+            {
+                var question = await _questionService.GetByIdAsync(id);
+                if (question == null)
+                {
+                    return NotFound(ApiResponse<QuestionResponseDto>.ErrorResponse(404, "Question not found"));
+                }
+
+                return Ok(ApiResponse<QuestionResponseDto>.SuccessResponse(question));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ApiResponse<QuestionResponseDto>.ErrorResponse(
+                    500, $"Error retrieving question: {ex.Message}"));
+            }
         }
 
-        [HttpGet("quiz/{quizId:int}")]
-        public async Task<IActionResult> GetByQuiz(int quizId)
+        [HttpGet("available")]
+        [Authorize(Roles = "Teacher")]
+        public async Task<ActionResult<ApiResponse<IEnumerable<QuestionResponseDto>>>> GetAvailableQuestions(
+            [FromQuery] int? levelId = null,
+            [FromQuery] int? difficultyId = null,
+            [FromQuery] string? topic = null,
+            [FromQuery] string? searchTerm = null)
         {
-            var list = await _questionService.GetByQuizIdAsync(quizId);
-            return Ok(ApiResponse<List<Question>>.SuccessResponse(list));
+            try
+            {
+                var questions = await _questionService.GetAvailableQuestionsAsync(levelId, difficultyId, topic, searchTerm);
+                return Ok(ApiResponse<IEnumerable<QuestionResponseDto>>.SuccessResponse(questions));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ApiResponse<IEnumerable<QuestionResponseDto>>.ErrorResponse(
+                    500, $"Error retrieving available questions: {ex.Message}"));
+            }
+        }
+
+        [HttpGet("quiz/{quizId}")]
+        [Authorize(Roles = "Teacher,Admin,Student")]
+        public async Task<ActionResult<ApiResponse<IEnumerable<QuestionResponseDto>>>> GetByQuizId(int quizId)
+        {
+            try
+            {
+                var questions = await _questionService.GetByQuizIdAsync(quizId);
+                return Ok(ApiResponse<IEnumerable<QuestionResponseDto>>.SuccessResponse(questions));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ApiResponse<IEnumerable<QuestionResponseDto>>.ErrorResponse(
+                    500, $"Error retrieving questions: {ex.Message}"));
+            }
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] QuestionRequestDto dto)
+        [Authorize(Roles = "Teacher")]
+        public async Task<ActionResult<ApiResponse<QuestionResponseDto>>> Create([FromBody] CreateQuestionRequestDto request)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ApiResponse<Question>.ErrorResponse(400, "Invalid request"));
-
-            var question = new Question
+            try
             {
-                QuizId = dto.QuizId,
-                QuestionBankId = dto.QuestionBankId,
-                DifficultyId = dto.DifficultyId,
-                Topic = (Topic)dto.Topic,
-                QuestionText = dto.QuestionText,
-                QuestionType = (QuestionType)dto.QuestionType,
-                CorrectAnswer = dto.CorrectAnswer,
-                Explanation = dto.Explanation,
-                Tags = dto.Tags,
-                IsAIGenerated = dto.IsAIGenerated,
-                Status = (QuestionStatus)dto.Status
-            };
-
-            var created = await _questionService.CreateAsync(question);
-            return Ok(ApiResponse<Question>.SuccessResponse(created));
+                var question = await _questionService.CreateAsync(request);
+                return CreatedAtAction(
+                    nameof(GetById),
+                    new { id = question.QuestionId },
+                    ApiResponse<QuestionResponseDto>.SuccessResponse(question));
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ApiResponse<QuestionResponseDto>.ErrorResponse(400, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ApiResponse<QuestionResponseDto>.ErrorResponse(
+                    500, $"Error creating question: {ex.Message}"));
+            }
         }
 
-        [HttpPut("{id:int}")]
-        public async Task<IActionResult> Update(int id, [FromBody] QuestionRequestDto dto)
+        [HttpPut("{id}")]
+        [Authorize(Roles = "Teacher")]
+        public async Task<ActionResult<ApiResponse<object>>> Update(int id, [FromBody] UpdateQuestionRequestDto request)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ApiResponse<Question>.ErrorResponse(400, "Invalid request"));
-
-            var question = new Question
+            try
             {
-                QuestionId = id,
-                QuizId = dto.QuizId,
-                QuestionBankId = dto.QuestionBankId,
-                DifficultyId = dto.DifficultyId,
-                Topic = (Topic)dto.Topic,
-                QuestionText = dto.QuestionText,
-                QuestionType = (QuestionType)dto.QuestionType,
-                CorrectAnswer = dto.CorrectAnswer,
-                Explanation = dto.Explanation,
-                Tags = dto.Tags,
-                IsAIGenerated = dto.IsAIGenerated,
-                Status = (QuestionStatus)dto.Status
-            };
+                var success = await _questionService.UpdateAsync(id, request);
+                if (!success)
+                {
+                    return NotFound(ApiResponse<object>.ErrorResponse(404, "Question not found"));
+                }
 
-            var updated = await _questionService.UpdateAsync(id, question);
-            if (!updated) return NotFound(ApiResponse<Question>.ErrorResponse(404, "Question not found"));
-            return Ok(ApiResponse<Question>.SuccessResponse(question));
+                return Ok(ApiResponse<object>.SuccessResponse(new { message = "Question updated successfully" }));
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ApiResponse<object>.ErrorResponse(400, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ApiResponse<object>.ErrorResponse(
+                    500, $"Error updating question: {ex.Message}"));
+            }
         }
 
-        [HttpDelete("{id:int}")]
-        public async Task<IActionResult> Delete(int id)
+        [HttpDelete("{id}")]
+        [Authorize(Roles = "Teacher,Admin")]
+        public async Task<ActionResult<ApiResponse<object>>> Delete(int id)
         {
-            var deleted = await _questionService.DeleteAsync(id);
-            if (!deleted) return NotFound(ApiResponse<Question>.ErrorResponse(404, "Question not found"));
-            return Ok(ApiResponse<string>.SuccessResponse("Deleted"));
+            try
+            {
+                var success = await _questionService.DeleteAsync(id);
+                if (!success)
+                {
+                    return NotFound(ApiResponse<object>.ErrorResponse(404, "Question not found"));
+                }
+
+                return Ok(ApiResponse<object>.SuccessResponse(new { message = "Question deleted successfully" }));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ApiResponse<object>.ErrorResponse(
+                    500, $"Error deleting question: {ex.Message}"));
+            }
         }
     }
 }

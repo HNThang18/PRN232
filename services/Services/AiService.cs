@@ -53,22 +53,22 @@ namespace services.Services
                 var rawContent = await response.Content.ReadAsStringAsync(cancellationToken);
                 _logger.LogInformation("Raw AI response: {Response}", rawContent);
 
-                // Deserialize with case-insensitive options
+                // Deserialize with case-insensitive options (direct response, no wrapper)
                 var options = new JsonSerializerOptions
                 {
                     PropertyNameCaseInsensitive = true
                 };
 
-                var result = JsonSerializer.Deserialize<AiApiResponse<AiLessonPlanResponseDto>>(rawContent, options);
+                var result = JsonSerializer.Deserialize<AiLessonPlanResponseDto>(rawContent, options);
 
-                if (result == null || !result.Success || result.Data == null)
+                if (result == null)
                 {
                     _logger.LogError("AI service returned invalid response. Result: {Result}", rawContent);
                     throw new Exception($"AI service returned invalid response: {rawContent}");
                 }
 
                 _logger.LogInformation("Successfully generated lesson plan for topic: {Topic}", request.Topic);
-                return result.Data;
+                return result;
             }
             catch (HttpRequestException ex)
             {
@@ -99,7 +99,7 @@ namespace services.Services
                 var aiRequest = new
                 {
                     topic = request.Topic,
-                    grade_level = request.GradeLevel.ToString(),
+                    grade_level = request.GradeLevel,
                     question_type = request.QuestionType,
                     difficulty = request.Difficulty,
                     count = request.Count,
@@ -117,15 +117,15 @@ namespace services.Services
                 var rawContent = await response.Content.ReadAsStringAsync(cancellationToken);
                 _logger.LogInformation("Raw AI response: {Response}", rawContent);
 
-                // Deserialize with case-insensitive options
+                // Deserialize with case-insensitive options (direct response, no wrapper)
                 var options = new JsonSerializerOptions
                 {
                     PropertyNameCaseInsensitive = true
                 };
 
-                var result = JsonSerializer.Deserialize<AiApiResponse<AiQuestionResponseDto>>(rawContent, options);
+                var result = JsonSerializer.Deserialize<AiQuestionResponseDto>(rawContent, options);
 
-                if (result == null || !result.Success || result.Data == null)
+                if (result == null)
                 {
                     _logger.LogError("AI service returned invalid response. Result: {Result}", rawContent);
                     throw new Exception($"AI service returned invalid response: {rawContent}");
@@ -133,7 +133,7 @@ namespace services.Services
 
                 _logger.LogInformation("Successfully generated {Count} questions for topic: {Topic}", 
                     request.Count, request.Topic);
-                return result.Data;
+                return result;
             }
             catch (HttpRequestException ex)
             {
@@ -164,7 +164,7 @@ namespace services.Services
                 {
                     title = request.Title,
                     topic = request.Topic,
-                    grade_level = request.GradeLevel.ToString(),
+                    grade_level = request.GradeLevel,
                     duration = request.Duration,
                     question_count = request.QuestionCount,
                     difficulty_distribution = request.DifficultyDistribution,
@@ -182,22 +182,22 @@ namespace services.Services
                 var rawContent = await response.Content.ReadAsStringAsync(cancellationToken);
                 _logger.LogInformation("Raw AI response: {Response}", rawContent);
 
-                // Deserialize with case-insensitive options
+                // Deserialize with case-insensitive options (direct response, no wrapper)
                 var options = new JsonSerializerOptions
                 {
                     PropertyNameCaseInsensitive = true
                 };
 
-                var result = JsonSerializer.Deserialize<AiApiResponse<AiQuizResponseDto>>(rawContent, options);
+                var result = JsonSerializer.Deserialize<AiQuizResponseDto>(rawContent, options);
 
-                if (result == null || !result.Success || result.Data == null)
+                if (result == null)
                 {
                     _logger.LogError("AI service returned invalid response. Result: {Result}", rawContent);
                     throw new Exception($"AI service returned invalid response: {rawContent}");
                 }
 
                 _logger.LogInformation("Successfully generated quiz: {Title}", request.Title);
-                return result.Data;
+                return result;
             }
             catch (HttpRequestException ex)
             {
@@ -227,20 +227,6 @@ namespace services.Services
             {
                 return false;
             }
-        }
-
-        // Helper class for deserializing AI API responses
-        private class AiApiResponse<T>
-        {
-            public bool Success { get; set; }
-            public T? Data { get; set; }
-            public AiErrorDetail? Error { get; set; }
-        }
-
-        private class AiErrorDetail
-        {
-            public int Code { get; set; }
-            public string Message { get; set; } = string.Empty;
         }
 
         public async Task<AiChatResponseDto> ChatAsync(AiChatRequestDto request, CancellationToken cancellationToken = default)
