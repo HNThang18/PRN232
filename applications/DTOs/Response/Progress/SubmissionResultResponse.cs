@@ -15,10 +15,10 @@ namespace applications.DTOs.Response.Progress
         public int TotalQuestions { get; set; }
         public int CorrectAnswers { get; set; }
         public DateTime SubmittedAt { get; set; }
-        public int DurationTaken { get; set; } // Thời gian làm bài (giây)
-        public string Status { get; set; } // "Completed", "Failed", ...
+        public int DurationTaken { get; set; }
+        public string Status { get; set; }
 
-        // Danh sách chi tiết các câu trả lời
+        
         public List<SubmissionDetailResponse> Details { get; set; }
     }
 }

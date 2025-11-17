@@ -16,6 +16,7 @@ namespace repositories.Repositories
         private readonly MathLpContext _context;
         public ProgressRepository(MathLpContext context) : base(context)
         {
+            _context = context;
         }
 
         public async Task<Progress> GetByStudentAndLessonAsync(int studentId, int lessonId)
@@ -25,11 +26,19 @@ namespace repositories.Repositories
         }
         public async Task<List<Progress>> GetByStudentAndLessonPlanAsync(int studentId, int lessonPlanId)
         {
-            // Chúng ta cần join với Lesson để lọc theo LessonPlanId
+            
             return await _context.progresses
-                .Include(p => p.Lesson) // Tải thông tin Lesson
+                .Include(p => p.Lesson)
                 .Where(p => p.StudentId == studentId && p.Lesson.LessonPlanId == lessonPlanId)
                 .ToListAsync();
         }
+        public async Task<List<Progress>> GetByStudentAsync(int studentId)
+        {
+            return await _context.progresses
+                .Where(p => p.StudentId == studentId)
+                .Include(p => p.Lesson)
+                .ToListAsync();
+        }
+
     }
 }

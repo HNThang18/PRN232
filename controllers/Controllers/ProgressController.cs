@@ -72,5 +72,38 @@ namespace controllers.Controllers
             var progressList = await _progressService.GetLessonPlanProgressAsync(lessonPlanId, studentId);
             return Ok(progressList);
         }
+
+        [HttpGet("overall")]
+        public async Task<IActionResult> GetOverallProgress()
+        {
+            var studentId = GetCurrentStudentId();
+            var overall = await _progressService.GetOverallProgressAsync(studentId);
+            return Ok(overall);
+        }
+
+        [HttpGet("score-trend")]
+        public async Task<IActionResult> GetScoreTrend()
+        {
+            var studentId = GetCurrentStudentId();
+            var trend = await _progressService.GetScoreTrendAsync(studentId);
+            return Ok(trend);
+        }
+
+        [HttpGet("topics")]
+        public async Task<IActionResult> GetTopicProgress()
+        {
+            var studentId = GetCurrentStudentId();
+            var topics = await _progressService.GetTopicProgressAsync(studentId);
+            return Ok(topics);
+        }
+
+        [HttpGet("improvement")]
+        public async Task<IActionResult> GetAreasForImprovement()
+        {
+            var studentId = GetCurrentStudentId();
+            var areas = await _progressService.GetAreasForImprovementAsync(studentId);
+            return Ok(areas);
+        }
+
     }
 }

@@ -16,13 +16,16 @@ namespace repositories.Repositories
         private readonly MathLpContext _context;
         public SubmissionRepository(MathLpContext context) : base(context)
         {
+            _context = context;
+
         }
 
         public async Task<List<Submission>> GetSubmissionsByStudentAndQuizAsync(int studentId, int quizId)
         {
-            // Sửa .CountAsync() thành .Where(...) và .ToListAsync()
-            return await _context.submissions // (Giả sử tên DbSet của bạn là 'submissions')
+           
+            return await _context.submissions
                 .Where(s => s.StudentId == studentId && s.QuizId == quizId)
+                .OrderByDescending(s => s.SubmittedAt)
                 .ToListAsync();
         }
         public async Task<int> GetSubmissionCountAsync(int studentId, int quizId) { 
@@ -33,11 +36,21 @@ namespace repositories.Repositories
 
         public async Task<Submission> GetSubmissionWithDetailsAsync(int submissionId)
         {
-            return await _context.submissions // (hoặc _context.Submissions)
-                .Include(s => s.Quiz) // Lấy thông tin Quiz (để lấy QuizTitle)
-                .Include(s => s.SubmissionDetails) // Lấy danh sách chi tiết
-                    .ThenInclude(sd => sd.Question) // Với MỖI chi tiết, lấy Question tương ứng
+            return await _context.submissions
+                .Include(s => s.Quiz)
+                .Include(s => s.SubmissionDetails)
+                    .ThenInclude(sd => sd.Question)
+                        .ThenInclude(q => q.Answers)
                 .FirstOrDefaultAsync(s => s.SubmissionId == submissionId);
         }
+
+        public async Task<List<Submission>> GetSubmissionsByStudentAsync(int studentId)
+        {
+            return await _context.submissions
+                .Where(s => s.StudentId == studentId)
+                .Include(s => s.Quiz)
+                .ToListAsync();
+        }
+
     }
 }
