@@ -26,28 +26,28 @@ namespace repositories.Repositories
                 .ToListAsync();
         }
 
-        // public new async Task<Question?> GetByIdAsync(int questionId)
-        // {
-        //     return await _context.questions
-        //         .Include(q => q.Answers)
-        //         .Include(q => q.Difficulty)
-        //         .FirstOrDefaultAsync(q => q.QuestionId == questionId);
-        // }
+        public new async Task<Question?> GetByIdAsync(int questionId)
+        {
+            return await _context.questions
+                .Include(q => q.Answers)
+                .Include(q => q.Difficulty)
+                .FirstOrDefaultAsync(q => q.QuestionId == questionId);
+        }
 
-        // public async Task<IEnumerable<Question>> GetByQuizIdAsync(int quizId)
-        // {
-        //     return await _context.questions
-        //         .Include(q => q.Answers)
-        //         .Include(q => q.Difficulty)
-        //         .Where(q => q.QuizId == quizId)
-        //         .ToListAsync();
-        // }
+        public async Task<IEnumerable<Question>> GetByQuizIdAsync(int quizId)
+        {
+            return await _context.questions
+                .Include(q => q.Answers)
+                .Include(q => q.Difficulty)
+                .Where(q => q.QuizId == quizId)
+                .ToListAsync();
+        }
 
-        // public new async Task UpdateAsync(Question question)
-        // {
-        //     _context.questions.Update(question);
-        //     await _context.SaveChangesAsync();
-        // }
+        public new async Task UpdateAsync(Question question)
+        {
+            _context.questions.Update(question);
+            await _context.SaveChangesAsync();
+        }
 
         public async Task<IEnumerable<Question>> GetAvailableQuestionsAsync(
             int? levelId = null,
@@ -86,40 +86,41 @@ namespace repositories.Repositories
             }
 
             return await query.OrderByDescending(q => q.CreatedAt).ToListAsync();
-        public async Task<List<Question>> GetAllAsync()
-        {
-            return await _context.questions.ToListAsync();
         }
+        // public async Task<List<Question>> GetAllAsync()
+        // {
+        //     return await _context.questions.ToListAsync();
+        // }
 
-        public async Task<Question?> GetByIdAsync(int id)
-        {
-            return await _context.questions.FindAsync(id);
-        }
+        // public async Task<Question?> GetByIdAsync(int id)
+        // {
+        //     return await _context.questions.FindAsync(id);
+        // }
 
-        public async Task<int> CreateAsync(Question question)
-        {
-            await _context.questions.AddAsync(question);
-            return await _context.SaveChangesAsync();
-        }
+        // public async Task<int> CreateAsync(Question question)
+        // {
+        //     await _context.questions.AddAsync(question);
+        //     return await _context.SaveChangesAsync();
+        // }
 
-        public async Task<int> UpdateAsync(Question question)
-        {
-            _context.ChangeTracker.Clear();
-            var tracker = _context.Attach(question);
-            tracker.State = EntityState.Modified;
-            return await _context.SaveChangesAsync();
-        }
+        // public async Task<int> UpdateAsync(Question question)
+        // {
+        //     _context.ChangeTracker.Clear();
+        //     var tracker = _context.Attach(question);
+        //     tracker.State = EntityState.Modified;
+        //     return await _context.SaveChangesAsync();
+        // }
 
-        public async Task<bool> RemoveAsync(Question question)
-        {
-            _context.questions.Remove(question);
-            await _context.SaveChangesAsync();
-            return true;
-        }
+        // public async Task<bool> RemoveAsync(Question question)
+        // {
+        //     _context.questions.Remove(question);
+        //     await _context.SaveChangesAsync();
+        //     return true;
+        // }
 
-        public async Task<List<Question>> GetByQuizIdAsync(int quizId)
-        {
-            return await _context.questions.Where(q => q.QuizId == quizId).ToListAsync();
-        }
+        // public async Task<List<Question>> GetByQuizIdAsync(int quizId)
+        // {
+        //     return await _context.questions.Where(q => q.QuizId == quizId).ToListAsync();
+        // }
     }
 }

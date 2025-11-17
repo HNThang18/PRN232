@@ -101,7 +101,7 @@ namespace services.Services
                 throw new Exception("Bài nộp này đã hoàn thành.");
             }
 
-            // 2. Lấy đáp án (cần QuestionRepository của bạn bạn)
+            // 2. Lấy đáp án (cần QuestionRepository của bạn)
             var questionIds = request.Answers.Select(a => a.QuestionId).ToList();
             // (Giả sử IQuestionRepository có hàm này)
             var questions = await _questionRepo.GetQuestionsWithCorrectAnswersAsync(questionIds);
