@@ -78,10 +78,17 @@ builder.Services.AddScoped<IAttachmentRepository, AttachmentRepository>();
 builder.Services.AddScoped<IAttachmentService, AttachmentService>();
 builder.Services.AddScoped<IDifficultyRepository, DifficultyRepository>();
 builder.Services.AddScoped<IDifficultyService, DifficultyService>();
+builder.Services.AddScoped<ILevelRepository, LevelRepository>();
+builder.Services.AddScoped<ILevelService, LevelService>();
 builder.Services.AddScoped<IQuestionBankRepository, QuestionBankRepository>();
 builder.Services.AddScoped<IQuestionBankService, QuestionBankService>();
+// question
 builder.Services.AddScoped<IQuestionRepository, QuestionRepository>();
-builder.Services.AddScoped<IQuestionService, QuestionService>();
+//builder.Services.AddScoped<IQuestionService, QuestionService>();
+
+builder.Services.AddScoped<IQuestionRepository, QuestionRepository>();
+//builder.Services.AddScoped<IQuestionService, QuestionService>();
+
 builder.Services.AddScoped<IQuizRepository, QuizRepository>();
 builder.Services.AddScoped<IQuizService, QuizService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
@@ -93,6 +100,7 @@ builder.Services.AddScoped<IAiRequestRepository, AiRequestRepository>();
 
 builder.Services.AddScoped<IAiService, AiService>();
 builder.Services.AddScoped<IAiIntegrationService, AiIntegrationService>();
+builder.Services.AddScoped<IRateLimitService, RateLimitService>();
 
 // Add Word Document and Cloudinary Storage services
 builder.Services.AddScoped<IWordDocumentService, WordDocumentService>();

@@ -22,5 +22,7 @@ namespace repositories.Interfaces
             RequestType? requestType = null,
             AiRequestStatus? status = null,
             string? search = null);
+        Task<int> GetRequestCountByUserIdAsync(int userId, DateTime startDate, DateTime endDate);
+        Task<int> GetRequestCountByTypeAsync(RequestType requestType, DateTime startDate, DateTime endDate);
     }
 }

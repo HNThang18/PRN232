@@ -344,9 +344,18 @@ namespace repositories.Dbcontext
 
             // Sample data seeding
             modelBuilder.Entity<Level>().HasData(
-                new Level { LevelId = 1, LevelName = "Primary School", EducationLevel = EducationLevel.PrimarySchool, Order = 1 },
-                new Level { LevelId = 2, LevelName = "Secondary School", EducationLevel = EducationLevel.SecondarySchool, Order = 2 },
-                new Level { LevelId = 3, LevelName = "High School", EducationLevel = EducationLevel.HighSchool, Order = 3 }
+                new Level { LevelId = 1, LevelName = "Grade 1", EducationLevel = EducationLevel.PrimarySchool, Order = 1 },
+                new Level { LevelId = 2, LevelName = "Grade 2", EducationLevel = EducationLevel.PrimarySchool, Order = 2 },
+                new Level { LevelId = 3, LevelName = "Grade 3", EducationLevel = EducationLevel.PrimarySchool, Order = 3 },
+                new Level { LevelId = 4, LevelName = "Grade 4", EducationLevel = EducationLevel.PrimarySchool, Order = 4 },
+                new Level { LevelId = 5, LevelName = "Grade 5", EducationLevel = EducationLevel.PrimarySchool, Order = 5 },
+                new Level { LevelId = 6, LevelName = "Grade 6", EducationLevel = EducationLevel.SecondarySchool, Order = 6 },
+                new Level { LevelId = 7, LevelName = "Grade 7", EducationLevel = EducationLevel.SecondarySchool, Order = 7 },
+                new Level { LevelId = 8, LevelName = "Grade 8", EducationLevel = EducationLevel.SecondarySchool, Order = 8 },
+                new Level { LevelId = 9, LevelName = "Grade 9", EducationLevel = EducationLevel.SecondarySchool, Order = 9 },
+                new Level { LevelId = 10, LevelName = "Grade 10", EducationLevel = EducationLevel.HighSchool, Order = 10 },
+                new Level { LevelId = 11, LevelName = "Grade 11", EducationLevel = EducationLevel.HighSchool, Order = 11 },
+                new Level { LevelId = 12, LevelName = "Grade 12", EducationLevel = EducationLevel.HighSchool, Order = 12 }
             );
 
             modelBuilder.Entity<User>().HasData(

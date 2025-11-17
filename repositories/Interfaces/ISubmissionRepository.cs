@@ -12,6 +12,9 @@ namespace repositories.Interfaces
         Task<List<Submission>> GetSubmissionsByStudentAndQuizAsync(int studentId, int quizId);
         Task<int> GetSubmissionCountAsync(int studentId, int quizId);
         Task<Submission> GetSubmissionWithDetailsAsync(int submissionId);
+        Task<IEnumerable<Submission>> GetSubmissionsByQuizIdAsync(int quizId);
+        Task<int> GetSubmissionCountByQuizIdAsync(int quizId);
+        Task<decimal> GetAverageScoreByQuizIdAsync(int quizId);
         Task<List<Submission>> GetSubmissionsByStudentAsync(int studentId);
 
     }

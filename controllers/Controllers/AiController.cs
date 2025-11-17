@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using repositories.Models;
 using services.Interfaces;
+using services.Services;
 using System.Security.Claims;
 
 namespace controllers.Controllers
@@ -16,15 +17,18 @@ namespace controllers.Controllers
     {
         private readonly IAiIntegrationService _aiIntegrationService;
         private readonly IAiService _aiService;
+        private readonly IRateLimitService _rateLimitService;
         private readonly ILogger<AiController> _logger;
 
         public AiController(
             IAiIntegrationService aiIntegrationService,
             IAiService aiService,
+            IRateLimitService rateLimitService,
             ILogger<AiController> logger)
         {
             _aiIntegrationService = aiIntegrationService;
             _aiService = aiService;
+            _rateLimitService = rateLimitService;
             _logger = logger;
         }
 
@@ -39,9 +43,20 @@ namespace controllers.Controllers
 
             try
             {
+                var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int userId))
+                {
+                    return Unauthorized(ApiResponse<object>.ErrorResponse(401, "User not authenticated"));
+                }
+
+                var canMakeRequest = await _rateLimitService.CanMakeRequestAsync(userId, RequestType.GenerateLessonPlan);
+                if (!canMakeRequest)
+                {
+                    return StatusCode(429, ApiResponse<object>.ErrorResponse(429, "Rate limit exceeded. Please try again later."));
+                }
+
                 _logger.LogInformation("Generating lesson plan for topic: {Topic}", request.Topic);
 
-                // Create a dedicated timeout for AI operations - don't link to request cancellation
                 using var cts = new CancellationTokenSource(TimeSpan.FromMinutes(10));
                 
                 var lessonPlan = await _aiIntegrationService.GenerateAndSaveLessonPlanAsync(request, cts.Token);
@@ -101,6 +116,18 @@ namespace controllers.Controllers
 
             try
             {
+                var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int userId))
+                {
+                    return Unauthorized(ApiResponse<object>.ErrorResponse(401, "User not authenticated"));
+                }
+
+                var canMakeRequest = await _rateLimitService.CanMakeRequestAsync(userId, RequestType.GenerateQuestions);
+                if (!canMakeRequest)
+                {
+                    return StatusCode(429, ApiResponse<object>.ErrorResponse(429, "Rate limit exceeded. Please try again later."));
+                }
+
                 _logger.LogInformation("Generating {Count} questions for topic: {Topic}", 
                     request.Count, request.Topic);
 
@@ -158,6 +185,18 @@ namespace controllers.Controllers
 
             try
             {
+                var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                if (string.IsNullOrEmpty(userIdClaim) || !int.TryParse(userIdClaim, out int userId))
+                {
+                    return Unauthorized(ApiResponse<object>.ErrorResponse(401, "User not authenticated"));
+                }
+
+                var canMakeRequest = await _rateLimitService.CanMakeRequestAsync(userId, RequestType.GenerateQuiz);
+                if (!canMakeRequest)
+                {
+                    return StatusCode(429, ApiResponse<object>.ErrorResponse(429, "Rate limit exceeded. Please try again later."));
+                }
+
                 _logger.LogInformation("Generating quiz: {Title}", request.Title);
 
                 var quiz = await _aiIntegrationService.GenerateAndSaveQuizAsync(request, cancellationToken);

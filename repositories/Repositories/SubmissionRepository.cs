@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using repositories.Basic;
 using repositories.Dbcontext;
 using repositories.Interfaces;
@@ -13,7 +13,6 @@ namespace repositories.Repositories
 {
     public class SubmissionRepository : GenericRepository<Submission>, ISubmissionRepository
     {
-        private readonly MathLpContext _context;
         public SubmissionRepository(MathLpContext context) : base(context)
         {
             _context = context;

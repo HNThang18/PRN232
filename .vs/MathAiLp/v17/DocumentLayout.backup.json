@@ -1,0 +1,312 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|d:\\personal\\school\\chuyennghanh8\\prn232\\group\\be\\controllers\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|solutionrelative:controllers\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBBF46FE-1B6E-46C1-92EB-64B648F8CF0A}|services\\services.csproj|d:\\personal\\school\\chuyennghanh8\\prn232\\group\\be\\services\\services\\questionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBBF46FE-1B6E-46C1-92EB-64B648F8CF0A}|services\\services.csproj|solutionrelative:services\\services\\questionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|d:\\personal\\school\\chuyennghanh8\\prn232\\group\\be\\controllers\\controllers\\questionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|solutionrelative:controllers\\controllers\\questionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|d:\\personal\\school\\chuyennghanh8\\prn232\\group\\be\\repositories\\models\\question.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|solutionrelative:repositories\\models\\question.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{40789404-2095-4717-A622-68DF9F9E6615}|applications\\applications.csproj|d:\\personal\\school\\chuyennghanh8\\prn232\\group\\be\\applications\\dtos\\request\\questionrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{40789404-2095-4717-A622-68DF9F9E6615}|applications\\applications.csproj|solutionrelative:applications\\dtos\\request\\questionrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBBF46FE-1B6E-46C1-92EB-64B648F8CF0A}|services\\services.csproj|d:\\personal\\school\\chuyennghanh8\\prn232\\group\\be\\services\\interfaces\\iquestionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBBF46FE-1B6E-46C1-92EB-64B648F8CF0A}|services\\services.csproj|solutionrelative:services\\interfaces\\iquestionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|d:\\personal\\school\\chuyennghanh8\\prn232\\group\\be\\repositories\\repositories\\questionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|solutionrelative:repositories\\repositories\\questionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|d:\\personal\\school\\chuyennghanh8\\prn232\\group\\be\\repositories\\interfaces\\iquestionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|solutionrelative:repositories\\interfaces\\iquestionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{40789404-2095-4717-A622-68DF9F9E6615}|applications\\applications.csproj|d:\\personal\\school\\chuyennghanh8\\prn232\\group\\be\\applications\\dtos\\request\\answerrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{40789404-2095-4717-A622-68DF9F9E6615}|applications\\applications.csproj|solutionrelative:applications\\dtos\\request\\answerrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|d:\\personal\\school\\chuyennghanh8\\prn232\\group\\be\\controllers\\controllers\\answerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|solutionrelative:controllers\\controllers\\answerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|d:\\personal\\school\\chuyennghanh8\\prn232\\group\\be\\controllers\\controllers\\questionbankcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|solutionrelative:controllers\\controllers\\questionbankcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBBF46FE-1B6E-46C1-92EB-64B648F8CF0A}|services\\services.csproj|d:\\personal\\school\\chuyennghanh8\\prn232\\group\\be\\services\\services\\quizservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBBF46FE-1B6E-46C1-92EB-64B648F8CF0A}|services\\services.csproj|solutionrelative:services\\services\\quizservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|d:\\personal\\school\\chuyennghanh8\\prn232\\group\\be\\controllers\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{3ECEDCD2-6F13-4375-93F6-718C01770CE8}|controllers\\controllers.csproj|solutionrelative:controllers\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|d:\\personal\\school\\chuyennghanh8\\prn232\\group\\be\\repositories\\interfaces\\ianswerrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|solutionrelative:repositories\\interfaces\\ianswerrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBBF46FE-1B6E-46C1-92EB-64B648F8CF0A}|services\\services.csproj|d:\\personal\\school\\chuyennghanh8\\prn232\\group\\be\\services\\services\\answerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBBF46FE-1B6E-46C1-92EB-64B648F8CF0A}|services\\services.csproj|solutionrelative:services\\services\\answerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBBF46FE-1B6E-46C1-92EB-64B648F8CF0A}|services\\services.csproj|d:\\personal\\school\\chuyennghanh8\\prn232\\group\\be\\services\\interfaces\\ianswerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBBF46FE-1B6E-46C1-92EB-64B648F8CF0A}|services\\services.csproj|solutionrelative:services\\interfaces\\ianswerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|d:\\personal\\school\\chuyennghanh8\\prn232\\group\\be\\repositories\\repositories\\answerrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1EB860BF-EE26-4EAB-B945-9FD231682FE5}|repositories\\repositories.csproj|solutionrelative:repositories\\repositories\\answerrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 431,
+          "SelectedChildIndex": 20,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Question.cs",
+              "DocumentMoniker": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\repositories\\Models\\Question.cs",
+              "RelativeDocumentMoniker": "repositories\\Models\\Question.cs",
+              "ToolTip": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\repositories\\Models\\Question.cs",
+              "RelativeToolTip": "repositories\\Models\\Question.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAYwAsAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T13:50:03.288Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "QuestionsController.cs",
+              "DocumentMoniker": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\controllers\\Controllers\\QuestionsController.cs",
+              "RelativeDocumentMoniker": "controllers\\Controllers\\QuestionsController.cs",
+              "ToolTip": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\controllers\\Controllers\\QuestionsController.cs",
+              "RelativeToolTip": "controllers\\Controllers\\QuestionsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T13:48:16.25Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "QuestionService.cs",
+              "DocumentMoniker": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\services\\Services\\QuestionService.cs",
+              "RelativeDocumentMoniker": "services\\Services\\QuestionService.cs",
+              "ToolTip": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\services\\Services\\QuestionService.cs",
+              "RelativeToolTip": "services\\Services\\QuestionService.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAkwE8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T13:47:28.343Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IQuestionService.cs",
+              "DocumentMoniker": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\services\\Interfaces\\IQuestionService.cs",
+              "RelativeDocumentMoniker": "services\\Interfaces\\IQuestionService.cs",
+              "ToolTip": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\services\\Interfaces\\IQuestionService.cs",
+              "RelativeToolTip": "services\\Interfaces\\IQuestionService.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T13:47:03.434Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "QuestionRequestDto.cs",
+              "DocumentMoniker": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\applications\\DTOs\\Request\\QuestionRequestDto.cs",
+              "RelativeDocumentMoniker": "applications\\DTOs\\Request\\QuestionRequestDto.cs",
+              "ToolTip": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\applications\\DTOs\\Request\\QuestionRequestDto.cs",
+              "RelativeToolTip": "applications\\DTOs\\Request\\QuestionRequestDto.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T13:46:56.755Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "QuestionRepository.cs",
+              "DocumentMoniker": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\repositories\\Repositories\\QuestionRepository.cs",
+              "RelativeDocumentMoniker": "repositories\\Repositories\\QuestionRepository.cs",
+              "ToolTip": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\repositories\\Repositories\\QuestionRepository.cs",
+              "RelativeToolTip": "repositories\\Repositories\\QuestionRepository.cs",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T13:46:44.812Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IQuestionRepository.cs",
+              "DocumentMoniker": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\repositories\\Interfaces\\IQuestionRepository.cs",
+              "RelativeDocumentMoniker": "repositories\\Interfaces\\IQuestionRepository.cs",
+              "ToolTip": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\repositories\\Interfaces\\IQuestionRepository.cs",
+              "RelativeToolTip": "repositories\\Interfaces\\IQuestionRepository.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T13:46:25.038Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "QuestionBankController.cs",
+              "DocumentMoniker": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\controllers\\Controllers\\QuestionBankController.cs",
+              "RelativeDocumentMoniker": "controllers\\Controllers\\QuestionBankController.cs",
+              "ToolTip": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\controllers\\Controllers\\QuestionBankController.cs",
+              "RelativeToolTip": "controllers\\Controllers\\QuestionBankController.cs",
+              "ViewState": "AgIAAGEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T13:43:16.828Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "QuizService.cs",
+              "DocumentMoniker": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\services\\Services\\QuizService.cs",
+              "RelativeDocumentMoniker": "services\\Services\\QuizService.cs",
+              "ToolTip": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\services\\Services\\QuizService.cs",
+              "RelativeToolTip": "services\\Services\\QuizService.cs",
+              "ViewState": "AgIAAJ4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T13:41:19.847Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\controllers\\appsettings.json",
+              "RelativeDocumentMoniker": "controllers\\appsettings.json",
+              "ToolTip": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\controllers\\appsettings.json",
+              "RelativeToolTip": "controllers\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAACCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-11-16T12:07:08.849Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "IAnswerRepository.cs",
+              "DocumentMoniker": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\repositories\\Interfaces\\IAnswerRepository.cs",
+              "RelativeDocumentMoniker": "repositories\\Interfaces\\IAnswerRepository.cs",
+              "ToolTip": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\repositories\\Interfaces\\IAnswerRepository.cs",
+              "RelativeToolTip": "repositories\\Interfaces\\IAnswerRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwA0AAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T11:00:31.203Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AnswerRequestDto.cs",
+              "DocumentMoniker": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\applications\\DTOs\\Request\\AnswerRequestDto.cs",
+              "RelativeDocumentMoniker": "applications\\DTOs\\Request\\AnswerRequestDto.cs",
+              "ToolTip": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\applications\\DTOs\\Request\\AnswerRequestDto.cs",
+              "RelativeToolTip": "applications\\DTOs\\Request\\AnswerRequestDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T10:57:47.27Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "AnswersController.cs",
+              "DocumentMoniker": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\controllers\\Controllers\\AnswersController.cs",
+              "RelativeDocumentMoniker": "controllers\\Controllers\\AnswersController.cs",
+              "ToolTip": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\controllers\\Controllers\\AnswersController.cs",
+              "RelativeToolTip": "controllers\\Controllers\\AnswersController.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAowDoAAABTAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T11:15:12.78Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "AnswerRepository.cs",
+              "DocumentMoniker": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\repositories\\Repositories\\AnswerRepository.cs",
+              "RelativeDocumentMoniker": "repositories\\Repositories\\AnswerRepository.cs",
+              "ToolTip": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\repositories\\Repositories\\AnswerRepository.cs",
+              "RelativeToolTip": "repositories\\Repositories\\AnswerRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T11:00:31.25Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "IAnswerService.cs",
+              "DocumentMoniker": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\services\\Interfaces\\IAnswerService.cs",
+              "RelativeDocumentMoniker": "services\\Interfaces\\IAnswerService.cs",
+              "ToolTip": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\services\\Interfaces\\IAnswerService.cs",
+              "RelativeToolTip": "services\\Interfaces\\IAnswerService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAgAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T11:00:31.282Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "AnswerService.cs",
+              "DocumentMoniker": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\services\\Services\\AnswerService.cs",
+              "RelativeDocumentMoniker": "services\\Services\\AnswerService.cs",
+              "ToolTip": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\services\\Services\\AnswerService.cs",
+              "RelativeToolTip": "services\\Services\\AnswerService.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwB8AAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T11:00:31.33Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\controllers\\Program.cs",
+              "RelativeDocumentMoniker": "controllers\\Program.cs",
+              "ToolTip": "D:\\Personal\\School\\ChuyenNghanh8\\PRN232\\Group\\BE\\controllers\\Program.cs",
+              "RelativeToolTip": "controllers\\Program.cs",
+              "ViewState": "AgIAAEUAAAAAAAAAAAApwEcAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T11:00:31.361Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
