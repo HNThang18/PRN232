@@ -50,6 +50,19 @@ namespace repositories.Repositories
                 .Include(s => s.Quiz)
                 .ToListAsync();
         }
+        public Task<IEnumerable<Submission>> GetSubmissionsByQuizIdAsync(int quizId)
+        {
+            throw new NotImplementedException();
+        }
 
+        public Task<int> GetSubmissionCountByQuizIdAsync(int quizId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<decimal> GetAverageScoreByQuizIdAsync(int quizId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
